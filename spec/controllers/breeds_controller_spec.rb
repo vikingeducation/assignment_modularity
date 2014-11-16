@@ -24,11 +24,11 @@ RSpec.describe BreedsController, :type => :controller do
   # Breed. As you add validations to Breed, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    { name: "German Shepherd" }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { name: nil }
   }
 
   # This should return the minimal set of values that should be in the session
@@ -67,79 +67,80 @@ RSpec.describe BreedsController, :type => :controller do
     end
   end
 
-  describe "POST create" do
-    describe "with valid params" do
-      it "creates a new Breed" do
-        expect {
-          post :create, {:breed => valid_attributes}, valid_session
-        }.to change(Breed, :count).by(1)
-      end
+# USERS WILL NOT BE ABLE TO CREATE OR UPDATE BREEDS 
+  # describe "POST create" do
+  #   describe "with valid params" do
+  #     it "creates a new Breed" do
+  #       expect {
+  #         post :create, {:breed => valid_attributes}, valid_session
+  #       }.to change(Breed, :count).by(1)
+  #     end
 
-      it "assigns a newly created breed as @breed" do
-        post :create, {:breed => valid_attributes}, valid_session
-        expect(assigns(:breed)).to be_a(Breed)
-        expect(assigns(:breed)).to be_persisted
-      end
+  #     it "assigns a newly created breed as @breed" do
+  #       post :create, {:breed => valid_attributes}, valid_session
+  #       expect(assigns(:breed)).to be_a(Breed)
+  #       expect(assigns(:breed)).to be_persisted
+  #     end
 
-      it "redirects to the created breed" do
-        post :create, {:breed => valid_attributes}, valid_session
-        expect(response).to redirect_to(Breed.last)
-      end
-    end
+  #     it "redirects to the created breed" do
+  #       post :create, {:breed => valid_attributes}, valid_session
+  #       expect(response).to redirect_to(Breed.last)
+  #     end
+  #   end
 
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved breed as @breed" do
-        post :create, {:breed => invalid_attributes}, valid_session
-        expect(assigns(:breed)).to be_a_new(Breed)
-      end
+  #   describe "with invalid params" do
+  #     it "assigns a newly created but unsaved breed as @breed" do
+  #       post :create, {:breed => invalid_attributes}, valid_session
+  #       expect(assigns(:breed)).to be_a_new(Breed)
+  #     end
 
-      it "re-renders the 'new' template" do
-        post :create, {:breed => invalid_attributes}, valid_session
-        expect(response).to render_template("new")
-      end
-    end
-  end
+  #     it "re-renders the 'new' template" do
+  #       post :create, {:breed => invalid_attributes}, valid_session
+  #       expect(response).to render_template("new")
+  #     end
+  #   end
+  # end
 
-  describe "PUT update" do
-    describe "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
+  # describe "PUT update" do
+  #   describe "with valid params" do
+  #     let(:new_attributes) {
+  #       skip("Add a hash of attributes valid for your model")
+  #     }
 
-      it "updates the requested breed" do
-        breed = Breed.create! valid_attributes
-        put :update, {:id => breed.to_param, :breed => new_attributes}, valid_session
-        breed.reload
-        skip("Add assertions for updated state")
-      end
+  #     it "updates the requested breed" do
+  #       breed = Breed.create! valid_attributes
+  #       put :update, {:id => breed.to_param, :breed => new_attributes}, valid_session
+  #       breed.reload
+  #       skip("Add assertions for updated state")
+  #     end
 
-      it "assigns the requested breed as @breed" do
-        breed = Breed.create! valid_attributes
-        put :update, {:id => breed.to_param, :breed => valid_attributes}, valid_session
-        expect(assigns(:breed)).to eq(breed)
-      end
+  #     it "assigns the requested breed as @breed" do
+  #       breed = Breed.create! valid_attributes
+  #       put :update, {:id => breed.to_param, :breed => valid_attributes}, valid_session
+  #       expect(assigns(:breed)).to eq(breed)
+  #     end
 
-      it "redirects to the breed" do
-        breed = Breed.create! valid_attributes
-        put :update, {:id => breed.to_param, :breed => valid_attributes}, valid_session
-        expect(response).to redirect_to(breed)
-      end
-    end
+  #     it "redirects to the breed" do
+  #       breed = Breed.create! valid_attributes
+  #       put :update, {:id => breed.to_param, :breed => valid_attributes}, valid_session
+  #       expect(response).to redirect_to(breed)
+  #     end
+  #   end
 
-    describe "with invalid params" do
-      it "assigns the breed as @breed" do
-        breed = Breed.create! valid_attributes
-        put :update, {:id => breed.to_param, :breed => invalid_attributes}, valid_session
-        expect(assigns(:breed)).to eq(breed)
-      end
+  #   describe "with invalid params" do
+  #     it "assigns the breed as @breed" do
+  #       breed = Breed.create! valid_attributes
+  #       put :update, {:id => breed.to_param, :breed => invalid_attributes}, valid_session
+  #       expect(assigns(:breed)).to eq(breed)
+  #     end
 
-      it "re-renders the 'edit' template" do
-        breed = Breed.create! valid_attributes
-        put :update, {:id => breed.to_param, :breed => invalid_attributes}, valid_session
-        expect(response).to render_template("edit")
-      end
-    end
-  end
+  #     it "re-renders the 'edit' template" do
+  #       breed = Breed.create! valid_attributes
+  #       put :update, {:id => breed.to_param, :breed => invalid_attributes}, valid_session
+  #       expect(response).to render_template("edit")
+  #     end
+  #   end
+  # end
 
   describe "DELETE destroy" do
     it "destroys the requested breed" do

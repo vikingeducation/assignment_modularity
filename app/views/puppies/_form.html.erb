@@ -11,6 +11,16 @@
     </div>
   <% end %>
 
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <br>
+  
+  <%= f.label :breed %>
+  <%= f.select :breed_id, options_for_select(breed_array) %>
+
+  <br>
+
   <div class="actions">
     <%= f.submit %>
   </div>

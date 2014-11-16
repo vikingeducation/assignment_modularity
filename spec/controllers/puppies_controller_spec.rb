@@ -23,12 +23,13 @@ RSpec.describe PuppiesController, :type => :controller do
   # This should return the minimal set of attributes required to create a valid
   # Puppy. As you add validations to Puppy, be sure to
   # adjust the attributes here as well.
+  let!(:breed) { FactoryGirl.create(:breed) }
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    { name: "Buddy", breed_id: breed.id }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { name: "" }
   }
 
   # This should return the minimal set of values that should be in the session
@@ -36,6 +37,57 @@ RSpec.describe PuppiesController, :type => :controller do
   # PuppiesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
+
+  # API TESTS
+  ######################################################
+  describe "via API calls" do
+    let(:json) { JSON.parse(response.body) }
+    render_views
+
+    describe "GET /puppies.json" do
+      before do
+        duke = FactoryGirl.create(:puppy, name: "Duke")
+        spot = FactoryGirl.create(:puppy, name: "Spot")
+        get :index, format: :json
+      end
+
+      it "returns success code" do
+        expect(response.status).to eq(200)
+      end
+      
+      it "returns puppies" do  
+        names = json.collect { |n| n["name"] }
+        expect(names).to eq(["Duke", "Spot"])
+      end
+    end
+
+    describe "POST /puppies.json" do
+      context "successful puppy listing" do
+        before { post :create, format: :json, :puppy => { name: "Sadie", breed_id: "#{breed.id}"} }
+
+        it "returns success code" do
+          expect(response.status).to eq(201)
+        end
+
+        it "adds new puppy" do
+          expect(Puppy.last.name).to eq("Sadie")
+        end
+      end  
+
+      context "invalid puppy listing" do
+        before { post :create, format: :json, :puppy => { name: "Elmo" } }
+
+        it "returns failure code" do
+          expect(response.status).to eq(422)
+        end
+
+        it "returns error message"
+      end
+    end
+  end
+
+  # STANDARD TESTS
+  ######################################################
   describe "GET index" do
     it "assigns all puppies as @puppies" do
       puppy = Puppy.create! valid_attributes
