@@ -72,16 +72,40 @@ RSpec.describe PuppiesController, :type => :controller do
         it "adds new puppy" do
           expect(Puppy.last.name).to eq("Sadie")
         end
+
+        it "returns puppy url" do
+          expect(response.location).to eq(puppy_url(Puppy.last))
+        end
       end  
 
-      context "invalid puppy listing" do
+      context "invalid puppy - no breed" do
         before { post :create, format: :json, :puppy => { name: "Elmo" } }
 
         it "returns failure code" do
           expect(response.status).to eq(422)
         end
+      end
 
-        it "returns error message"
+      context "invalid puppy - nonexistant breed" do
+        before do
+          bad_id = Breed.last.id + 5
+          post :create, format: :json, :puppy => { name: "Mutt", breed_id: bad_id }
+        end
+
+        it "returns failure code" do
+          expect(response.status).to eq(422)
+        end
+      end
+    end
+
+    describe 'DELETE (ADOPT) /puppies/:id.json' do
+      let!(:adoptee) { FactoryGirl.create(:puppy) }
+
+      context 'successful adoption' do
+        it 'removes the puppy from the db' do
+          delete :destroy, format: :json, id: "#{adoptee.id}"
+          expect(Puppy.where(id: "#{adoptee.id}")).to be_empty
+        end
       end
     end
   end
