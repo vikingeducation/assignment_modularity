@@ -3,13 +3,16 @@
 <table>
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th colspan="4">
+        AJAX Puppy HQ
+      </th>
     </tr>
   </thead>
 
   <tbody>
     <% @puppies.each do |puppy| %>
       <tr>
+        <td><%= puppy.name %></td>
         <td><%= link_to 'Show', puppy %></td>
         <td><%= link_to 'Edit', edit_puppy_path(puppy) %></td>
         <td><%= link_to 'Destroy', puppy, method: :delete, data: { confirm: 'Are you sure?' } %></td>

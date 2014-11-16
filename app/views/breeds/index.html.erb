@@ -10,7 +10,7 @@
   <tbody>
     <% @breeds.each do |breed| %>
       <tr>
-        <td><%= link_to 'Show', breed %></td>
+        <td><%= link_to "#{breed.name}", breed %></td>
         <td><%= link_to 'Edit', edit_breed_path(breed) %></td>
         <td><%= link_to 'Destroy', breed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
