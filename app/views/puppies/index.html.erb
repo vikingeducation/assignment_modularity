@@ -1,26 +1,19 @@
-<h1>Listing puppies</h1>
+<h1> AJAX Puppy HQ  </h1>
 
 <table>
-  <thead>
+  <th> Name </th>
+  <th> Breed </th>
+  <th> Adopt Me! </th>
+  
+  <% @puppies.each do |puppy| %>
     <tr>
-      <th colspan="4">
-        AJAX Puppy HQ
-      </th>
+      <td> <%= puppy.name %> </td>
+      <td> <%= puppy.breed.name %> </td>
+      <td> 
+        <%= link_to 'Adopt', puppy, method: :delete, data: { confirm: 'Are you sure?' } %> 
+      </td>
     </tr>
-  </thead>
-
-  <tbody>
-    <% @puppies.each do |puppy| %>
-      <tr>
-        <td><%= puppy.name %></td>
-        <td><%= link_to 'Show', puppy %></td>
-        <td><%= link_to 'Edit', edit_puppy_path(puppy) %></td>
-        <td><%= link_to 'Destroy', puppy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+  <% end %>
 </table>
 
-<br>
-
-<%= link_to 'New Puppy', new_puppy_path %>
+<%= link_to 'Register New Puppy', new_puppy_path %>
