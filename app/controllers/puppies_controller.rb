@@ -45,7 +45,9 @@ class PuppiesController < ApplicationController
   # POST /puppies
   # POST /puppies.json
   def create
-    @puppy = Puppy.new(JSON.parse(puppy_params))
+    hash = puppy_params
+    hash = JSON.parse(hash) if hash.is_a?(String)
+    @puppy = Puppy.new(hash)
 
     respond_to do |format|
       if @puppy.save
