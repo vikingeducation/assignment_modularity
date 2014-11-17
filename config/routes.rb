@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   match 'breeds', to: 'breeds#index', via: [:options]
+  match 'puppies', to: 'puppies#index', via: [:options]
+  resources :breeds, :puppies
   resources :breeds, :puppies
   root 'puppies#index'
 
