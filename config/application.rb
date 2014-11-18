@@ -11,7 +11,9 @@ module AJAXPuppyHq
     config.middleware.use Rack::Cors do
       allow do
         origins '*'
-        resource '*', headers: :any, methods: [:get, :post, :delete]
+        resource '*',  headers: "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+                       methods: [:get, :post, :delete],
+                       expose: ["Access-Control-Allow-Headers"]
       end
     end
   end
