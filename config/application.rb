@@ -20,6 +20,10 @@ module AJAXPuppyHq
         resource '/puppies',
           :headers => :any,
           :methods => [:get, :post, :delete, :options, :head],
+          :expose => [  'Access-Control-Allow-Origin', 
+                        'Access-Control-Allow-Methods,',
+                        'Access-Control-Allow-Headers',
+                        'Access-Control-Max-Age'],
           :max_age => 1800
       end
     end
