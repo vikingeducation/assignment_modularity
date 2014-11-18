@@ -39,6 +39,9 @@ group :development, :test do
   gem 'launchy'
 end
 
+gem 'rack-cors',
+  :require => 'rack/cors'
+
 gem 'rails_12factor', group: :production # To make app work on Heroku
 
 # Use Capistrano for deployment

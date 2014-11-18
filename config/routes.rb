@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  match 'breeds', to: 'breeds#index', via: [:options]
-  match 'puppies', to: 'puppies#set_preflight_headers', via: [:options]
+  # match 'breeds', to: 'breeds#index', via: [:options]
+  # match 'puppies', to: 'puppies#set_preflight_headers', via: [:options]
   resources :breeds, :puppies
   resources :breeds, :puppies
   root 'puppies#index'

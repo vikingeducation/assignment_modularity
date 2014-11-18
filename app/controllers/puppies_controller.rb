@@ -4,16 +4,16 @@ class PuppiesController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
 
-  # If this is a preflight OPTIONS request, then short-circuit the
-  # request, return only the necessary headers and return an empty
-  # text/plain.
-  def set_preflight_headers
-    headers['Access-Control-Allow-Origin'] = '*'
-    headers['Access-Control-Allow-Methods'] = 'POST, GET, DELETE, OPTIONS'
-    headers['Access-Control-Allow-Headers'] = '*,x-requested-with,Content-Type,If-Modified-Since,If-None-Match'
-    headers['Access-Control-Max-Age'] = '1728000'
-    render :text => '', :content_type => 'text/plain'
-  end
+  # # If this is a preflight OPTIONS request, then short-circuit the
+  # # request, return only the necessary headers and return an empty
+  # # text/plain.
+  # def set_preflight_headers
+  #   headers['Access-Control-Allow-Origin'] = '*'
+  #   headers['Access-Control-Allow-Methods'] = 'POST, GET, DELETE, OPTIONS'
+  #   headers['Access-Control-Allow-Headers'] = '*,x-requested-with,Content-Type,If-Modified-Since,If-None-Match'
+  #   headers['Access-Control-Max-Age'] = '1728000'
+  #   render :text => '', :content_type => 'text/plain'
+  # end
 
   # GET /puppies
   # GET /puppies.json
