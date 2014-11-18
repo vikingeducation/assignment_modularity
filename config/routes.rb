@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  match '/puppies.json', :to => proc {|env| [200, {'Content-Type' => 'text/plain'}, ["Hello world"]] },
-             :via => [:options, :head]
+  match '/puppies.json',  :controller => 'application', 
+                          :action => 'handle_options_request',
+                          :via => [:options, :head]
   resources :breeds, :puppies
   resources :breeds, :puppies
   root 'puppies#index'
