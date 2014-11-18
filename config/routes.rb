@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   # match 'breeds', to: 'breeds#index', via: [:options]
   # match 'puppies', to: 'puppies#set_preflight_headers', via: [:options]
+  match '/', :to => proc {|env| [200, {'Content-Type' => 'text/plain'}, ["Hello world"]] },
+             :via => [:options, :head]
   resources :breeds, :puppies
   resources :breeds, :puppies
   root 'puppies#index'
