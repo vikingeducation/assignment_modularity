@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  match '/puppies.json',  :controller => 'application', 
+  match '/puppies',  :controller => 'application', 
                           :action => 'handle_options_request',
                           :via => [:options, :head]
   resources :breeds, :puppies

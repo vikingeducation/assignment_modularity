@@ -5,12 +5,6 @@ class ApplicationController < ActionController::Base
   skip_before_filter :verify_authenticity_token
 
   def handle_options_request
-    headers['Access-Control-Allow-Origin'] = '*'
-    headers['Access-Control-Allow-Methods'] = 'GET, POST, DELETE'
-    headers['Access-Control-Allow-Headers'] = "X-Custom-Header"
-    headers.each do |h|
-      puts h.inspect
-    end
-    head(:ok)
+    head 204
   end
 end

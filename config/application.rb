@@ -8,23 +8,10 @@ Bundler.require(*Rails.groups)
 
 module AJAXPuppyHq
   class Application < Rails::Application
-    config.middleware.insert_before 0, "Rack::Cors" do
+    config.middleware.use Rack::Cors do
       allow do
         origins '*'
-
-        resource '/breeds',
-          :headers => :any,
-          :methods => [:get],
-          :max_age => 1800
-
-        resource '/puppies',
-          :headers => :any,
-          :methods => [:get, :post, :delete, :options, :head],
-          :expose => [  'Access-Control-Allow-Origin', 
-                        'Access-Control-Allow-Methods,',
-                        'Access-Control-Allow-Headers',
-                        'Access-Control-Max-Age'],
-          :max_age => 1800
+        resource '*', headers: :any, methods: [:get, :put, :patch, :post]
       end
     end
   end
