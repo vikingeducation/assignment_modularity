@@ -3,15 +3,14 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :null_session
   skip_before_filter :verify_authenticity_token
-  after_filter :set_access_control_headers
 
-  def set_access_control_headers
+  def handle_options_request
     headers['Access-Control-Allow-Origin'] = '*'
     headers['Access-Control-Allow-Methods'] = 'GET, POST, DELETE'
     headers['Access-Control-Allow-Headers'] = "X-Custom-Header"
-  end
-
-  def handle_options_request
+    headers.each do |h|
+      puts h.inspect
+    end
     head(:ok)
   end
 end
