@@ -8,19 +8,17 @@ Bundler.require(*Rails.groups)
 
 module AJAXPuppyHq
   class Application < Rails::Application
-    # config.middleware.use Rack::Cors do
-    #   allow do
-    #     origins '*'
-    #     resource '*',  headers: :any,
-    #                    methods: [:get, :post, :delete, :options, :head],
-    #                    expose: ["Access-Control-Allow-Headers"]
-    #   end
-    # end
+    config.middleware.use Rack::Cors do
+      allow do
+        origins '*'
+        resource '*',  headers: :any,
+                       methods: [:get, :post, :delete, :options, :head],
+                       expose: ["Access-Control-Allow-Headers"]
+      end
+    end
 
     config.action_dispatch.default_headers = {
-      'Access-Control-Allow-Headers' => %w{Origin X-Requested-With Content-Type Accept}.join(","),
-      'Access-Control-Allow-Methods' => "GET, POST, DELETE, OPTIONS, HEAD",
-      'Access-Control-Allow-Origins' => '*'
+      'Access-Control-Allow-Headers' => %w{Origin X-Requested-With Content-Type Accept}.join(",")
     }
   end
 end
