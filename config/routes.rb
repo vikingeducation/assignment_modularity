@@ -3,8 +3,7 @@ Rails.application.routes.draw do
                           :action => 'handle_options_request',
                           :via => [:options, :head]
   resources :breeds, :puppies
-  resources :breeds, :puppies
-  root 'puppies#index'
+  root 'static#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

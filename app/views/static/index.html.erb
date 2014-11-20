@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="medium-12 columns panel">
+    <h1 class="text-center">Welcome to the AJAX Puppy HQ</h1>
+    <hr>
+    <p class="text-center"> 
+      Thank you for helping us find good homes for great puppies. Please refer 
+      to the API documentation below for information on including our puppies
+      on your site, adding a puppy listing, and getting those puppies adopted.
+    </p>
+  </div>
+
+  <div class="medium-12 columns panel">
+    <h2 class="text-center"> Puppy API </h2>
+
+    <ul>
+      <li> Get List of Available Puppies </li>
+      <ul>
+        <li> Send a GET request to "https://rocky-dusk-3509.herokuapp.com/puppies.json" </li>
+        <li> Data will be returned as a JSON object </li>
+        <li> List can also be viewed <a href="https://rocky-dusk-3509.herokuapp.com/puppies">here</a> </li>
+      </ul>
+      <li> Add a Puppy to the Registry </li>
+      <ul>
+        <li> Send a POST request to "https://rocky-dusk-3509.herokuapp.com/puppies" </li>
+        <li> Include the name and the breed id of the puppy to be added </li>
+        <li> Make sure JSON data is converted to a string before it's sent </li>
+        <li> Successful requests will result in a 302 status code </li>        
+      </ul>
+      <li> Remove an Adopted Puppy from the Registry </li>
+      <ul>
+        <li> Send a DELETE request to "https://rocky-dusk-3509.herokuapp.com/puppies/:id"</li>
+        <li> Successful requests will result in a 302 status code </li>
+      </ul>
+    </ul>
+  </div>
+
+  <div class="medium-12 columns panel">
+    <h2 class="text-center"> Breed API </h2>
+
+    <ul>
+      <li> Get List of Breeds </li>
+      <ul>
+        <li> Send a GET request to "https://rocky-dusk-3509.herokuapp.com/breeds.json" </li>
+        <li> Data will be returned as a JSON object </li>
+        <li> List can also be viewed <a href="https://rocky-dusk-3509.herokuapp.com/breeds">here</a> </li>
+      </ul>
+    </ul>
+  </div>
+</div>
