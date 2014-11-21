@@ -21,15 +21,17 @@
       </ul>
       <li> Add a Puppy to the Registry </li>
       <ul>
-        <li> Send a POST request to "https://rocky-dusk-3509.herokuapp.com/puppies" </li>
+        <li> Send a POST request to "https://rocky-dusk-3509.herokuapp.com/puppies.json" </li>
         <li> Include the name and the breed id of the puppy to be added </li>
         <li> Make sure JSON data is converted to a string before it's sent </li>
-        <li> Successful requests will result in a 302 status code </li>        
+        <li> Successful requests will return the new puppy as a JSON object </li>  
+        <li> Requests submitted without the .json ending will return a 302 status code when successful. </li>           
       </ul>
       <li> Remove an Adopted Puppy from the Registry </li>
       <ul>
-        <li> Send a DELETE request to "https://rocky-dusk-3509.herokuapp.com/puppies/:id"</li>
-        <li> Successful requests will result in a 302 status code </li>
+        <li> Send a DELETE request to "https://rocky-dusk-3509.herokuapp.com/puppies/:id.json"</li>
+        <li> Successful requests will return the adopted puppy as a JSON object </li>
+        <li> Requests submitted without the .json ending will return a 302 status code when successful. </li>
       </ul>
     </ul>
   </div>
