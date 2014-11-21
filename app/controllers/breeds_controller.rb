@@ -1,7 +1,7 @@
 class BreedsController < ApplicationController
   before_action :set_breed, only: [:show, :edit, :update, :destroy]
 
-  skip_before_filter :verify_authenticity_token
+  # skip_before_filter :verify_authenticity_token
 
   # GET /breeds
   # GET /breeds.json

@@ -1,7 +1,7 @@
 class PuppiesController < ApplicationController
   before_action :set_puppy, only: [:show, :edit, :update, :destroy]
 
-  skip_before_filter :verify_authenticity_token
+  # skip_before_filter :verify_authenticity_token
 
   # GET /puppies
   # GET /puppies.json
