@@ -1,8 +1,6 @@
 class PuppiesController < ApplicationController
   before_action :set_puppy, only: [:show, :edit, :update, :destroy]
 
-  # skip_before_filter :verify_authenticity_token
-
   # GET /puppies
   # GET /puppies.json
   def index
@@ -33,7 +31,7 @@ class PuppiesController < ApplicationController
     respond_to do |format|
       if @puppy.save
         format.html { redirect_to @puppy, notice: 'Puppy was successfully created.' }
-        format.json { render :show, status: :created, location: @puppy }
+        format.json { render json: @puppy, status: :created, location: @puppy }
       else
         format.html { render :new }
         format.json { render json: @puppy.errors, status: :unprocessable_entity }
@@ -47,7 +45,7 @@ class PuppiesController < ApplicationController
     respond_to do |format|
       if @puppy.update(puppy_params)
         format.html { redirect_to @puppy, notice: 'Puppy was successfully updated.' }
-        format.json { render :show, status: :ok, location: @puppy }
+        format.json { render json: @puppy, status: :ok, location: @puppy }
       else
         format.html { render :edit }
         format.json { render json: @puppy.errors, status: :unprocessable_entity }
