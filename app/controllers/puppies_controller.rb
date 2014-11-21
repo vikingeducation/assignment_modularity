@@ -59,7 +59,7 @@ class PuppiesController < ApplicationController
     @puppy.destroy
     respond_to do |format|
       format.html { redirect_to puppies_url, notice: 'Puppy was successfully destroyed.' }
-      format.json { head :no_content }
+      format.json { render json: @puppy, status: :ok }
     end
   end
 
