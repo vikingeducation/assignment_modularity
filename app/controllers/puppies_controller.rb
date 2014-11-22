@@ -24,21 +24,20 @@ class PuppiesController < ApplicationController
   # POST /puppies
   # POST /puppies.json
   def create
-    render nothing: true, status: 400
-    # hash = puppy_params
-    # hash = JSON.parse(hash) if hash.is_a?(String)
-    # @puppy = Puppy.new(hash)
-    # puts puppy_params
+    hash = puppy_params
+    hash = JSON.parse(hash) if hash.is_a?(String)
+    @puppy = Puppy.new(hash)
+    puts puppy_params
 
-    # respond_to do |format|
-    #   if @puppy.save
-    #     format.html { redirect_to @puppy, notice: 'Puppy was successfully created.' }
-    #     format.json { render json: @puppy, status: :created, location: @puppy }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @puppy.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    respond_to do |format|
+      if @puppy.save
+        format.html { redirect_to @puppy, notice: 'Puppy was successfully created.' }
+        format.json { render json: @puppy, status: :created, location: @puppy }
+      else
+        format.html { render :new }
+        format.json { render json: @puppy.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PATCH/PUT /puppies/1
