@@ -1,6 +1,6 @@
 class PuppiesController < ApplicationController
   before_action :set_puppy, only: [:show, :edit, :update, :destroy]
-
+  respond_to :json, :html
   # GET /puppies
   # GET /puppies.json
   def index
@@ -27,6 +27,7 @@ class PuppiesController < ApplicationController
     hash = puppy_params
     hash = JSON.parse(hash) if hash.is_a?(String)
     @puppy = Puppy.new(hash)
+    puts puppy_params
 
     respond_to do |format|
       if @puppy.save
