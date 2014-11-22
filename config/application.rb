@@ -18,7 +18,8 @@ module AJAXPuppyHq
     end
 
     config.action_dispatch.default_headers = {
-      'Access-Control-Allow-Headers' => %w{Origin X-Requested-With Content-Type Accept}.join(",")
+      'Access-Control-Allow-Headers' => %w{Origin X-Requested-With Content-Type Accept}.join(","),
+      'Access-Control-Allow-Origin' => "*"
     }
   end
 end
