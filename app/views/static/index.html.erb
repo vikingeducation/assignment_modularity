@@ -2,8 +2,8 @@
   <div class="medium-12 columns panel">
     <h1 class="text-center">Welcome to the AJAX Puppy HQ</h1>
     <hr>
-    <p class="text-center"> 
-      Thank you for helping us find good homes for great puppies. Please refer 
+    <p class="text-center">
+      Thank you for helping us find good homes for great puppies. Please refer
       to the API documentation below for information on including our puppies
       on your site, adding a puppy listing, and getting those puppies adopted.
     </p>
@@ -18,20 +18,29 @@
         <li> Send a GET request to "https://rocky-dusk-3509.herokuapp.com/puppies.json" </li>
         <li> Data will be returned as a JSON object </li>
         <li> List can also be viewed <a href="https://rocky-dusk-3509.herokuapp.com/puppies">here</a> </li>
+        <li> Sample request in Ruby using HTTParty gem: <code>result = HTTParty.get('https://rocky-dusk-3509.herokuapp.com/puppies.json')</code></li>
       </ul>
       <li> Add a Puppy to the Registry </li>
       <ul>
         <li> Send a POST request to "https://rocky-dusk-3509.herokuapp.com/puppies.json" </li>
         <li> Include the name and the breed id of the puppy to be added </li>
         <li> Make sure JSON data is converted to a string before it's sent </li>
-        <li> Successful requests will return the new puppy as a JSON object </li>  
-        <li> Requests submitted without the .json ending will return a 302 status code when successful. </li>           
+        <li> Successful requests will return the new puppy as a JSON object </li>
+        <li> Requests submitted without the .json ending will return a 302 status code when successful. </li>
+        <li> Sample request in Ruby using HTTParty Gem:
+        <code>
+result = HTTParty.post('https://rocky-dusk-3509.herokuapp.com/puppies.json',<br>
+                        {name: "Fido", breed_id: 12}.to_json)</code>
+        </li>
       </ul>
       <li> Remove an Adopted Puppy from the Registry </li>
       <ul>
         <li> Send a DELETE request to "https://rocky-dusk-3509.herokuapp.com/puppies/:id.json"</li>
         <li> Successful requests will return the adopted puppy as a JSON object </li>
         <li> Requests submitted without the .json ending will return a 302 status code when successful. </li>
+        <li> Sample request in Ruby using HTTParty Gem:<br>
+          <code>result = HTTParty.delete('https://rocky-dusk-3509.herokuapp.com/puppies/12.json')</code></pre>
+        </li>
       </ul>
     </ul>
   </div>
