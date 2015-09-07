@@ -1,0 +1,30 @@
+<html ng-app="toDo">
+<head>
+  <title>Todo List</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+</head>
+
+<body ng-controller="toDoController">
+  <table>
+    <thead>
+      <th>Task</th>
+      <th>Deadline</th>
+      <th>Completed?</th>
+    </thead>
+    <tbody>
+      <tr to-do></tr>
+    </tbody>
+  </table>
+</body>
+
+<!-- angular app -->
+<script src="javascripts/app.js"></script>
+
+<!-- controllers -->
+<script src="javascripts/controllers/toDoController.js"></script>
+
+<!-- directives -->
+<script src="javascripts/directives/toDo.js"></script>
+
+</html>
