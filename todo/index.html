@@ -1,7 +1,8 @@
 <html ng-app="toDo">
 <head>
   <title>Todo List</title>
-
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
 </head>
 
@@ -22,6 +23,10 @@
     <button type="submit" ng-disabled="taskForm.$invalid">Create Task</button>
   </form>
 
+  <button ng-click="completedFilter = false">Hide completed tasks</button>
+  <button ng-click="completedFilter = ''">Show completed tasks</button>
+  <button ng-click="removeCompleted()">Clear completed tasks</button>
+
   <table>
     <thead>
       <th>Task</th>
@@ -29,7 +34,7 @@
       <th>Completed?</th>
     </thead>
     <tbody>
-      <tr to-do ng-repeat="item in toDos" item="item" remove-task="removeTask($index)"></tr>
+      <tr to-do ng-repeat="item in toDos | filter:completedFilter" item="item" remove-task="removeTask($index)"></tr>
     </tbody>
   </table>
 </body>

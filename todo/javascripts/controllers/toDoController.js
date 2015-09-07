@@ -20,6 +20,12 @@ toDo.controller('toDoController', ['$scope',
       $scope.toDos.splice(index, 1);
     };
 
+    $scope.removeCompleted = function() {
+      $scope.toDos = $.grep($scope.toDos, function(el) {
+        return el.completed !== true;
+      });
+    };
+
     $scope.taskDeadline = new Date();
 
   }]);
