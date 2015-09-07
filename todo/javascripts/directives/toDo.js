@@ -3,6 +3,8 @@ toDo.directive('toDo', function() {
     templateUrl: "javascripts/directives/toDo.html",
     restrict: "A",
     replace: true,
-    scope: {}
+    scope: {
+      item: "="
+    }
   };
 });
