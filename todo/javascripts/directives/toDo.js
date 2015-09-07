@@ -4,7 +4,8 @@ toDo.directive('toDo', function() {
     restrict: "A",
     replace: true,
     scope: {
-      item: "="
+      item: "=",
+      removeTask: "&"
     }
   };
 });

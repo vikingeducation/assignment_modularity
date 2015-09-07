@@ -1,5 +1,6 @@
 <tr>
   <td>{{ item.text }}</td>
   <td>{{ item.dueDate | date}}</td>
-  <td>{{ item.completed }}</td>
+  <td><input type="checkbox" ng-model="item.completed"></td>
+  <td><a href="#" ng-click="removeTask()">Delete</a></td>
 </tr>

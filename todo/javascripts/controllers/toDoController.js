@@ -16,6 +16,10 @@ toDo.controller('toDoController', ['$scope',
       $scope.taskDeadline = new Date();
     };
 
+    $scope.removeTask = function(index) {
+      $scope.toDos.splice(index, 1);
+    };
+
     $scope.taskDeadline = new Date();
 
   }]);

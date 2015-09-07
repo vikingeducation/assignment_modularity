@@ -29,7 +29,7 @@
       <th>Completed?</th>
     </thead>
     <tbody>
-      <tr to-do ng-repeat="item in toDos" item="item"></tr>
+      <tr to-do ng-repeat="item in toDos" item="item" remove-task="removeTask($index)"></tr>
     </tbody>
   </table>
 </body>
