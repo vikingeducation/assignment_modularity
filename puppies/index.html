@@ -7,27 +7,13 @@
 </head>
 
 <body ng-controller="puppersController">
-  <form name="taskForm" ng-submit="createTask()" novalidate>
-    <h1>Add a task</h1>
 
-    <label>Task: <input type="text" name="taskName" ng-model="taskName" required></label>
-    <br />
-    <label>Deadline: <input type="date" name="taskDeadline" ng-model="taskDeadline" placeholder="yyyy-MM-dd" required></label>
-    <div role="alert">
-      <br />
-      <span ng-show="taskForm.taskName.$error.required">Your name is required!</span>
-      <span ng-show="taskForm.taskDeadline.$error.required">A date is required!</span>
-      <span class="error" ng-show="taskForm.taskDeadline.$error.date">Not a valid date!</span>
-    </div>
-    <br />
-    <button type="submit" ng-disabled="taskForm.$invalid">Create Task</button>
-  </form>
+  <h1>Breeds</h1>
 
-  <button ng-click="completedFilter = false">Hide completed tasks</button>
-  <button ng-click="completedFilter = ''">Show completed tasks</button>
-  <button ng-click="removeCompleted()">Clear completed tasks</button>
-
-  <table>
+  <ul>
+    <li ng-repeat="breed in breeds">{{breed.name}}</li>
+  </ul>
+  <!-- <table>
     <thead>
       <th>Task</th>
       <th>Deadline</th>
@@ -36,7 +22,7 @@
     <tbody>
       <tr to-do ng-repeat="item in toDos | filter:completedFilter" item="item" remove-task="removeTask($index)"></tr>
     </tbody>
-  </table>
+  </table> -->
 </body>
 
 <!-- angular app -->
@@ -47,5 +33,8 @@
 
 <!-- directives -->
 <script src="javascripts/directives/pupper.js"></script>
+
+<!-- services -->
+<script src="javascripts/services/breeds.js"></script>
 
 </html>

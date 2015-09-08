@@ -1,4 +1,10 @@
-puppers.controller('puppersController', ['$scope',
-  function($scope) {
+puppers.controller('puppersController', ['$scope', 'breeds',
+  function($scope, breeds) {
+    $scope.breeds = {};
+
+    breeds.all().then(function(async) {
+      $scope.breeds = async;
+    });
+
 
   }]);
