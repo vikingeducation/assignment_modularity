@@ -1,0 +1,46 @@
+<html ng-app="puppers">
+<head>
+  <title>AJAX Puppies</title>
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+</head>
+
+<body ng-controller="puppersController">
+
+  <h1>All puppies</h1>
+
+  <label>Search: <input ng-model="filterText"></label>
+
+  <table>
+    <thead>
+      <th><a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse">Name</a></th>
+      <th><a href="#" ng-click="sortType = 'type'; sortReverse = !sortReverse">Breed</a></th>
+    </thead>
+    <tbody>
+      <tr pupper ng-repeat="pup in puppies | filter:filterText | orderBy:sortType:sortReverse" pup="pup" adopt-pup="adoptPup($index)"></tr>
+    </tbody>
+  </table>
+
+  <h1>Breeds</h1>
+
+  <ul>
+    <li ng-repeat="breed in breeds">{{breed.name}}</li>
+  </ul>
+
+</body>
+
+<!-- angular app -->
+<script src="javascripts/app.js"></script>
+
+<!-- controllers -->
+<script src="javascripts/controllers/puppersController.js"></script>
+
+<!-- directives -->
+<script src="javascripts/directives/pupper.js"></script>
+
+<!-- services -->
+<script src="javascripts/services/breeds.js"></script>
+<script src="javascripts/services/puppies.js"></script>
+
+</html>
