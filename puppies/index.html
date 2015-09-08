@@ -8,21 +8,26 @@
 
 <body ng-controller="puppersController">
 
+  <h1>All puppies</h1>
+
+  <label>Search: <input ng-model="filterText"></label>
+
+  <table>
+    <thead>
+      <th><a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse">Name</a></th>
+      <th><a href="#" ng-click="sortType = 'type'; sortReverse = !sortReverse">Breed</a></th>
+    </thead>
+    <tbody>
+      <tr pupper ng-repeat="pup in puppies | filter:filterText | orderBy:sortType:sortReverse" pup="pup" adopt-pup="adoptPup($index)"></tr>
+    </tbody>
+  </table>
+
   <h1>Breeds</h1>
 
   <ul>
     <li ng-repeat="breed in breeds">{{breed.name}}</li>
   </ul>
-  <!-- <table>
-    <thead>
-      <th>Task</th>
-      <th>Deadline</th>
-      <th>Completed?</th>
-    </thead>
-    <tbody>
-      <tr to-do ng-repeat="item in toDos | filter:completedFilter" item="item" remove-task="removeTask($index)"></tr>
-    </tbody>
-  </table> -->
+
 </body>
 
 <!-- angular app -->
@@ -36,5 +41,6 @@
 
 <!-- services -->
 <script src="javascripts/services/breeds.js"></script>
+<script src="javascripts/services/puppies.js"></script>
 
 </html>
