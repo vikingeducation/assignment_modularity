@@ -25,5 +25,4 @@ app.controller('MainCtrl', ['$scope',
       console.log("Failure...");
     })
   };
-
 }]);
