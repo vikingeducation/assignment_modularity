@@ -7,7 +7,13 @@
 </head>
 <body ng-app="app">
 
-  <div ng-controller="TodoCtrl">
+  <div ng-controller="MainCtrl">
+    <h2>Breeds</h2>
+    <select ng-model='breedSelected'>
+      <option ng-repeat='breed in breeds' ng-value='breed.id'>
+        {{breed.name}}
+      </option><br>
+    </select>
 
   </div>
 
@@ -25,6 +31,6 @@
   <script src="js/services/breedsService.js"></script>
 
   <!-- controllers -->
-
+  <script src="js/controllers/mainController.js"></script>
 </body>
 </html>
