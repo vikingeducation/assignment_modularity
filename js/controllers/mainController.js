@@ -16,4 +16,14 @@ app.controller('MainCtrl', ['$scope',
     $scope.puppies = response.data;
   });
 
+  $scope.registerPuppy = function(){
+    puppies.registerPuppy($scope.puppyBreed, $scope.puppyName).then(function(response){
+      var newDog = response.data;
+      newDog.breed = { name: $scope.breeds[newDog.breed_id - 1].name };
+      $scope.puppies.push(newDog);
+    }, function(){
+      console.log("Failure...");
+    })
+  };
+
 }]);

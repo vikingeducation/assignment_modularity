@@ -8,12 +8,31 @@
 <body ng-app="app">
 
   <div ng-controller="MainCtrl">
-    <h2>Breeds</h2>
-    <select ng-model='breedSelected'>
-      <option ng-repeat='breed in breeds' ng-value='breed.id'>
-        {{breed.name}}
-      </option><br>
-    </select>
+    <div>
+      <h2>Breeds</h2>
+      <select ng-model='puppyBreed'>
+        <option ng-repeat='breed in breeds' ng-value='breed.id'>
+          {{breed.name}}
+        </option><br>
+      </select>
+      <label for="puppy-name-input">
+      <input id="puppy-name-input" ng-model="puppyName"></input>
+
+      <button ng-click="registerPuppy()">Register Puppy</button>
+    </div>
+    <h2>Puppies</h2>
+
+    <table>
+      <thead>
+        <th>Name</th>
+        <th>Breed</th>
+        <th>Listing Date</th>
+      </thead>
+      <tbody>
+        <tr puppy-listing ng-repeat="puppy in puppies" puppy="puppy"></tr>
+      </tbody>
+
+    </table>
 
   </div>
 
@@ -25,6 +44,7 @@
   <!-- <script src="js/filters/filters.js"></script> -->
 
   <!-- directives -->
+  <script src="js/directives/puppyListing.js"></script>
 
   <!-- services -->
   <script src="js/services/puppiesService.js"></script>
