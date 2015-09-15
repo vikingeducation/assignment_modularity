@@ -5,6 +5,51 @@ app.controller('MainCtrl', ['$scope',
                                       breeds,
                                       puppies){
 
+
+  $scope.nameSort = 0;
+  $scope.breedSort = 0;
+  $scope.dateSort = 0;
+
+  $scope.cycleName = function(){
+    $scope.nameSort++;
+  }
+
+  $scope.cycleBreed = function(){
+    $scope.breedSort++;
+  }
+
+  $scope.cycleDate = function(){
+    $scope.dateSort++;
+  }
+
+  // default = no sort
+  // 1st click = ascending
+  // 2nd click = descending
+  // 3rd click = no sort
+  // 4th click = ascending
+  // ....
+
+  $scope.sortCriteria = function(){
+    var nameArr = [null, "-name", "+name"];
+    var breedArr = [null, "-breed.name", "+breed.name"];
+    var dateArr = [null, "-created_at", "+created_at"];
+
+    var nameCriteria = nameArr[$scope.nameSort % 3];
+    var breedCriteria = breedArr[$scope.breedSort % 3];
+    var dateCriteria = dateArr[$scope.dateSort % 3];
+
+    var criteria = [];
+
+    if (nameCriteria) criteria.push(nameCriteria);
+    if (breedCriteria) criteria.push(breedCriteria);
+    if (dateCriteria) criteria.push(dateCriteria);
+
+    console.log(criteria);
+
+    return (criteria)
+  }
+
+
   //Breeds
   breeds.getAll().then(function(response){
     $scope.breeds = response.data;

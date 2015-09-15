@@ -24,13 +24,13 @@
 
     <table>
       <thead>
-        <th>Name</th>
-        <th>Breed</th>
-        <th>Listing Date</th>
+        <th ng-click="cycleName()">Name</th>
+        <th ng-click="cycleBreed()">Breed</th>
+        <th ng-click="cycleDate()">Listing Date</th>
         <th>Adopt</th>
       </thead>
       <tbody>
-        <tr puppy-listing ng-repeat="puppy in puppies" puppy="puppy" action="adoptPuppy(puppy)"></tr>
+        <tr puppy-listing ng-repeat="puppy in puppies | orderBy: sortCriteria() " puppy="puppy" action="adoptPuppy(puppy)"></tr>
       </tbody>
 
     </table>
