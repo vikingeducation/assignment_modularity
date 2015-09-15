@@ -15,6 +15,10 @@
           {{breed.name}}
         </option><br>
       </select>
+
+      <label for="puppy-breed-input">
+      <input auto-complete ng-model="puppyBreedTest"></input>
+
       <label for="puppy-name-input">
       <input id="puppy-name-input" ng-model="puppyName"></input>
 
@@ -24,9 +28,9 @@
 
     <table>
       <thead>
-        <th ng-click="cycleName()">Name</th>
-        <th ng-click="cycleBreed()">Breed</th>
-        <th ng-click="cycleDate()">Listing Date</th>
+        <th ng-click="cycleName()">{{label('Name')}}</th>
+        <th ng-click="cycleBreed()">{{label('Breed')}}</th>
+        <th ng-click="cycleDate()">{{label('Date')}}</th>
         <th>Adopt</th>
       </thead>
       <tbody>

@@ -10,17 +10,22 @@ app.controller('MainCtrl', ['$scope',
   $scope.breedSort = 0;
   $scope.dateSort = 0;
 
+  $scope.label = function(prop){
+    console.log(prop.toLowerCase()+'Sort');
+    return [prop, prop+' DESC', prop+' ASC'][$scope[prop.toLowerCase()+'Sort'] % 3];
+  };
+
   $scope.cycleName = function(){
     $scope.nameSort++;
-  }
+  };
 
   $scope.cycleBreed = function(){
     $scope.breedSort++;
-  }
+  };
 
   $scope.cycleDate = function(){
     $scope.dateSort++;
-  }
+  };
 
   // default = no sort
   // 1st click = ascending
@@ -46,12 +51,17 @@ app.controller('MainCtrl', ['$scope',
 
     console.log(criteria);
 
-    return (criteria)
-  }
+    return (criteria);
+  };
 
 
   //Breeds
   breeds.getAll().then(function(response){
+    $scope.breeds = {};
+    response.data.forEach(function(breed){
+      $scope.breeds[breed.name] = breed.id;
+    });
+
     $scope.breeds = response.data;
   });
 
