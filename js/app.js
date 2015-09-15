@@ -29,6 +29,19 @@ puppiesAPI.controller('puppiesCtrl', ['$scope','breeds', 'puppies', function($sc
 
   $scope.puppyPromise.then($scope.puppySuccess, $scope.puppyFailure);
 
+  $scope.newPuppyPromise = puppies.addPuppy;
+
+  // $scope.newPuppySuccess = function(response) { // SUCCESS
+  //   console.log("success")
+  //   $scope.newPuppies = response.data
+  // }
+  // $scope.newPuppyFailure = function(response) { // ERROR
+  //   console.log("failure")
+  //   $scope.newPuppies = response.data
+  // }
+
+  // $scope.newPuppyPromise.then($scope.newPuppySuccess, $scope.newPuppyFailure);
+
 
 
 }])
