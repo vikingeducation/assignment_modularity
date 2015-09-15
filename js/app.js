@@ -21,6 +21,16 @@ puppiesAPI.controller('puppiesCtrl', ['$scope','breeds', 'puppies', function($sc
     $scope.puppies = response.data
   }
 
+  $scope.newPuppySuccess = function(response) { // SUCCESS
+    $scope.puppies.push(response.data)
+    console.log("success")
+    $scope.newPuppies = response.data
+  }
+  $scope.newPuppyFailure = function(response) { // ERROR
+    console.log("failure")
+    $scope.newPuppies = response.data
+  }
+
   $scope.breedPromise = breeds.getBreeds();
 
   $scope.breedPromise.then($scope.breedSuccess, $scope.breedFailure);
@@ -29,16 +39,11 @@ puppiesAPI.controller('puppiesCtrl', ['$scope','breeds', 'puppies', function($sc
 
   $scope.puppyPromise.then($scope.puppySuccess, $scope.puppyFailure);
 
-  $scope.newPuppyPromise = puppies.addPuppy;
+  $scope.createPuppy = function(data){
+    puppies.addPuppy(data).then($scope.newPuppySuccess, $scope.newPuppyFailure);
+  }
 
-  // $scope.newPuppySuccess = function(response) { // SUCCESS
-  //   console.log("success")
-  //   $scope.newPuppies = response.data
-  // }
-  // $scope.newPuppyFailure = function(response) { // ERROR
-  //   console.log("failure")
-  //   $scope.newPuppies = response.data
-  // }
+
 
   // $scope.newPuppyPromise.then($scope.newPuppySuccess, $scope.newPuppyFailure);
 

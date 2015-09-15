@@ -24,7 +24,7 @@
    <div class = "col-md-6 col-md-offset-3 text-center">
      <h2>Register a new puppy</h2>
 
-     <form ng-submit = "newPuppyPromise({name: puppyname, breed_id: breedId})">
+     <form ng-submit = "createPuppy({name: puppyName, breed_id: breedId})">
        <div class="form-group">
          <label>Name</label>
          <input type="text" ng-model = "puppyName" placeholder="Puppy Name" class = "form-control">
@@ -32,8 +32,8 @@
 
        <div class="form-group">
          <label>Breed</label>
-         <select class = "form-control" id = "breed" name = "breed">
-         <option value="{{breed.id}}" ng-model = "breedId" ng-repeat="breed in breeds">{{breed.name}}</option>
+         <select class = "form-control" id = "breed" name = "breed" ng-model = "breedId" >
+         <option value="{{breed.id}}"ng-repeat="breed in breeds">{{breed.name}}</option>
          </select>
        </div>
 
