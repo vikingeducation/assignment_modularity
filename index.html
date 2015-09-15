@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app = "puppiesAPI">
+<head>
+ <title>Puppies Shelter</title>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+ <script type="text/javascript" src = "js/app.js"></script>
+ <script type="text/javascript" src = "js/services/breeds.js"></script>
+ <script type="text/javascript" src = "js/services/puppies.js"></script>
+</head>
+<body class = "container" ng-controller = "puppiesCtrl">
+
+ <div id = "flash" class="hidden alert alert-warning alert-dismissible fade-in" role="alert">
+ </div>
+
+ <div class="row">
+   <div class = "col-md-12 text-center">
+     <h1>The Ajax Puppy Shelter</h1>
+   </div>
+ </div>
+
+ <div class="row">
+   <div class = "col-md-6 col-md-offset-3 text-center">
+     <h2>Register a new puppy</h2>
+
+     <form id="form" action='https://pacific-stream-9205.herokuapp.com/puppies.json' method='post'>
+       <div class="form-group">
+         <label>Name</label>
+         <input type="text" name="name" placeholder="Puppy Name" class = "form-control">
+       </div>
+
+       <div class="form-group">
+         <label>Breed</label>
+         <select class = "form-control" id = "breed" name = "breed">
+         <option value="" ng-repeat="breed in breeds">{{breed.name}}</option>
+         </select>
+       </div>
+
+       <div class="form-group">
+         <input type = "submit" id='register' class="btn btn-primary btn-lg btn-block" value="Register Puppy">
+       </div>
+     </form>
+   </div>
+ </div>
+
+ <div class="row">
+   <div class = "col-md-8 col-md-offset-2">
+     <h2>Our puppies</h2>
+
+     <a href="#" id="refresh">Refresh puppies list</a>
+
+     <ul id = "puppies-list">
+      <li ng-repeat='puppy in puppies'>{{puppy.name}}</li>
+     </ul>
+   </div>
+ </div>
+
+</body>
+</html>
