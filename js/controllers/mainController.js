@@ -23,6 +23,19 @@ app.controller('MainCtrl', ['$scope',
       $scope.puppies.push(newDog);
     }, function(){
       console.log("Failure...");
-    })
+    });
   };
+
+  $scope.adoptPuppy = function(puppy){
+    console.log("Clicked");
+    puppies.adoptPuppy(puppy).then(function(response){
+      var idx = $scope.puppies.indexOf(puppy);
+      $scope.puppies.splice(idx, 1);
+      // $('puppy').remove(); Doesn't work
+    }, function(response){
+      console.log("Failure!");
+      console.log(response);
+    });
+  };
+
 }]);

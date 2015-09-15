@@ -27,9 +27,10 @@
         <th>Name</th>
         <th>Breed</th>
         <th>Listing Date</th>
+        <th>Adopt</th>
       </thead>
       <tbody>
-        <tr puppy-listing ng-repeat="puppy in puppies" puppy="puppy"></tr>
+        <tr puppy-listing ng-repeat="puppy in puppies" puppy="puppy" action="adoptPuppy(puppy)"></tr>
       </tbody>
 
     </table>

@@ -4,6 +4,7 @@ app.directive('puppyListing', function(){
     restrict: 'AE',
     scope: {
       puppy: "=",
+      action: "&"
     }
   };
 });
