@@ -11,7 +11,7 @@ app.controller('MainCtrl', ['$scope',
   $scope.dateSort = 0;
 
   $scope.label = function(prop){
-    console.log(prop.toLowerCase()+'Sort');
+    // console.log(prop.toLowerCase()+'Sort');
     return [prop, prop+' DESC', prop+' ASC'][$scope[prop.toLowerCase()+'Sort'] % 3];
   };
 
@@ -49,7 +49,7 @@ app.controller('MainCtrl', ['$scope',
     if (breedCriteria) criteria.push(breedCriteria);
     if (dateCriteria) criteria.push(dateCriteria);
 
-    console.log(criteria);
+    // console.log(criteria);
 
     return (criteria);
   };
@@ -57,6 +57,7 @@ app.controller('MainCtrl', ['$scope',
 
   //Breeds
   breeds.getAll().then(function(response){
+    console.log(response);
     $scope.breeds = {};
     $scope.breedNames = [];
     response.data.forEach(function(breed){
@@ -64,7 +65,7 @@ app.controller('MainCtrl', ['$scope',
       $scope.breeds[breed.name] = breed.id;
     });
 
-    console.log($scope.breedNames, $scope.breeds);
+    console.log($scope.breedNames);
   });
 
   //Puppies
