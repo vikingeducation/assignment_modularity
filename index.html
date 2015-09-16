@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>To-Do</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
   <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js'></script>
 </head>
 <body ng-app="app">
@@ -10,14 +14,15 @@
   <div ng-controller="MainCtrl">
     <div>
       <h2>Breeds</h2>
-      <select ng-model='puppyBreed'>
-        <option ng-repeat='breed in breeds' ng-value='breed.id'>
-          {{breed.name}}
-        </option><br>
-      </select>
+        <!-- <select ng-model='puppyBreed'>
+          <option ng-repeat='breed in breeds' ng-value='breed.id'>
+            {{breed.name}}
+          </option><br>
+        </select> -->
 
       <label for="puppy-breed-input">
-      <input auto-complete ng-model="puppyBreedTest"></input>
+      <input auto-complete ng-model="puppyBreed"/>
+      name = {{ puppyBreed }}
 
       <label for="puppy-name-input">
       <input id="puppy-name-input" ng-model="puppyName"></input>
@@ -50,6 +55,7 @@
 
   <!-- directives -->
   <script src="js/directives/puppyListing.js"></script>
+  <script src="js/directives/autocompleteDirective.js"></script>
 
   <!-- services -->
   <script src="js/services/puppiesService.js"></script>

@@ -58,11 +58,13 @@ app.controller('MainCtrl', ['$scope',
   //Breeds
   breeds.getAll().then(function(response){
     $scope.breeds = {};
+    $scope.breedNames = [];
     response.data.forEach(function(breed){
+      $scope.breedNames.push(breed.name)
       $scope.breeds[breed.name] = breed.id;
     });
 
-    $scope.breeds = response.data;
+    console.log($scope.breedNames, $scope.breeds);
   });
 
   //Puppies
@@ -72,10 +74,13 @@ app.controller('MainCtrl', ['$scope',
   });
 
   $scope.registerPuppy = function(){
-    puppies.registerPuppy($scope.puppyBreed, $scope.puppyName).then(function(response){
+    var newBreed = $scope.breeds[$scope.puppyBreed];
+    var newName = $scope.puppyName;
+
+    puppies.registerPuppy(newBreed, newName).then(function(response){
       var newDog = response.data;
-      newDog.breed = { name: $scope.breeds[newDog.breed_id - 1].name };
-      $scope.puppies.push(newDog);
+      newDog.breed = { name: $scope.puppyBreed };
+      $scope.puppies.unshift(newDog);
     }, function(){
       console.log("Failure...");
     });
@@ -93,4 +98,4 @@ app.controller('MainCtrl', ['$scope',
     });
   };
 
-}]);
+}])
