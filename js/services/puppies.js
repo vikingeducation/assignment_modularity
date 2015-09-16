@@ -11,6 +11,10 @@ puppiesAPI.factory("puppies", ['$http', function($http){
     return $http.post('https://pacific-stream-9205.herokuapp.com/puppies.json', JSON.stringify(data))
   }
 
+  obj.adoptPuppy = function (id) {
+    return $http.delete('https://pacific-stream-9205.herokuapp.com/puppies/' + id + '.json')
+  }
+
 
   return obj;
 
