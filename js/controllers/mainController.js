@@ -60,7 +60,7 @@ app.controller('MainCtrl', ['$scope',
     $scope.breeds = {};
     $scope.breedNames = [];
     response.data.forEach(function(breed){
-      $scope.breedNames.push(breed.name)
+      $scope.breedNames.push(breed.name);
       $scope.breeds[breed.name] = breed.id;
     });
 
@@ -98,4 +98,4 @@ app.controller('MainCtrl', ['$scope',
     });
   };
 
-}])
+}]);
