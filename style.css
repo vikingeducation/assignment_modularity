@@ -1,0 +1,8 @@
+.ui-menu-item {
+  /*display: inline-block;*/
+  width: 100px;
+  list-style: none;
+  background-color: white;
+  z-index: 5;
+  border: 1px solid black;
+}
