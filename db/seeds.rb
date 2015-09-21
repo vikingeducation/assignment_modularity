@@ -12,11 +12,11 @@ breeds = ["Affenpinscher", "Airedale Terrier", "Akita", "Alaskan Malumute",
   "Pekingese"].uniq.sort
 
 breeds.each do |breed|
-  Breed.create(name: breed)
+  Breed.create!(name: breed)
 end
 
 dogs = ["Lucy", "King", "Jesse", "Grace", "Shazi", "Oscar", "Graham", "Emma"]
 
 dogs.each do |dog|
-  Puppy.create(name: dog, breed: Breed.all.sample)
+  Puppy.create!(name: dog, breed: Breed.all.sample)
 end
