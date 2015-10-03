@@ -4,7 +4,7 @@ puppyShelter.factory('breeds',
   var breeds = {};
 
 
-  breeds.pullData = function() {
+  breeds.index = function() {
     return $http({
       method: 'GET',
       url: "https://pacific-stream-9205.herokuapp.com/breeds.json"
