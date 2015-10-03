@@ -53,7 +53,7 @@
             <a href>Refresh puppies list</a>
 
             <ul>
-              <li ng-repeat='puppy in puppies'><strong>{{puppy.name}}</strong> ({{puppy.breed.name}}), created {{puppy.created_at}} minutes ago -- <a href>adopt</a></li>
+              <li ng-repeat='puppy in puppies' puppy='puppy'></li>
             </ul>
 
           </div>
