@@ -1,5 +1,5 @@
 puppyShelter.factory('puppies', function() {
-  var puppies;
+  var puppies = {};
 
   return puppies;
 })

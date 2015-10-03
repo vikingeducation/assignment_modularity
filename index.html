@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app='PuppyShelter'>
 
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
@@ -8,7 +8,7 @@
   </head>
 
 
-  <body>
+  <body ng-controller='ShelterCtrl'>
 
     <div class='container'>
 
@@ -29,7 +29,9 @@
 
               <div class='form-group'>
                 <label for='breed'>Breed:</label>
-                <input type='text' name='breed' class='form-control'>
+                <select name='breed' class='form-control'>
+                  <option ng-repeat="breed in breeds" value="breed.id">{{breed.name}}</option>
+                </select>
               </div>
 
               <input type='submit' value='REGISTER PUPPY' class='btn btn-primary'>
@@ -63,7 +65,9 @@
 
   </body>
 
-  <!-- Bootstrap JavaScript -->
+
+  <!-- jQuery & Bootstrap JavaScript -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
   <!-- angular app -->
