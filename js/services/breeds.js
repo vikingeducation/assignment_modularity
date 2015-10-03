@@ -4,14 +4,10 @@ puppyShelter.factory('breeds',
   var breeds = {};
 
 
-  breeds.getAll = function() {
-    $http({
+  breeds.pullData = function() {
+    return $http({
       method: 'GET',
       url: "https://pacific-stream-9205.herokuapp.com/breeds.json"
-    }).then(function success(response) {
-      return response.data;
-    }, function error(response) {
-      console.log('error');
     });
   };
 
