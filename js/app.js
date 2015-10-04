@@ -1,1 +1,1 @@
-var puppyShelter = angular.module('PuppyShelter', []);
+var puppyShelter = angular.module('PuppyShelter', ['angularMoment']);

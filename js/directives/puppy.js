@@ -3,7 +3,8 @@ puppyShelter.directive('puppy', function() {
     restrict: 'A',
     templateUrl: 'js/directives/puppy.html',
     scope: {
-      puppy: '='
+      puppy: '=',
+      destroy: '&'
     }
   }
 })

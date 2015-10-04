@@ -1,1 +1,4 @@
-<strong>{{puppy.name}}</strong> ({{puppy.breed.name}}), created {{puppy.created_at}} minutes ago -- <a href>adopt</a>
+<td>{{puppy.name}}</td>
+<td>{{ puppy.breed.name }}</td>
+<td>created <time am-time-ago="puppy.created_at"></time></td>
+<td><a href ng-click="destroy(puppy)">adopt</a></td>
