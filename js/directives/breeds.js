@@ -4,7 +4,8 @@ puppyShelter.directive('breeds', function() {
     templateUrl: 'js/directives/breeds.html',
     scope: {
       allBreeds: '=',
-      query: '='
+      query: '=',
+      fillAutocomplete: '&'
     }
   }
 })

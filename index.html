@@ -30,8 +30,8 @@
 
               <div class='form-group'>
                 <label for='breed'>Breed:</label>
-                <input type='text' name='breed' class='form-control' ng-model='newPuppy.breedName'>
-                <breeds query='newPuppy.breedName' all-breeds='breeds' ng-hide="!newPuppy.breedName"></breeds>
+                <input type='text' name='breed' class='form-control' ng-model='newPuppy.breedName' ng-focus='activateBreeds()'>
+                <breeds query='newPuppy.breedName' all-breeds='breeds' fill-autocomplete='fillAutocomplete()' ng-show='showBreeds'></breeds>
               </div>
 
               <input type='submit' value='REGISTER PUPPY' class='btn btn-primary' ng-click='createPuppy(newPuppy)'>

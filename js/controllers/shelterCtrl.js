@@ -22,9 +22,18 @@ puppyShelter.controller('ShelterCtrl',
     });
 
 
+    $scope.verifyBreed = function(breedName) {
+      return $scope.breeds.filter( function(breed) {
+        return (breed.name === breedName)
+      })[0].id
+    }
+
+
     $scope.createPuppy = function(newPuppy) {
-      // get breed_id
-      // if (!newPuppy.breed_id) { make breed }
+      if (!newPuppy.breed_id) {
+        newPuppy.breed_id = $scope.verifyBreed(newPuppy.breedName);
+      }
+
       puppies.create(newPuppy).then(function(response) {
         $scope.renderSinglePuppy(response.data)
         $scope.newPuppy = null;
@@ -66,10 +75,17 @@ puppyShelter.controller('ShelterCtrl',
     };
 
 
-    $scope.fillAutocomplete = function(breed) {
-      $scope.newPuppy.breedName = breed.name;
-      $scope.newPuppy.breed_id = breed.id
+    $scope.fillAutocomplete = function() {
+      var item = event.target;
+      $scope.newPuppy.breedName = item.innerHTML;
+      $scope.newPuppy.breed_id = item.getAttribute('data-breed-id');
+      $scope.showBreeds = false;
     }
+
+
+    $scope.activateBreeds = function() {
+      $scope.showBreeds = true;
+    };
 
 
   }]);
