@@ -1,3 +1,12 @@
 .clickable {
   cursor: pointer;
 }
+
+.autocomplete {
+  list-style: none;
+}
+
+.autocomplete li:hover {
+  color: #DDD;
+  background-color: #999;
+}

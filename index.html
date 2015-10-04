@@ -30,9 +30,8 @@
 
               <div class='form-group'>
                 <label for='breed'>Breed:</label>
-                <select name='breed' class='form-control' ng-model='newPuppy.breed_id'>
-                  <option ng-repeat="breed in breeds" value="{{breed.id}}">{{breed.name}}</option>
-                </select>
+                <input type='text' name='breed' class='form-control' ng-model='newPuppy.breedName'>
+                <breeds query='newPuppy.breedName' all-breeds='breeds' ng-hide="!newPuppy.breedName"></breeds>
               </div>
 
               <input type='submit' value='REGISTER PUPPY' class='btn btn-primary' ng-click='createPuppy(newPuppy)'>
@@ -102,6 +101,7 @@
 
   <!-- directives -->
   <script src = "js/directives/puppy.js"></script>
+  <script src = "js/directives/breeds.js"></script>
 
 
   <!-- load momentJS (required for angular-moment) -->
