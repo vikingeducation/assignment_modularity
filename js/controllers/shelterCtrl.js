@@ -23,9 +23,25 @@ puppyShelter.controller('ShelterCtrl',
 
 
     $scope.verifyBreed = function(breedName) {
-      return $scope.breeds.filter( function(breed) {
+      var breedMatches = $scope.breeds.filter( function(breed) {
         return (breed.name === breedName)
-      })[0].id
+      })
+
+      if (breedMatches.length === 0) {
+        $scope.createBreed(breedName);
+      } else {
+        return [0].id;
+      };
+    }
+
+
+    $scope.createBreed = function(breedName) {
+      breeds.create(breedName).then( function(response) {
+        // doesn't look like we can create breeds?
+        console.log(response.data);
+      }, function(response) {
+        console.log('breed not created');
+      });
     }
 
 
@@ -47,6 +63,7 @@ puppyShelter.controller('ShelterCtrl',
       puppy.breed = { name: $scope.breedName(puppy.breed_id) };
       $scope.puppies.push(puppy);
     }
+
 
     $scope.breedName = function(breed_id) {
       return $scope.breeds.filter(function(breed) {

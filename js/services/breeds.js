@@ -12,5 +12,14 @@ puppyShelter.factory('breeds',
   };
 
 
+  breeds.create = function(newBreedName) {
+    return $http({
+      method: 'POST',
+      url: "https://pacific-stream-9205.herokuapp.com/breeds.json",
+      data: JSON.stringify( { name: newBreedName } )
+    });
+  }
+
+
   return breeds;
 }]);
