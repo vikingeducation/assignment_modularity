@@ -23,6 +23,8 @@ puppyShelter.controller('ShelterCtrl',
 
 
     $scope.createPuppy = function(newPuppy) {
+      // get breed_id
+      // if (!newPuppy.breed_id) { make breed }
       puppies.create(newPuppy).then(function(response) {
         $scope.renderSinglePuppy(response.data)
         $scope.newPuppy = null;
@@ -62,6 +64,12 @@ puppyShelter.controller('ShelterCtrl',
         $scope.sortReverse = false;
       };
     };
+
+
+    $scope.fillAutocomplete = function(breed) {
+      $scope.newPuppy.breedName = breed.name;
+      $scope.newPuppy.breed_id = breed.id
+    }
 
 
   }]);
