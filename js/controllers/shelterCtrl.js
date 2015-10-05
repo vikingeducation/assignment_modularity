@@ -52,7 +52,7 @@ puppyShelter.controller('ShelterCtrl',
 
       puppies.create(newPuppy).then(function(response) {
         $scope.renderSinglePuppy(response.data)
-        $scope.newPuppy = null;
+        $scope.newPuppy = {};
       }, function(response) {
         console.log('creation error');
       });
