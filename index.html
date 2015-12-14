@@ -1,0 +1,68 @@
+<html>
+	<head>
+		<title>Modular Puppy App | Trevor Elwell</title>
+		<!-- Include Angular -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+		<!-- Include Bootstrap -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	</head>
+
+	<body class="col-sm-10 col-sm-offset-1" ng-app="ModularApp">
+
+		<section id="main-wrapper" class="row" ng-controller="PuppyCtrl">
+			<h2>The Angular Puppy Shelter</h2>
+
+			<h3>Register a new puppy:</h3>
+
+			<form id="register-puppy-form" class="col-sm-6">
+				<div class="form-group">
+					<input type="text" name="name" class="form-control" placeholder="Puppy Name" ng-model="puppyName">
+				</div>
+
+				<div class="form-group">
+					<select class="form-control" ng-model="puppyBreedId">
+						<option value="{{breed.id}}" ng-repeat="breed in breeds">
+							{{ breed.name }}
+						</option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<input type="submit" class="btn btn-primary" value="Register Puppy" ng-click="addPuppy()">
+				</div>
+			</form>
+			<!-- END Register Puppy Form -->
+
+			<section id="all-puppies-table" class="col-sm-12">
+				<h3>Our Puppies:</h3>
+				<table class="table table-bordered table-hover">
+					<tr>
+						<th><a href="" ng-click="orderByField='name'; reverseSort = !reverseSort">Name <span ng-show="orderByField == 'name'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span></a></th>
+						<th><a href="" ng-click="orderByField='breed.name'; reverseSort = !reverseSort">
+          Breed <span ng-show="orderByField == 'breed.name'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span></a></th>
+						<th><a href="" ng-click="orderByField='created_at'; reverseSort = !reverseSort">
+          Created At <span ng-show="orderByField == 'created_at'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span></a></th>
+						<th>Adopt</th>
+					</tr>
+					<tr puppy ng-repeat="puppy in puppies | orderBy: orderByField: reverseSort"></tr>
+				</table>
+			</section>
+
+		</section>
+		<!-- END #Main-Wrapper -->
+
+	</body>
+
+	<!-- Include Custom Angular JS -->
+	<script src="js/app.js"></script>
+
+	<!-- Angular Controllers -->
+	<script src="js/controllers/PuppyCtrl.js"></script>
+
+	<!-- Angular Services -->
+	<script src="js/services/puppies.js"></script>
+	<script src="js/services/breeds.js"></script>
+
+	<!-- Angular Directives -->
+	<script src="js/directives/puppy.js"></script>
+</html>
