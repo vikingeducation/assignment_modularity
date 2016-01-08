@@ -1,0 +1,18 @@
+.clickable {
+  cursor: pointer;
+}
+
+.autocomplete {
+  position: absolute;
+  list-style: none;
+  padding: 0 16px;
+  background-color: #eee;
+  border: 1px solid #666;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.autocomplete li:hover {
+  color: #DDD;
+  background-color: #999;
+}
