@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe "breeds/index", :type => :view do
   before(:each) do
     assign(:breeds, [
-      Breed.create!(),
-      Breed.create!()
+      Breed.create!(:name => 'foo'),
+      Breed.create!(:name => 'bar')
     ])
   end
 
