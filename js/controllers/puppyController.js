@@ -9,12 +9,32 @@ puppy.controller('PuppyCtrl', ['$scope', 'puppyService', 'breedService',
     breedService.init().then(function(){
       $scope.breeds = breedService.allBreeds();
     });
+
+    $scope.orderBy = 'created_at';
+    $scope.orderByReverse = true; 
+  };
+
+  $scope.setupBreed = function(){
+    $scope.breedID = $("datalist option:contains('" + $scope.newPuppyBreed + "')").data("id");
+
+    if ( $scope.breedID ) {
+      $scope.createPuppy();
+
+    } else {
+      // Doesn't appear possible to create breed at this time, this will fail.
+      breedService.createBreed($scope.newPuppyBreed).then(function(response){
+        $scope.breedID = response.data.id;
+
+        $scope.createPuppy();
+      });
+    }
+
   };
 
   $scope.createPuppy = function(){
-    puppyService.createPuppy($scope.nameInput, $scope.breedInput).then(function(){
-      $scope.nameInput = '';
-      $scope.breedInput = '';
+    puppyService.createPuppy($scope.newPuppyName, $scope.breedID).then(function(){
+      $scope.newPuppyName = '';
+      $scope.newPuppyBreed = '';
     });
   };
 

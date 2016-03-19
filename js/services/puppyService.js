@@ -1,4 +1,5 @@
-puppy.factory('puppyService', ['$http', function($http){
+puppy.factory('puppyService', ['$http', 'breedService', 
+  function($http, breedService){
 
   var _allPuppies;
 
@@ -32,8 +33,13 @@ puppy.factory('puppyService', ['$http', function($http){
       url: 'https://pacific-stream-9205.herokuapp.com/puppies.json',
       data: puppyData
     }).then(function(response){
-      console.log(response.data)
-      _allPuppies.push(response.data);
+      // normalize new puppy object returned so we can ask puppy.breed.name
+      var puppy = response.data;
+      puppy.breed = {
+        name: breedService.lookup(puppy.breed_id)
+      };
+
+      _allPuppies.push(puppy);
     });
   };
 

@@ -2,6 +2,7 @@
 <html ng-app="Puppy">
 <head>
   <title>Angular Puppy Shelter</title>
+  <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -27,31 +28,33 @@
 
       <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" name="name" class="form-control" ng-model="nameInput">
+        <input type="text" name="name" class="form-control" ng-model="newPuppyName">
       </div>
 
       <div class="form-group">
         <label for="breed">Breed</label>
-        <select name="breed" class="form-control" ng-options="id as breed for (id, breed) in breeds" ng-model="breedInput">
-          <option value="" disabled>Please select...</option>
-        </select>
+        <input type="search" name="breeds" list="breeds" class="form-control" placeholder="Search breeds..." ng-model="newPuppyBreed" autocomplete="off">
+
+        <datalist id="breeds">
+          <option ng-repeat="(id, name) in breeds" data-id="{{id}}">{{name}}</option>
+        </datalist>
       </div>
 
-      <button class="btn btn-primary" ng-click="createPuppy()">Register Puppy!</button>
+      <button class="btn btn-primary" ng-click="setupBreed()">Register Puppy!</button>
     </div>
 
     <div class="col-md-8">
       <table class="table">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Breed</th>
-            <th>Registraion Date</th>
+            <th><a href="javascript:void(0)" ng-click="orderBy = 'name'; orderByReverse = !orderByReverse">Name</a></th>
+            <th><a href="javascript:void(0)" ng-click="orderBy = 'breed.name'; orderByReverse = !orderByReverse">Breed</a></th>
+            <th><a href="javascript:void(0)" ng-click="orderBy = 'created_at'; orderByReverse = !orderByReverse" >Registration Date</a></th>
             <th>Adopt?</th>
           </tr>
         </thead>
         <tbody>
-          <tr puppy-row ng-repeat="puppy in puppies | orderBy : 'created_at' : true" puppy="puppy", adopt-puppy="adoptPuppy(puppy)", lookup-breed="lookupBreed(puppy)">
+          <tr puppy-row ng-repeat="puppy in puppies | orderBy : orderBy : orderByReverse" puppy="puppy" adopt-puppy="adoptPuppy(puppy)">
           </tr>
         </tbody>
       </table>
@@ -59,6 +62,8 @@
   </div>
 
 </div>
+
+
 
 </body>
 

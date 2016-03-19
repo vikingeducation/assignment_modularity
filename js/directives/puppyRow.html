@@ -1,4 +1,4 @@
 <td>{{ puppy.name }}</td>
-<td>{{ puppy.breed ? puppy.breed.name : lookupBreed(puppy) }}</td>
+<td>{{ puppy.breed.name }}</td>
 <td>{{ puppy.created_at | date }}</td>
 <td><button class="btn btn-success" ng-click="adoptPuppy(puppy)">Adopt!</button></td>

@@ -4,8 +4,7 @@ puppy.directive('puppyRow', function(){
     restrict: 'A',
     scope: {
       puppy: "=",
-      adoptPuppy: "&",
-      lookupBreed: "&"
+      adoptPuppy: "&"
     }
   };
 });
