@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html ng-app="PuppyShelter" ng-controller="PuppiesCtrl">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Angular Modularity</title>
+
+    <!-- Angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+
+    <!-- Underscore -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  </head>
+  <body>
+
+    <!-- Main -->
+    <main class="container">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <!-- Header -->
+          <header class="page-header text-center">
+            <h1>Angular Modularity</h1>
+          </header>
+
+          <!-- Flash -->
+          <div id="flash" ng-if="flash.danger || flash.success">
+            <div class="alert alert-dismissible fade in" role="alert" ng-class="'alert-' + key" ng-repeat="(key, value) in flash">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close" ng-click="clearFlash(key)">
+                <span aria-hidden="true">×</span>
+              </button>
+              {{ value }}
+            </div>
+          </div>
+
+          <div class="well">
+            <!-- Form -->
+            <div class="form-group">
+              <input type="text" class="form-control" ng-model="data.puppy.name" placeholder="Name">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" ng-model="data.puppy.breed_id" placeholder="Breed">
+            </div>
+            <div class="form-group">
+              <input type="submit" value="Create Puppy" class="btn btn-success" ng-click="createPuppy()">
+            </div>
+          </div>
+
+
+          <!-- Content -->
+          <div class="well">
+            <!-- Nav Tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#puppies" aria-controls="puppies" role="tab" data-toggle="tab">
+                  Puppies
+                </a>
+              </li>
+
+              <li role="presentation">
+                <a href="#breeds" aria-controls="breeds" role="tab" data-toggle="tab">
+                  Breeds
+                </a>
+              </li>
+            </ul>
+
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane active" id="puppies">
+                <!-- Puppies -->
+                <table class="table" ng-if="puppies.length">
+                  <thead>
+                    <tr>
+                      <th>
+                        <a href="#" ng-click="setSort('puppies', 'name')">
+                          Name
+                          {{ sort.puppies === '-name' ? '^' : 'V' }}
+                        </a>
+                      </th>
+                      <th>
+                        <a href="#" ng-click="setSort('puppies', 'breed')">
+                          Breed
+                          {{ sort.puppies === '-breed' ? '^' : 'V' }}
+                        </a>
+                      </th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="puppy in puppies | orderBy: sort.puppies" puppy="puppy" destroy="destroyPuppy(id)"></tr>
+                  </tbody>
+                </table>
+
+                <p class="text-danger" ng-if="puppies.length === 0" style="padding: 16px;">No Puppies :(</p>
+
+              </div>
+              <div role="tabpanel" class="tab-pane fade" id="breeds">
+                <!-- Breeds -->
+                <table class="table" ng-if="breeds.length">
+                  <thead>
+                    <tr>
+                      <th>
+                        <a href="#" ng-click="setSort('breeds', 'name')">
+                          Name
+                          {{ sort.breeds === '-name' ? '^' : 'V' }}
+                        </a>
+                      </th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="breed in breeds | orderBy: sort.breeds">
+                      <td>{{ breed.name }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p class="text-danger" ng-if="breeds.length === 0" style="padding: 16px;">No Breeds :(</p>
+
+              </div>
+            </div>
+          </div><!-- content -->
+
+
+        </div>
+      </div>
+    </main><!-- main.container -->
+
+    <!-- App -->
+    <script src="/js/app.js"></script>
+
+    <!-- Services -->
+    <script src="/js/services/BreedService.js"></script>
+    <script src="/js/services/PuppyService.js"></script>
+
+    <!-- Directives -->
+    <script src="/js/directives/puppyDirective.js"></script>
+
+    <!-- Controllers -->
+    <script src="/js/controllers/PuppiesCtrl.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
