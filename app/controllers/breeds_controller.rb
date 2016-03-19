@@ -24,7 +24,10 @@ class BreedsController < ApplicationController
   # POST /breeds
   # POST /breeds.json
   def create
-    @breed = Breed.new(breed_params)
+    hash = breed_params
+    hash = JSON.parse(hash) if hash.is_a?(String)
+    @breed = Breed.new(hash)
+    puts breed_params
 
     respond_to do |format|
       if @breed.save
@@ -69,6 +72,6 @@ class BreedsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def breed_params
-      params[:breed]
+      params.require(:breed).permit(:name)
     end
 end
