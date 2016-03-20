@@ -10,8 +10,7 @@ PuppyShelter.controller('PuppiesCtrl',
     // ----------------------------------------
 
     $scope.data = {
-      puppy: {},
-      breed: {}
+      puppy: {}
     };
 
     $scope.breeds = [];
@@ -76,6 +75,8 @@ PuppyShelter.controller('PuppiesCtrl',
       });
 
     $scope.createPuppy = function() {
+      console.log($scope.data.puppy);
+
       PuppyService.create($scope.data.puppy)
         .then(function(response) {
           $scope.puppies.push(response.data);
@@ -85,6 +86,9 @@ PuppyShelter.controller('PuppiesCtrl',
           $scope.flash.danger = 'Error: could not create puppy';
           console.error(response);
         });
+
+      $scope.data.puppy = {};
+      $scope.breedName = '';
     };
 
     $scope.destroyPuppy = function(id) {
@@ -111,28 +115,41 @@ PuppyShelter.controller('PuppiesCtrl',
         console.error(response);
       });
 
-    $scope.createBreed = function() {
-      BreedService.create($scope.data.breed)
-        .then(function(response) {
-          $scope.breeds.push(response.data);
-          $scope.flash.success = 'Breed created';
-          console.log(response);
-        }, function(response) {
-          $scope.flash.danger = 'Error: could not create breed';
-          console.error(response);
-        });
+    $scope.resolveBreed = function() {
+      var breed = _.find($scope.breeds, function(breed) {
+        return breed.id === $scope.data.puppy.breed_id;
+      });
+
+      console.log(breed);
+
+      if (breed) {
+        $scope.createPuppy();
+      } else {
+        BreedService.create({
+          breed: {
+            name: $scope.breedName
+          }
+        })
+          .then(function(response) {
+            $scope.breeds.push(response.data);
+            $scope.flash.success = 'Breed created';
+            $scope.data.puppy.breed_id = response.data.id;
+            $scope.createPuppy();
+            console.log(response);
+          }, function(response) {
+            $scope.flash.danger = 'Error: could not create breed';
+            console.error(response);
+          });
+      }
+
+      $scope.showBreedDropdown = false;
     };
 
-    $scope.destroyBreed = function(id) {
-      BreedService.destroy(id)
-        .then(function(response) {
-          _destroy('breeds', id);
-          $scope.flash.success = 'Breed destroyed';
-          console.log(response);
-        }, function(response) {
-          $scope.flash.danger = 'Error: could not destroy breed';
-          console.error(response);
-        });
+    $scope.setBreed = function(breed) {
+      console.log(breed);
+      $scope.data.puppy.breed_id = breed.id;
+      $scope.breedName = breed.name;
+      $scope.showBreedDropdown = false;
     };
 
   }]);

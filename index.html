@@ -48,11 +48,22 @@
             <div class="form-group">
               <input type="text" class="form-control" ng-model="data.puppy.name" placeholder="Name">
             </div>
-            <div class="form-group">
-              <input type="text" class="form-control" ng-model="data.puppy.breed_id" placeholder="Breed">
+            <div class="form-group my-dropdown-container">
+              <input type="text" class="form-control" ng-model="breedName" placeholder="Breed" ng-focus="showBreedDropdown = true" ng-dblclick="showBreedDropdown = false">
+              <div class="my-dropdown" ng-if="showBreedDropdown">
+                <ul class="list-group" ng-if="breeds.length">
+                  <li class="list-group-item" ng-repeat="breed in breeds | filter: breedName">
+                    <a href="#" ng-click="setBreed(breed)">
+                      {{ breed.name }}
+                    </a>
+                  </li>
+                </ul>
+
+                <p class="text-danger" ng-if="breeds.length === 0">No Breeds</p>
+              </div>
             </div>
             <div class="form-group">
-              <input type="submit" value="Create Puppy" class="btn btn-success" ng-click="createPuppy()">
+              <input type="submit" value="Create Puppy" class="btn btn-success" ng-click="resolveBreed()">
             </div>
           </div>
 

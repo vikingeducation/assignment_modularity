@@ -4,8 +4,7 @@
 
 
 PuppyShelter.factory('BreedService',
-  ['$http', '$httpParamSerializer',
-  function($http, $httpParamSerializer) {
+  ['$http', function($http) {
 
     var BreedService = {};
 
@@ -24,13 +23,6 @@ PuppyShelter.factory('BreedService',
         url: BreedService.END_POINT,
         method: 'POST',
         data: data
-      });
-    };
-
-    BreedService.destroy = function(id) {
-      return $http({
-        url: BreedService.END_POINT.replace(/\.json/, '/' + id + '.json'),
-        method: 'DELETE'
       });
     };
 
