@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'hirb'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.7'
@@ -8,7 +9,7 @@ gem 'pg'
 # Use Figaro to load ENV variables for given environment
 gem 'figaro', '1.0'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails', '5.0.4'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -33,7 +34,7 @@ gem 'unicorn'
 
 group :development, :test do
   gem 'factory_girl_rails'
-  gem 'rspec-rails', '~> 3.0.0.beta'
+  gem 'rspec-rails'
   gem 'capybara', '~> 2.4.3'  # To simulate user interaction with browser
   gem 'capybara-webkit'  # For pages with JavaScript - so they load in real webpage
   gem 'database_cleaner'  # To clean database after capybara-webkit messes it up

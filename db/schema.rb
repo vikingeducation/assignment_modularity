@@ -17,14 +17,14 @@ ActiveRecord::Schema.define(version: 20141115205822) do
   enable_extension "plpgsql"
 
   create_table "breeds", force: true do |t|
-    t.string   "name"
+    t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "puppies", force: true do |t|
-    t.string   "name"
-    t.integer  "breed_id"
+    t.string   "name",       null: false
+    t.integer  "breed_id",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
