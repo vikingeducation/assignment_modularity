@@ -24,8 +24,7 @@
             <div class="form-group">
               <label for="">Breed</label>
               <select id="" class="form-control" name="">
-                <option value="0">Breed</option>
-                <option value="0">Breed2</option>
+                <option ng-repeat="breed in breeds">{{ breed.name }}</option>
               </select>
             </div>
             <div class="form-group"><input value="Register Puppy" class="btn btn-default" type="submit" name=""></div>
@@ -40,9 +39,9 @@
 
           <div class="list-group">
             <div class="list-group-item" ng-repeat="puppy in puppies">
-              <strong>Fluffy</strong>
-              (Poodle),
-              <em>created 10 minutes ago</em>
+              <strong>{{ puppy.name }}</strong>
+              ({{ puppy.breed.name}}),
+              <em>created {{ puppy.created_at | date: "short" }}</em>
               --
               <a href="">adopt</a>
             </div>

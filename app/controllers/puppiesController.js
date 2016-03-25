@@ -6,4 +6,9 @@ puppyAPI.controller('puppiesCtrl',
         $scope.puppies = puppies;
       });
 
+      PuppyService.getBreeds().then(function(breeds) {
+        $scope.breeds = breeds;
+        console.log(breeds);
+      });
+
     }]);
