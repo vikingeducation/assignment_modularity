@@ -16,12 +16,31 @@ puppies.controller("PuppiesCtrl", ['$scope', '$http', 'puppiesService', 'breedsS
     console.log("Couldn't get breeds");
   });
 
+  $scope.headers = ['name', 'breed', 'created_at', 'Adopt'];
+
+  $scope.orderHeading = 'name';
+
+  $scope.orderByHeading = function(index) {
+    $scope.orderHeading = $scope.headers[index];
+  };
+
   $scope.createPuppy = function() {
     var data = {name: $scope.name, breed_id: $scope.breed};
     puppiesService.createPuppy(data).then(function(response) {
-      console.log('puppy created');
+      newPuppy = response.data;
+      $scope.puppies.push(newPuppy);
+      console.log(newPuppy);
+      $scope.name = '';
     }, function(response) {
       console.log('puppy failed to create');
+    });
+  };
+
+  $scope.deletePuppy = function(puppy) {
+    puppiesService.deletePuppy(puppy).then(function(response) {
+      $scope.puppies.splice($scope.puppies.indexOf(puppy), 1);
+    }, function(response) {
+      console.log('puppy failed to delete');
     });
   };
 

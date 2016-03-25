@@ -9,6 +9,7 @@ puppies.factory('puppiesService', ['$http', function($http) {
       newPuppy.name = puppy.name;
       newPuppy.breed = puppy.breed.name;
       newPuppy.created_at = puppy.created_at;
+      newPuppy.id = puppy.id;
       _puppies.push(newPuppy);
     });
   };
@@ -26,13 +27,22 @@ puppies.factory('puppiesService', ['$http', function($http) {
   };
 
   obj.createPuppy = function(data) {
-    console.log(data);
     return $http({
       method: 'POST',
       url: 'https://ajax-puppies.herokuapp.com/puppies.json',
       data: data
     })
   }
+
+  obj.deletePuppy = function(puppy) {
+    console.log(puppy);
+    var deleteURL = "https://ajax-puppies.herokuapp.com/puppies/" + puppy.id + ".json";
+    console.log(deleteURL);
+    return $http({
+      method: 'DELETE',
+      url: deleteURL
+    })
+  };
 
   return obj;
 }])

@@ -31,12 +31,11 @@
 
         <table>
           <tr>
-            <th>Name</th>
-            <th>Breed</th>
+            <th ng-repeat='h in headers' ng-click='orderByHeading($index)'>
+              {{ h }}
+            </th>
           </tr>
-          <tr ng-repeat='puppy in puppies'>
-            <td>{{ puppy.name }}</td>
-            <td>{{ puppy.breed }}</td>
+          <tr puppy-row ng-repeat='puppy in puppies | orderBy: orderHeading' puppy='puppy' delete-puppy="deletePuppy(puppy)">
           </tr>
         </table>
 
@@ -45,9 +44,9 @@
   </div>
 
   <script type="text/javascript" src="app.js"></script>
+  <script type="text/javascript" src="directives/puppy_row.js"></script>
   <script type="text/javascript" src="services/breedsService.js"></script>
   <script type="text/javascript" src="services/puppiesService.js"></script>
-
 
 </body>
 </html>
