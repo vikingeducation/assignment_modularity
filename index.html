@@ -24,7 +24,7 @@
       <div class='col-sm-12'>
         <form ng-submit='createPuppy()'>
           <input type='text' class='form-control' placeholder='Puppy Name' ng-model='name'>
-          <select ng-options='breed for breed in breeds' ng-model='breed'>
+          <select ng-options='breed.id as breed.name for breed in breeds' ng-model='breed'>
           </select>
           <input type='submit' value='Create Puppy'>
         </form>

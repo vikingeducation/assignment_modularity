@@ -6,7 +6,7 @@ puppies.factory('breedsService', ['$http', function($http) {
   obj.seedBreeds = function(response) {
     console.log('seeding breeds');
     response.data.forEach(function(breed) {
-      _breeds.push(breed.name);
+      _breeds.push(breed);
     });
   };
 

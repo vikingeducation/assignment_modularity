@@ -25,11 +25,12 @@ puppies.factory('puppiesService', ['$http', function($http) {
     return _puppies;
   };
 
-  obj.createPuppy = function() {
+  obj.createPuppy = function(data) {
+    console.log(data);
     return $http({
       method: 'POST',
       url: 'https://ajax-puppies.herokuapp.com/puppies.json',
-
+      data: data
     })
   }
 
