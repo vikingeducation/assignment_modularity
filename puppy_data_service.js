@@ -12,9 +12,11 @@ puppies.factory( 'puppyDataService', [ '$http', function($http) {
   }
 
   obj.createPuppy = function(name, breed_id) {
+    console.log(name);
+    console.log(breed_id);
     $http({
       method: "POST",
-      data: JSON.stringify({ name: name, breed_id: breed_id }),
+      data: { name: name, breed_id: breed_id },
       url: 'https://ajax-puppies.herokuapp.com/puppies.json'
     }).then( function successCallback(response) {
 
@@ -27,7 +29,7 @@ puppies.factory( 'puppyDataService', [ '$http', function($http) {
     });
   }
 
-  obj.createPuppy = function(id) {
+  obj.adoptPuppy = function(id) {
     $http({
       method: "DELETE",
       url: 'https://ajax-puppies.herokuapp.com/puppies/' + id + '.json'
