@@ -34,6 +34,12 @@ puppyAPI.controller('puppiesCtrl',
 
       $scope.currentSort = '';
 
+      $scope.puppySorter = {
+        All: '',
+        Name: 'name',
+        Breed: 'breed.name'
+      };
+
       // PuppyService.createDemon();
 
       $scope.getPuppies();

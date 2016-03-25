@@ -35,11 +35,7 @@
           <a class="btn btn-default" ng-click="getPuppies()">Refresh Puppy List</a>
           </h3>
 
-          <select ng-model="currentSort">
-            <option value="">All</option>
-            <option value="name">Name</option>
-            <option value="breed.name">Breed</option>
-          </select>
+          <select ng-options="v as k for (k,v) in puppySorter" ng-model="currentSort"></select>
 
           <div class="list-group">
             <puppy ng-repeat="puppy in puppies | orderBy: currentSort" kill-puppy="killPuppy(puppy)" puppy="puppy" class="list-group-item">
