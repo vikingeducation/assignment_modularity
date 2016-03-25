@@ -27,7 +27,10 @@ puppies.controller("PuppiesCtrl", ['$scope', '$http', 'puppiesService', 'breedsS
   $scope.createPuppy = function() {
     var data = {name: $scope.name, breed_id: $scope.breed};
     puppiesService.createPuppy(data).then(function(response) {
-      newPuppy = response.data;
+      var newPuppy = response.data;
+      var puppyBreed = $.grep($scope.breeds, function(e){ return e.id == newPuppy.breed_id; })[0];
+      console.log(puppyBreed);
+      newPuppy.breed = puppyBreed.name;
       $scope.puppies.push(newPuppy);
       console.log(newPuppy);
       $scope.name = '';
