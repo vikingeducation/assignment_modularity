@@ -8,11 +8,15 @@ puppyAPI.controller('puppiesCtrl',
 
       PuppyService.getBreeds().then(function(breeds) {
         $scope.breeds = breeds;
-        console.log(breeds);
       });
 
-      // PuppyService.createPuppy("testy", "5").then(function() {
-      //
-      // });
+      $scope.createPuppy = function(name, breed) {
+        PuppyService.createPuppy(name, breed);
+      };
 
+      $scope.getPuppies = function() {
+        PuppyService.getPuppies().then(function(puppies) {
+          $scope.puppies = puppies;
+        });
+      };
     }]);
