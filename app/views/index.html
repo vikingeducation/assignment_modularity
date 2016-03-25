@@ -35,15 +35,14 @@
           <a class="btn btn-default" ng-click="getPuppies()">Refresh Puppy List</a>
           </h3>
 
+          <select ng-model="currentSort">
+            <option value="">All</option>
+            <option value="name">Name</option>
+            <option value="breed.name">Breed</option>
+          </select>
 
           <div class="list-group">
-            <div class="list-group-item" ng-repeat="puppy in puppies">
-              <strong>{{ puppy.name }}</strong>
-              ({{ puppy.breed.name}}),
-              <em>created {{ puppy.created_at | date: "short" }}</em>
-              --
-              <a href="">adopt</a>
-            </div>
+            <puppy ng-repeat="puppy in puppies | orderBy: currentSort" kill-puppy="killPuppy(puppy)" puppy="puppy" class="list-group-item">
           </div>
         </div>
       </div>
@@ -52,5 +51,6 @@
     <script src="../app.js"></script>
     <script src="../controllers/puppiesController.js"></script>
     <script src="../services/puppyService.js"></script>
+    <script src="../directives/puppy.js"></script>
   </body>
 </html>

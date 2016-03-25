@@ -1,6 +1,6 @@
 puppyAPI.factory('PuppyService', ['$http',function($http){
 
-  var PUPPY_API_URL = "https://pacific-stream-9205.herokuapp.com/";
+  var PUPPY_API_URL = "https://ajax-puppies.herokuapp.com/";
 
   var getBreeds = function() {
     return $http.get(PUPPY_API_URL + "breeds.json").then(
@@ -25,12 +25,19 @@ puppyAPI.factory('PuppyService', ['$http',function($http){
         });
   };
 
-  var deletePuppy = function() {};
+  var killPuppy = function(id) {
+    return $http.delete(PUPPY_API_URL + "puppies/" + id + ".json");
+  };
+
+  var createDemon = function() {
+     $http.post(PUPPY_API_URL + "breeds", { breed: {name: "Totally A Normal Puppy, Not A Puppy Devouring Demon"} });};
+
 
   return {
     getPuppies: getPuppies,
     getBreeds: getBreeds,
     createPuppy: createPuppy,
-    deletePuppy: deletePuppy
+    killPuppy: killPuppy,
+    createDemon: createDemon
   };
 }]);

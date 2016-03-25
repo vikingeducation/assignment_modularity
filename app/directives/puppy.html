@@ -1,0 +1,5 @@
+<strong>{{ puppy.name }}</strong>
+({{ puppy.breed.name}}),
+<em>created {{ puppy.created_at | date: "short" }}</em>
+--
+<a href="" ng-click="killPuppy(puppy)">adopt</a>
