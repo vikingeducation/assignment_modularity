@@ -18,8 +18,20 @@ puppyAPI.factory('PuppyService', ['$http',function($http){
         });
   };
 
+  var createPuppy = function(name, breedId) {
+    return $http.post(PUPPY_API_URL + "puppies.json", {name: name, breed_id: breedId}).then(
+        function(response) {
+          console.log(response);
+          return response.data;
+        });
+  };
+
+  var deletePuppy = function() {};
+
   return {
     getPuppies: getPuppies,
-    getBreeds: getBreeds
+    getBreeds: getBreeds,
+    createPuppy: createPuppy,
+    deletePuppy: deletePuppy
   };
 }]);

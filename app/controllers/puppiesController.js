@@ -11,4 +11,8 @@ puppyAPI.controller('puppiesCtrl',
         console.log(breeds);
       });
 
+      // PuppyService.createPuppy("testy", "5").then(function() {
+      //
+      // });
+
     }]);
