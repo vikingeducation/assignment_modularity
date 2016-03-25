@@ -1,0 +1,27 @@
+<html ng-app="puppyApp">
+<head>
+  <title>Puppy Shelter</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+
+  <script src="app.js"></script>
+  <script src="puppy_data_service.js"></script>
+  <script src="breeds_data_service.js"></script>
+
+</head >
+
+  <body ng-controller="PuppyCtrl">
+  <h4>The Angular Puppy Shelter</h4>
+    <form>
+      <label for="name"></label>
+      <input type="text" name="name" value="" ng-model="puppyName">
+
+      <label for="breed">Item Name</label>
+      <input type="select" name="breed" value="" ng-model="breed">
+
+    </form>
+
+
+  
+  </body>
+</html>
