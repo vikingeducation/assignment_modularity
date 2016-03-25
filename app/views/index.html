@@ -22,6 +22,10 @@
             </div>
             <div class="form-group">
               <label for="">Breed</label>
+
+              <autocomplete model="breeds" key="id" value="name"></autocomplete>
+
+              
               <select id="" class="form-control" ng-model="newBreedId">
                 <option ng-repeat="breed in breeds" value="{{ breed.id }}">{{ breed.name }}</option>
               </select>
@@ -48,5 +52,6 @@
     <script src="../controllers/puppiesController.js"></script>
     <script src="../services/puppyService.js"></script>
     <script src="../directives/puppy.js"></script>
+    <script src="../directives/autocomplete.js"></script>
   </body>
 </html>
