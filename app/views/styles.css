@@ -1,0 +1,37 @@
+.selected {
+  background-color: lightyellow;
+  font-weight: bold;
+}
+
+.phantom-input {
+  position: relative;
+}
+
+.phantom-input input {
+  font-weight: bold;
+  background-color: transparent;
+}
+
+.phantom-text {
+  z-index: -100;
+  position: relative;
+  height: 0;
+  font-weight: bold;
+  color: #AAA;
+  top: -27px;
+  left: 13px;
+}
+
+.selection-list {
+  position: fixed;
+  background-color: white;
+  padding: 10px;
+  z-index: 1000;
+  border: 1px solid #AAA;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+}
+
+.selection-item {
+
+}
