@@ -1,0 +1,46 @@
+<html ng-app="puppyApp">
+<head>
+  <title>Puppy Shelter</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+
+  <script src="app.js"></script>
+  <script src="puppy_data_service.js"></script>
+  <script src="breeds_data_service.js"></script>
+  <script src="puppy_directive.js"></script>
+
+</head >
+
+  <body ng-controller="PuppyCtrl">
+  <h4>The Angular Puppy Shelter</h4>
+    <form>
+      <label for="name">Puppy Name</label>
+      <input type="text" name="name" value="" ng-model="puppyName">
+
+      <label for="breed">Puppy Breed</label>
+      <select name="breed" data-ng-model="breeds[0]"  data-ng-options="breed['name'] for breed in breeds"></select>
+
+      <input type="button" name="make-puppy" value="Create Puppy" ng-click="createPuppy(puppyName, breed)">
+    </form>
+
+
+    <table>
+      <thead>
+        <th>
+          Name
+        </th>
+        <th>
+          Breed
+        </th>
+        <th>
+          Adopt
+        </th>
+      </thead>
+      <tbody>
+        <tr puppy-directive ng-repeat="puppy in puppies"></tr>
+      </tbody>
+    </table>
+
+
+  </body>
+</html>
