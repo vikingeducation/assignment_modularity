@@ -1,0 +1,7 @@
+<div class="phantom-input">
+  <input type="text" ng-model="query" class="form-control" ng-keydown="keyHit($event)" ng-blur="removeSelection()" ng-focus="startSelecting()">
+  <div class="phantom-text">{{suggestion}}</div>
+</div>
+<div class="selection-list" ng-show="(filteredDogs.length > 0) && selecting">
+<div ng-repeat="item in model | filter: myFilter as filteredDogs" ng-class="selectedIndex == $index && 'selected'" ng-show="selecting" class="selection-item">{{ item.name }}</div>
+</div>
