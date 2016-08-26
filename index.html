@@ -1,0 +1,52 @@
+<html ng-app='PuppyApp'>
+<head>
+	<title>Angular Puppies</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+</head>
+<body ng-controller='PuppyCtrl'>
+
+	<form name='createPuppyForm' ng-submit='createPuppy(createPuppyForm)'>
+		<input type='text', name='puppyName' ng-model='formData.name'>
+
+		<select ng-model='formData.breed_id'>
+			<option ng-repeat='breed in breeds' name='breed_id' value='{{ breed.id }}'>{{ breed.name }}</option>
+		</select>
+
+		<input type='submit' value='Create a new Puppy'>
+	</form>
+
+	<h2>Our puppies :</h2>
+	<table class='table'>
+		<thead>
+			<tr>
+				<th ng-click='sortType = "name"; sortReverse = !sortReverse'>Name
+					<i ng-show='sortType==="name" && !sortReverse' class='glyphicon glyphicon-sort-by-alphabet'></i>
+					<i ng-show='sortType==="name" && sortReverse' class='glyphicon glyphicon-sort-by-alphabet-alt'></i>
+				</th>
+				<th ng-click='sortType = "breed"; sortReverse = !sortReverse'>Breed
+					<i ng-show='sortType==="breed" && !sortReverse' class='glyphicon glyphicon-sort-by-alphabet'></i>
+					<i ng-show='sortType==="breed" && sortReverse' class='glyphicon glyphicon-sort-by-alphabet-alt'></i>
+				</th>
+				<th>Arrival Date</th>
+				<th>Adopted</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr puppy-list ng-repeat='puppy in puppies | orderBy:sortType:sortReverse' puppy='puppy' delete-puppy='deletePuppy(id)'>
+		</tr>
+		</tbody>
+	</table>
+
+	<script src='app.js'></script>
+
+	<script src='controllers/puppyController.js'></script>
+	<script src='directives/puppyList.js'></script>
+	<script src='services/breedService.js'></script>
+	<script src='services/puppyService.js'></script>
+</body>
+</html>
