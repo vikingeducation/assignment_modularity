@@ -48,9 +48,11 @@
               <br>
               <input type="text" name="name">
 
-              <label for="breed_id">Breed</label>
+              <label for="breed">Breed</label>
               <br>
-              <select name="breed_id"></select>
+              <select name="breed">
+                <option ng-repeat="breed in breeds" value="{{ breed.id }}">{{ breed.name }}</option>
+              </select>
 
               <input type="submit" value="Register Puppy" ng-click="getBreeds()">
             </form>
@@ -76,6 +78,7 @@
           </div>
         </div>
       </div>
+
     </main>
 
     <!-- Date Formatting -->

@@ -3,16 +3,7 @@ Puppies.factory('getBreedsService', ['$http', function($http){
 	var object = {};
 
 	object.getBreeds = function(){
-
-		$http({
-	  	method: 'GET',
-	  	url: 'https://ajax-puppies.herokuapp.com/breeds.json',
-		}).then(function successCallback(response) {
-	    console.log(response);
-	  }, function errorCallback(response) {
-	    console.log(response);
-	  });
-
+		return $http.get('https://ajax-puppies.herokuapp.com/breeds.json');
 	};
 
 	return object;
