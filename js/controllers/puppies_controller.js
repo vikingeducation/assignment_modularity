@@ -4,6 +4,21 @@ Puppies.controller('PuppiesController', ['$scope', 'breedsService', 'puppiesServ
 	$scope.newPuppy = {name: "", breed_id: ""};
 	$scope.puppies = [];
 
+	$scope.deletePuppy = function(puppyId){
+		puppiesService.deletePuppy(puppyId).then(
+			function(response){$scope.removePuppy(puppyId)},
+			function(response){console.log(response)}
+		);
+	};
+
+	$scope.removePuppy = function(puppyId){
+		for(var i = $scope.puppies.length - 1; i >= 0; i--){
+			if ($scope.puppies[i].id === puppyId){
+				$scope.puppies.splice(i, 1);
+			};
+		};
+	};
+
 	$scope.getBreeds = function(){
 		breedsService.getBreeds().then(function(response){
 			$scope.breeds = response.data;
