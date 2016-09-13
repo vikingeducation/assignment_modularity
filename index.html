@@ -64,15 +64,21 @@
         <div class="col-xs-12">
           <h4>Our puppies:</h4>
           <div id="update-puppies-link-container">
-            <a href="#">Update Puppies Table</a>
+            <a href="#" ng-click="getPuppies()">Update Puppies Table</a>
           </div>
           <div id="table-of-puppies-container">
             <table id="table-of-puppies" class="table table-striped">
-              <tr id='table-of-puppies-headers'>
+              <tr>
                 <th>ID</th>
                 <th>Breed</th>
                 <th>Name</th>
                 <th>Link to adopt</th>
+              </tr>
+              <tr ng-repeat="puppy in puppies">
+                <td>{{ puppy.id }}</td>
+                <td>{{ puppy.breed.name }}</td>
+                <td>{{ puppy.name }}</td>
+                <td><a href="#">Adopt</a></td>
               </tr>
             </table>
           </div>
@@ -91,7 +97,8 @@
     <script src="/js/controllers/puppies_controller.js"></script>
 
     <!-- Services -->
-    <script src="/js/services/get_breeds.js"></script>
+    <script src="/js/services/breeds.js"></script>
+    <script src="/js/services/puppies.js"></script>
 
   </body>
 </html>

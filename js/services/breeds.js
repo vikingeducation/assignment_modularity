@@ -1,4 +1,4 @@
-Puppies.factory('getBreedsService', ['$http', function($http){
+Puppies.factory('breedsService', ['$http', function($http){
 
 	var object = {};
 
