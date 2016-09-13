@@ -43,18 +43,18 @@
             <h4>Register a new puppy</h4>
           </div>
           <div id="new-puppy-form-container">
-            <form action="#" id="new-puppy-form">
+            <form id="new-puppy-form" ng-submit="postPuppy()">
               <label for="name">Name:</label>
               <br>
-              <input type="text" name="name">
+              <input type="text" name="name" ng-model="newPuppy.name">
 
               <label for="breed">Breed</label>
               <br>
-              <select name="breed">
+              <select name="breed" ng-model="newPuppy.breed_id">
                 <option ng-repeat="breed in breeds" value="{{ breed.id }}">{{ breed.name }}</option>
               </select>
 
-              <input type="submit" value="Register Puppy" ng-click="getBreeds()">
+              <input type="submit" value="Register Puppy">
             </form>
           </div>
         </div>
@@ -78,7 +78,7 @@
                 <td>{{ puppy.id }}</td>
                 <td>{{ puppy.breed.name }}</td>
                 <td>{{ puppy.name }}</td>
-                <td><a href="#">Adopt</a></td>
+                <td><a href="">Adopt</a></td>
               </tr>
             </table>
           </div>
