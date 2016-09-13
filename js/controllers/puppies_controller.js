@@ -22,6 +22,7 @@ Puppies.controller('PuppiesController', ['$scope', 'breedsService', 'puppiesServ
 	$scope.getBreeds = function(){
 		breedsService.getBreeds().then(function(response){
 			$scope.breeds = response.data;
+			console.log(response.data);
 		}, function(response){
 		});
 	};
@@ -35,7 +36,18 @@ Puppies.controller('PuppiesController', ['$scope', 'breedsService', 'puppiesServ
 	};
 
 	$scope.postPuppy = function(){
-		puppiesService.postPuppy(JSON.stringify($scope.newPuppy)).then(function(response){ console.log(response) }, function(response){ console.log(response) });
+		puppiesService.postPuppy(JSON.stringify($scope.newPuppy)).then(function(response){ 
+				console.log(response);
+				$scope.puppies.push({id: response.data.id, breed: {name: _returnBreedNameById(response.data.breed_id)}, name: response.data.name}) 
+			}, function(response){ console.log(response) });
+	};
+
+	var _returnBreedNameById = function(breedId){
+		for (var i = 0; i < $scope.breeds.length; i++){
+			if ($scope.breeds[i].id === breedId){
+				return $scope.breeds[i].name;
+			};
+		};
 	};
 
 	$scope.getBreeds();

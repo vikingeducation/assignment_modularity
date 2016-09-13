@@ -67,20 +67,8 @@
             <a href="#" ng-click="getPuppies()">Update Puppies Table</a>
           </div>
           <div id="table-of-puppies-container">
-            <table id="table-of-puppies" class="table table-striped">
-              <tr>
-                <th>ID</th>
-                <th>Breed</th>
-                <th>Name</th>
-                <th>Link to adopt</th>
-              </tr>
-              <tr ng-repeat="puppy in puppies">
-                <td>{{ puppy.id }}</td>
-                <td>{{ puppy.breed.name }}</td>
-                <td>{{ puppy.name }}</td>
-                <td><a href="" ng-click="deletePuppy(puppy.id)">Adopt</a></td>
-              </tr>
-            </table>
+            <puppy puppies="puppies" delete-puppy="deletePuppy(puppyId)">              
+            </puppy>
           </div>
         </div>
       </div>
@@ -95,6 +83,9 @@
 
     <!-- Controllers -->
     <script src="/js/controllers/puppies_controller.js"></script>
+
+    <!-- Directives -->
+    <script src="/js/directives/puppy.js"></script>
 
     <!-- Services -->
     <script src="/js/services/breeds.js"></script>
