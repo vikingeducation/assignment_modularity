@@ -1,1 +1,1 @@
-AngularModularity = angular.module('AngularModularity', []);
+Puppies = angular.module('Puppies', []);
