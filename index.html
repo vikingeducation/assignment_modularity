@@ -43,7 +43,7 @@
             <h4>Register a new puppy</h4>
           </div>
           <div id="new-puppy-form-container">
-            <form action="#" id="new-puppy-form" data-form="single">
+            <form action="#" id="new-puppy-form">
               <label for="name">Name:</label>
               <br>
               <input type="text" name="name">
@@ -52,7 +52,7 @@
               <br>
               <select name="breed_id"></select>
 
-              <input type="submit" value="Register Puppy">
+              <input type="submit" value="Register Puppy" ng-click="getBreeds()">
             </form>
           </div>
         </div>
@@ -83,6 +83,9 @@
 
     <!-- App -->
     <script src="/js/app.js"></script>
+
+    <!-- Controllers -->
+    <script src="/js/controllers/puppies_controller.js"></script>
 
     <!-- Services -->
     <script src="/js/services/get_breeds.js"></script>
