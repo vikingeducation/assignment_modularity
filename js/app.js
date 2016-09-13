@@ -1,0 +1,1 @@
+AngularModularity = angular.module('AngularModularity', []);
