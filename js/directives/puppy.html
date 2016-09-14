@@ -1,0 +1,14 @@
+<table id="table-of-puppies" class="table table-striped">
+  <tr>
+    <th>ID</th>
+    <th><a href="" ng-click="setOrderKey({key: 'breed.name'})">Breed</a></th>
+    <th><a href="" ng-click="setOrderKey({key: 'name'})">Name</a></th>
+    <th>Link to adopt</th>
+  </tr>
+  <tr ng-repeat="puppy in puppies | orderBy: orderKey">
+    <td>{{ puppy.id }}</td>
+    <td>{{ puppy.breed.name }}</td>
+    <td>{{ puppy.name }}</td>
+    <td><a href="" ng-click="deletePuppy({puppyId: puppy.id})">Adopt</a></td>
+  </tr>
+</table>

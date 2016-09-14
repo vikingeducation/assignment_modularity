@@ -1,0 +1,32 @@
+#status {
+  font-size: 20px;
+  text-align: center;
+  width: 100%; }
+
+#status.success {
+  background-color: green; }
+
+#status.error {
+  background-color: red; }
+
+#status.loading {
+  background-color: yellow; }
+
+#new-puppy-form-container {
+  margin-bottom: 15px;
+  width: 400px; }
+  #new-puppy-form-container #new-puppy-form-header {
+    width: 100%; }
+  #new-puppy-form-container input {
+    width: 100%; }
+  #new-puppy-form-container input[name=name] {
+    margin-bottom: 5px; }
+  #new-puppy-form-container select {
+    -webkit-appearance: menulist-button;
+    height: 26px;
+    width: 100%; }
+  #new-puppy-form-container select[name=breed_id] {
+    margin-bottom: 15px; }
+
+#update-puppies-link-container {
+  margin-bottom: 15px; }
