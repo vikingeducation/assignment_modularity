@@ -50,9 +50,13 @@
 
               <label for="breed">Breed</label>
               <br>
-              <select name="breed" ng-model="newPuppy.breed_id">
-                <option ng-repeat="breed in breeds" value="{{ breed.id }}">{{ breed.name }}</option>
-              </select>
+              <input type="text" name='search' ng-model="breedFilter" ng-change="showBreedFilter()">
+              <br>
+              <ul id="breed-list" style="border: 1px solid black; max-height: 250px; overflow: auto; display: none;">
+                <li ng-repeat="breed in breeds | filter: {name: breedFilter}">
+                  <a href="" ng-click="selectBreedFilter(breed.name)">{{ breed.name }}</a>
+                </li>
+              </ul>
 
               <input type="submit" value="Register Puppy">
             </form>
