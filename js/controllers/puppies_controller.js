@@ -2,6 +2,7 @@ Puppies.controller('PuppiesController', ['$scope', 'breedsService', 'puppiesServ
 
 	$scope.breeds = [];
 	$scope.newPuppy = {name: "", breed_id: ""};
+	$scope.orderKey = "+name";
 	$scope.puppies = [];
 
 	$scope.deletePuppy = function(puppyId){
@@ -40,6 +41,18 @@ Puppies.controller('PuppiesController', ['$scope', 'breedsService', 'puppiesServ
 														 breed: {name: _returnBreedNameById(response.data.breed_id)}, 
 														 name: response.data.name}) 
 			}, function(response){});
+	};
+
+	$scope.setOrderKey = function(key){
+		if ($scope.orderKey.slice(1) === key ){
+			if ($scope.orderKey[0] === "+") {
+				$scope.orderKey = "-" + key;
+			} else {
+				$scope.orderKey = "+" + key;
+			};
+		} else {
+			$scope.orderKey = "+" + key;
+		};
 	};
 
 	var _returnBreedNameById = function(breedId){

@@ -3,6 +3,8 @@ Puppies.directive('puppy', function(){
 		templateUrl: '/js/directives/puppy.html',
 		restrict: 'E',
 		scope: {puppies: "=", 
-						deletePuppy: "&"}
+						deletePuppy: "&",
+						orderKey: "=",
+						setOrderKey: "&"}
 	};
 });
