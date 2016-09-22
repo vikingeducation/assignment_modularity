@@ -9,6 +9,9 @@
 if Rails.env == 'development'
   puts 'Cleaning Database'
   Rake::Task['db:migrate:reset'].invoke
+else
+  Puppy.destroy_all
+  Breed.destroy_all
 end
 
 
