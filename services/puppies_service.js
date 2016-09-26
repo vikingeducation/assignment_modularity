@@ -1,14 +1,18 @@
-pup.factory('puppiesService', ['$http', function($http) {
+pup.factory('puppiesService', ['$http', 'breedsService', function($http, breedsService) {
 
   function Puppy(name, breed) {
     this.name = name;
-    this.breed = breed;
+    this.breed_id = breed;
   }
 
 
   var stub = {};
 
   var _puppies = [];
+
+  stub.makePuppy = function (name, breed) {
+    return new Puppy(name, breed);
+  };
 
   stub.getPuppies = function() {
     return _puppies;
@@ -28,14 +32,16 @@ pup.factory('puppiesService', ['$http', function($http) {
     });
   };
 
-  // stub.postPuppy = function(puppy) {
-  //   var newPuppy = new Puppy(puppy.name, puppy.breed);
-  //   return $http({
-  //     method: 'POST',
-  //     url: 'https://ajax-puppies.herokuapp.com/puppies.json',
-  //     data: { puppy: puppy}
-  //   })
-  // };
+  stub.postPuppy = function(puppy) {
+    return $http({
+      method: 'POST',
+      url: 'https://ajax-puppies.herokuapp.com/puppies.json',
+      data: puppy
+    }).then(function(response) {
+      _puppies.push(response);
+      console.log("puppy posted!");
+    });
+  };
 
   return stub;
 }]);

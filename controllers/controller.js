@@ -6,5 +6,10 @@ pup.controller('PupCtrl', ['$scope', 'breedsService', 'puppiesService', function
   $scope.breedsList = breedsService.getBreeds();
   $scope.puppiesList = puppiesService.getPuppies();
 
+  $scope.submitPuppy = function() {
+    var newPuppy = puppiesService.makePuppy($scope.newPuppy.name, $scope.newPuppy.breed);
+    puppiesService.postPuppy(newPuppy);
+    $scope.newPuppy = {};
+  };
 
 }]);

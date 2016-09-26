@@ -10,17 +10,28 @@
 <body ng-controller="PupCtrl" ng-init="init()">
   <p>Breeds: {{ breedsList.length }}</p>
 
-  <select>
-    <breed-menu-item ng-repeat="breed in breedsList" breed="breed"> </breed-menu-item> 
-  </select>
+  <form ng-submit="submitPuppy()">
+    <input type="text" ng-model="newPuppy.name">
+    <select ng-model="newPuppy.breed">
+      <option ng-repeat="breed in breedsList" breed="breed" value="{{breed.id}}">{{ breed.name }}</option> 
+    </select>
+    <input type="submit" value="Add Puppy" class="btn btn-primary">
+  </form>
 
   <label>Puppies:</label>
+  <table class="table table-inverse">
+    <tr>
+      <th>Puppy Name</th>
+      <th>Puppy Breed</th>
+    </tr>
+
+    <tr puppy-row ng-repeat="puppy in puppiesList" puppy="puppy"></tr>
+  </table>
   <br>
-  <p> {{ puppiesList[0] }}</p>
 </body>
   <script type="text/javascript" src="app.js"></script>
   <script type="text/javascript" src="directives/puppy_directive.js"></script>
-  <script type="text/javascript" src="directives/breed_menu_item.js"></script>
+  <script type="text/javascript" src="directives/puppy_row.js"></script>
   <script type="text/javascript" src="services/breeds_service.js"></script>
   <script type="text/javascript" src="services/puppies_service.js"></script>
   <script type="text/javascript" src="controllers/controller.js"></script>
