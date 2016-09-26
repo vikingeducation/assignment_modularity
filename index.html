@@ -32,10 +32,19 @@
     </select><br>
     <input type="submit" value="REGISTER PUPPY">
   </form>
-  <p ng-repeat="puppy in puppies">
-    {{puppy.name}}
-  </p>
-
-
+  <table>
+    <tr>
+      <th ng-click ="setFilter(name)">Name</th>
+      <th ng-click = "setFilter(breed)">Breed</th>
+      <th>Abandon Date</th>
+      <th>Adopt?</th>
+    </tr>
+    <tr ng-repeat="puppy in puppies | orderBy: getFilter" >
+      <td>{{puppy.name}}</td>
+      <td>{{puppy.breed.name}}</td>
+      <td>{{puppy.breed.created_at | date}}</td>
+      <td ng-click="adoptPuppy(puppy)">Adopt</td>
+    </tr>
+  </table>
   </body>
 </html>

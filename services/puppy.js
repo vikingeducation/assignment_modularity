@@ -6,6 +6,7 @@ app.factory("Puppy", ["$http", function($http) {
     var url = "https://ajax-puppies.herokuapp.com/puppies.json"
     $http.post(url, JSON.stringify(puppyObj))
     .success(function(data) {
+      getPuppies();
       return data
     })
     .error(function(data) {
@@ -20,13 +21,25 @@ app.factory("Puppy", ["$http", function($http) {
     .success(function(data){
       _puppies.splice(0, _puppies.length)
       for (var i = 0; i < data.length; i++) {
-        _puppies.push(data[i])
+        _puppies.push(data[i]);
       }
     })
     .error(function(){
       console.log("Failed!");
     })
   };
+
+  var adoptPuppy = function(puppy) {
+    var url = "https://ajax-puppies.herokuapp.com/puppies/" + puppy.id + ".json"
+    $http.delete(url)
+    .success(function(data) {
+      console.log("Puppy number " + puppy.id + "has been adopted!");
+      getPuppies();
+    })
+    .error(function(data) {
+      console.log("You cannot adopt!");
+    })
+  }
 
   var getPuppies = function(){
     getPuppiesJSON();
@@ -40,7 +53,8 @@ app.factory("Puppy", ["$http", function($http) {
 
   return {
     createPuppy: createPuppy,
-    getPuppies: getPuppies
+    getPuppies: getPuppies,
+    adoptPuppy: adoptPuppy
   }
 
 }]);
