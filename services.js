@@ -30,18 +30,20 @@ app.factory("puppiesService",["$http", function($http){
 			method:"GET",
 			url: "https://ajax-puppies.herokuapp.com/puppies.json"
 		}).success(function(response){
+			_puppyList.splice(0,_puppyList.length);
 			for(var i = 0; i < response.length; i++){
 				_puppyList.push(response[i]);
 			}
+			console.log(_puppyList);
 		});
 	};
 
 	var puppyList = function() {
-		return _puppyList
+		return _puppyList;
 	};
 
 	var createPuppy = function(data){
-		$http({
+		return($http({
 			method: "POST",
 			url: "https://ajax-puppies.herokuapp.com/puppies.json",
 			data: data,
@@ -50,11 +52,11 @@ app.factory("puppiesService",["$http", function($http){
 			}
 		}).success(function(response){
 			console.log("puppy successfully created");
-		});
+		}));
 	};
 
 	var adoptPuppy = function(puppyID){
-		$http({
+		return($http({
 			method: "DELETE",
 			url: "https://ajax-puppies.herokuapp.com/puppies/"+ puppyID +".json",
 			headers: {
@@ -62,7 +64,7 @@ app.factory("puppiesService",["$http", function($http){
 			}
 		}).success(function(response){
 			console.log("puppy succesfully adopted");
-		});
+		}));
 	};
 
 	return { puppyList: puppyList,

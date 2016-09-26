@@ -17,12 +17,13 @@ app.controller("puppyCtrl", ['$scope',
   console.log($scope.breedList);
 
   $scope.adoptPuppy = function(pupID) {
-    puppiesService.adoptPuppy(pupID);
-    $scope.updatePuppyList();
+    puppiesService.adoptPuppy(pupID).then(
+    	$scope.updatePuppyList);
   };
 
   $scope.createPuppy = function(pup) {
-    return puppiesService.createPuppy(pup);
+    return puppiesService.createPuppy(pup).then(
+    	$scope.updatePuppyList);
   };
 
   $scope.puppy = {};
