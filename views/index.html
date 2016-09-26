@@ -3,6 +3,8 @@
 
 <head>
   <meta charset="utf-8">
+   <!-- Lodash -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.13.1/lodash.js"></script>
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -16,12 +18,15 @@
 
   <h3>Register a new puppy</h3>
 
+  <div>here {{puppies}}</div>
+  <div>here {{breeds}}</div>
+
   <form class="" ng-submit="registerPuppy(newPuppy)">
     <label for="name">Name</label>
     <input type="text" name="name" ng-model="newPuppy.name">
     <label>Breed</label>
     <select>
-      <option></option>
+      <option ng-repeat="breed in breeds" value="breed.id">{{breed.name}}</option>
     </select>
     <input type="submit" name="submit" value="Register Puppy">
   </form>
@@ -49,6 +54,8 @@
   <script src="/app/controllers/puppies.js"></script>
   <script src="/app/directives/puppyrow.js"></script>
   <script src="/app/services/puppyService.js"></script>
+  <script src="/app/services/puppies.js"></script>
+  <script src="/app/services/breeds.js"></script>
 </body>
 
 </html>
