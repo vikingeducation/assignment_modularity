@@ -15,8 +15,8 @@ app.factory('BreedService', ['$http', '_', function($http, _) {
       method: 'GET',
       url: _buildURL(BREEDS)
     }).then(function(response) {
-      console.log(response.data);
       BreedService.breeds = response.data;
+      return Promise.resolve(BreedService.breeds);
     }).catch(function(reason) {
       console.log(['ERROR: ', reason].join(''));
     });

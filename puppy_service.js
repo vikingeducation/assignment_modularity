@@ -15,8 +15,9 @@ app.factory('PuppyService', ['$http', '_', function($http, _) {
       method: 'GET',
       url: _buildURL(PUPPIES)
     }).then(function(response) {
-      console.log(response.data);
       PuppyService.puppies = response.data;
+      console.log(PuppyService.puppies);
+      return Promise.resolve(PuppyService.puppies);
     }).catch(function(reason) {
       console.log(['ERROR: ', reason].join(''));
     });
@@ -30,7 +31,6 @@ app.factory('PuppyService', ['$http', '_', function($http, _) {
       dataType: 'json',
       contentType: 'application/json'
     }).then(function(response) {
-      console.log(response.data);
       PuppyService.puppies = response.data;
     }).catch(function(reason) {
       console.log(['ERROR: ', reason].join(''));

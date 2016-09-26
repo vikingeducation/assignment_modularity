@@ -8,12 +8,13 @@ app.controller('FrontEndCtrl',
 ['$scope', '$http', 'BreedService', 'PuppyService',
 function($scope, $http, BreedService, PuppyService) {
 
-  console.log(BreedService.all());
+  // Breeds
+  BreedService.all();
 
-  console.log(
-    PuppyService.create({
-      name: 'Some pup',
-      breed_id: 113
-  }));
+  // Puppies
+  PuppyService.all();
 
+  $scope.puppies = PuppyService.puppies;
+  $scope.breeds = BreedService.breeds;
+  console.log($scope.puppies);
 }]);

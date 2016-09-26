@@ -26,7 +26,8 @@
 
     <h3>Our puppies</h3>
     <a ng-click='refreshPuppies()'>Refresh puppies list</a>
-    <ul>
+    <ul ng-repeat='puppy in puppies'>
+      <li>{{ puppy }}</li>
       <!-- List of current puppies (PuppiesService.all()?) -->
     </ul>
   </body>
