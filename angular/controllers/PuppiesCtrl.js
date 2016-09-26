@@ -15,14 +15,19 @@ ajaxPuppies.controller("PuppiesCtrl", ["$scope", "puppiesService", "breedsServic
   }
 
   $scope.createPuppy = function() {
+
     var puppy = {
       name: $scope.puppyName,
-      breed_id: $scope.puppyBreed
+      breed_id: breedsService.getBreedByName($scope.puppyBreed).id
     }
-
-    $scope.puppyName = "";
-    $scope.puppyBreed = "";
-    puppiesService.createPuppy(puppy);
+    if (puppy.breed_id) {
+      $scope.puppyName = "";
+      $scope.puppyBreed = "";
+      puppiesService.createPuppy(puppy);
+      $scope.errorMessage = "";
+    } else {
+      $scope.errorMessage = "Not a breed"
+    }
   };
 
 }])

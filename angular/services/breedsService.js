@@ -20,6 +20,14 @@ ajaxPuppies.factory("breedsService", ["$http", function($http) {
     }
   }
 
+  var getBreedByName = function(name) {
+    for (var i = 0; i < _breeds.length; i++) {
+      if (_breeds[i].name.toLowerCase() === name.toLowerCase()) {
+        return _breeds[i];
+      }
+    }  
+  }
+
   var getBreedById = function(id) {
     for (var i = 0; i < _breeds.length; i++) {
       if (_breeds[i].id === id) {
@@ -30,6 +38,7 @@ ajaxPuppies.factory("breedsService", ["$http", function($http) {
 
   return {
     getBreeds: getBreeds,
-    getBreedById: getBreedById
+    getBreedById: getBreedById,
+    getBreedByName: getBreedByName
   }
 }])
