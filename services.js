@@ -1,19 +1,24 @@
 "use strict";
 
 app.factory("breedsService", ["$http", function($http){
-
+	var _breedList = [];
 	var getBreeds = function() {
-		var breeds
-	 $http({
+	 return $http({
 			method: 'GET',
 			url: "https://ajax-puppies.herokuapp.com/breeds.json",
 		}).success(function(response){
-			breeds = response;
+			for(var i = 0; i < response.length; i++){
+				_breedList.push(response[i]);
+			}
 		});
-		return breeds
-	}
+	};
 
-	return { breeds: getBreeds() };
+	var breedList = function(){
+		return _breedList;
+	};
+
+	return { getBreeds: getBreeds,
+			 breedList: breedList };
 }]);
 
 app.factory("puppiesService",["$http", function($http){
