@@ -1,24 +1,29 @@
 "use strict";
 
-app.factory("breeds", ["$http", function($http){
-	var breedList = {};
-	$http({
-		method: 'GET',
-		url: "https://ajax-puppies.herokuapp.com/breeds.json",
-	}).success(function(response){
-		breedList.breeds = response.data;
-	});
-	return breedList;
+app.factory("breedsService", ["$http", function($http){
+
+	var getBreeds = function() {
+		var breeds
+	 $http({
+			method: 'GET',
+			url: "https://ajax-puppies.herokuapp.com/breeds.json",
+		}).success(function(response){
+			breeds = response;
+		});
+		return breeds
+	}
+
+	return { breeds: getBreeds() };
 }]);
 
-app.factory("puppies",["$http", function($http){
-	var puppyService = {};
+app.factory("puppiesService",["$http", function($http){
+
 	var getPuppies = function(){
 		$http({
 			method:"GET",
 			url: "https://ajax-puppies.herokuapp.com/puppies.json"
 		}).success(function(response){
-			puppyService.puppies = response.data;
+			return response.data;
 		});
 	};
 
@@ -47,5 +52,7 @@ app.factory("puppies",["$http", function($http){
 		});
 	};
 
-	return puppyService;
+	return { getPuppies: getPuppies,
+					makePuppy: makePuppy,
+					adoptPuppy: adoptPuppy };
 }]);
