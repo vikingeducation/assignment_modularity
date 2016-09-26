@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="FrontEndAPI">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.2/lodash.js"></script>
+  </head>
+  <body ng-controller="FrontEndCtrl">
+    <h1>The AJAX Puppy Shelter</h1>
+    <form class="col-xs-offset-3" ng-submit='registerPuppy(puppy)'>
+      <h3>Register a new puppy</h3>
+      <label>
+        Name<br>
+        <input type='text' ng-model='puppy.name'>
+      </label><br>
+      <label>
+        Breed<br>
+        <input type='text' ng-model='puppy.breed'>
+      </label><br>
+      <input type='submit' value='Submit'>
+    </form>
+
+    <h3>Our puppies</h3>
+    <a ng-click='refreshPuppies()'>Refresh puppies list</a>
+    <ul>
+      <!-- List of current puppies (PuppiesService.all()?) -->
+    </ul>
+  </body>
+  <script src="app.js"></script>
+  <script src="breed_service.js"></script>
+</html>
