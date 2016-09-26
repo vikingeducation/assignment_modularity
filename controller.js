@@ -28,4 +28,20 @@ app.controller("puppyCtrl", ['$scope',
 
   $scope.puppy = {};
 
+  $scope.currentOrder = [];
+
+  $scope.changeOrder = function(category) {
+
+      console.log($scope.currentOrder)
+    if($scope.currentOrder[0] == category) {
+      if($scope.currentOrder[1] == "+") {
+        $scope.currentOrder[1] = "-";
+      } else {
+        $scope.currentOrder[1] = "+";
+      }
+    } else {
+      $scope.currentOrder[0] = category;
+      $scope.currentOrder[1] = "+";
+    }
+  };
 }])
