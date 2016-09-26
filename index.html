@@ -19,9 +19,10 @@
       <input type="text" id="name" name="name" ng-model="puppy.name">
 
       <label for="breeds">Breeds</label>
-      <select id="breeds" name="breed_id" ng-model="puppy.breed_id">
-         <option ng-repeat="breed in breedList" value="{{ breed.id }}">{{ breed.name }}</option>
-      </select>
+      <input type="text" list="breeds">
+      <datalist id="breeds" name="breed_id" ng-model="puppy.breed_name">
+         <option ng-repeat="breed in breedList" value="{{ breed.name }}">{{ breed.name }}</option>
+      </datalist>
 
       <input type="submit" id="submit-form" value="Register Puppy" ng-click="createPuppy(puppy)">
     </form>

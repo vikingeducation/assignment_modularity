@@ -22,6 +22,12 @@ app.controller("puppyCtrl", ['$scope',
   };
 
   $scope.createPuppy = function(pup) {
+  	console.log(pup);
+  	 console.log($scope.breedList.filter(function(el){
+  		return el.name == pup.breed_name;
+  	}));
+  	pup.breed_id = [0].id;
+  	
     return puppiesService.createPuppy(pup).then(
     	$scope.updatePuppyList);
   };
