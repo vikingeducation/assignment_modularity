@@ -21,7 +21,12 @@ app.factory("Puppy", ["$http", function($http) {
     .success(function(data){
       _puppies.splice(0, _puppies.length)
       for (var i = 0; i < data.length; i++) {
-        _puppies.push(data[i]);
+        var puppy = {}
+        puppy.name = data[i].name;
+        puppy.breed = data[i].breed.name;
+        puppy.created_at = data[i].created_at;
+        puppy.id = data[i].id;
+        _puppies.push(puppy);
       }
     })
     .error(function(){

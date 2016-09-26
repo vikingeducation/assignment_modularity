@@ -12,7 +12,7 @@
     <!-- Controllers -->
     <script src="controllers/puppyController.js"></script>
     <!-- Directives -->
-    <script src="directives/breedOption.js"></script>
+    <script src="directives/puppyRowDirective.js"></script>
     <!-- Services -->
     <script src="services/breeds.js"></script>
     <script src="services/puppy.js"></script>
@@ -26,24 +26,21 @@
     <label for="name">Name:</label>
     <input type="text" ng-model="formData.name"><br>
     <label for="breed">Breed:</label>
+    <input type="text" ng-model="breedSearch">
     <select ng-model="formData.breed">
-      <option ng-repeat="breed in breeds" value="{{breed.id}}">{{breed.name}}</option>
+      <option ng-repeat="breed in breeds | filter: {name: breedSearch}" value="{{breed.id}}">{{breed.name}}</option>
       <option>
     </select><br>
     <input type="submit" value="REGISTER PUPPY">
   </form>
   <table>
     <tr>
-      <th ng-click ="setFilter(name)">Name</th>
-      <th ng-click = "setFilter(breed)">Breed</th>
+      <th ng-click="setFilter('name')">Name</th>
+      <th ng-click="setFilter('breed')">Breed</th>
       <th>Abandon Date</th>
       <th>Adopt?</th>
     </tr>
-    <tr ng-repeat="puppy in puppies | orderBy: getFilter" >
-      <td>{{puppy.name}}</td>
-      <td>{{puppy.breed.name}}</td>
-      <td>{{puppy.breed.created_at | date}}</td>
-      <td ng-click="adoptPuppy(puppy)">Adopt</td>
+    <tr ng-repeat="puppy in puppies | orderBy: getFilter" puppy-row puppy="puppy" adoptPuppy="adoptPuppy(puppy)">
     </tr>
   </table>
   </body>

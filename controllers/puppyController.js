@@ -2,7 +2,7 @@ app.controller("PuppyCtrl", ["$scope", "Breeds", "Puppy", function($scope, Breed
 
   $scope.breeds = Breeds.getBreedObjects();
   $scope.puppies = Puppy.getPuppies();
-  $scope.getFilter;
+  $scope.getFilter = "name";
 
   $scope.newPuppy = function(){
     var pup = {};
@@ -19,12 +19,9 @@ app.controller("PuppyCtrl", ["$scope", "Breeds", "Puppy", function($scope, Breed
 
   $scope.setFilter = function(option) {
     if ($scope.getFilter === option) {
-      if ($scope.getFilter[0] === "-") {
-        $scope.getFilter = option
-      }
-      else {
-        $scope.getFilter = "-" + option;
-      }
+      $scope.getFilter = "-" + option
+    } else {
+      $scope.getFilter = option;
     }
   }
 
