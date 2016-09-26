@@ -21,13 +21,27 @@ app.controller("puppyCtrl", ['$scope',
     	$scope.updatePuppyList);
   };
 
+  $scope.filterPuppiesByName = function(pup) {
+    var filtered_breeds = $scope.breedList.filter(function(el){
+      return el.name == pup.breed_name;
+    })
+    return filtered_breeds
+  }
+
+  $scope.createBreed = function(data) {
+    breedsService.createBreed(data)
+  }
+
   $scope.createPuppy = function(pup) {
-  	console.log(pup);
-  	 console.log($scope.breedList.filter(function(el){
-  		return el.name == pup.breed_name;
-  	}));
-  	pup.breed_id = [0].id;
-  	
+    var filtered_breeds = $scope.filterPuppiesByName(pup)
+    if (filtered_breeds.length === 0) {
+      // create new breed here!
+      $scope.createBreed({ name: pup.breed_name })
+      // get breed id and then make puppy
+
+    } else {
+  	 pup.breed_id = filtered_breeds[0].id;
+    }
     return puppiesService.createPuppy(pup).then(
     	$scope.updatePuppyList);
   };

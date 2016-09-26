@@ -18,8 +18,22 @@ app.factory("breedsService", ["$http", function($http){
 		return _breedList;
 	};
 
+	var createBreed = function(data){
+		return($http({
+			method: "POST",
+			url: "https://ajax-puppies.herokuapp.com/breeds.json",
+			data: data,
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		}).success(function(response){
+			console.log(response.id);
+		}));
+	};
+
 	return { getBreeds: getBreeds,
-			 breedList: breedList };
+			 breedList: breedList,
+			 createBreed: createBreed };
 }]);
 
 app.factory("puppiesService",["$http", function($http){
