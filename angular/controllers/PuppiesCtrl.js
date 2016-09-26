@@ -8,8 +8,11 @@ ajaxPuppies.controller("PuppiesCtrl", ["$scope", "puppiesService", "breedsServic
     $scope.puppies = puppies;
   });
 
+  $scope.sortBy = "";
 
-
+  $scope.updatePuppies = function() {
+    puppiesService.populatePuppies()
+  }
 
   $scope.createPuppy = function() {
     var puppy = {

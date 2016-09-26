@@ -20,7 +20,16 @@ ajaxPuppies.factory("breedsService", ["$http", function($http) {
     }
   }
 
+  var getBreedById = function(id) {
+    for (var i = 0; i < _breeds.length; i++) {
+      if (_breeds[i].id === id) {
+        return _breeds[i];
+      }
+    }
+  }
+
   return {
-    getBreeds: getBreeds
+    getBreeds: getBreeds,
+    getBreedById: getBreedById
   }
 }])

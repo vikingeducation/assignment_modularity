@@ -21,8 +21,10 @@
 
   <h1>Puppies!</h1>
   <a href="#" ng-click="updatePuppies()">Refresh Puppies List</a>
+  <a href="#" ng-click="sortBy = 'breed.name'">Sort by Breed</a>
+  <a href="#" ng-click="sortBy = 'name'">Sort by Name</a>
   <div>
-    <puppy ng-repeat="puppy in puppies" puppy="puppy"></puppy>
+    <puppy ng-repeat="puppy in puppies | orderBy:sortBy" puppy="puppy"></puppy>
   </div>
 
 
