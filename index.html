@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="ajaxPuppies">
+<head>
+  <title>AJAX Puppies</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
+</head>
+<body ng-controller="PuppiesCtrl">
+  
+
+  
+  <select>
+     <option ng-repeat="breed in breeds" ng-value="breed.id">{{breed.name}}</option> 
+  </select>
+  
+
+
+  <!-- main -->
+  <script src="app.js"></script>
+  <script src="angular/controllers/PuppiesCtrl.js"></script>
+  <script src="angular/services/breedsService.js"></script>
+  <script src="angular/services/puppiesService.js"></script>
+</body>
+</html>

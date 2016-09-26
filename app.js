@@ -1,0 +1,1 @@
+var ajaxPuppies = angular.module("ajaxPuppies", []);
