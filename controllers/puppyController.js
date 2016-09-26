@@ -1,5 +1,5 @@
-app.controller("PuppyCtrl", ["$scope", function($scope){
+app.controller("PuppyCtrl", ["$scope", "Breeds", function($scope, Breeds){
 
-  
+  $scope.breeds = Breeds.getBreeds();
   
 }])
