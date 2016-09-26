@@ -10,6 +10,10 @@ function($scope, $http, BreedService, PuppyService) {
 
   console.log(BreedService.all());
 
-  console.log(PuppyService.all());
+  console.log(
+    PuppyService.create({
+      name: 'Some pup',
+      breed_id: 113
+  }));
 
 }]);

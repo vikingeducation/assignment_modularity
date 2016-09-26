@@ -22,18 +22,20 @@ app.factory('PuppyService', ['$http', '_', function($http, _) {
     });
   };
 
-  // PuppyService.create = function() {
-  //   $http({
-  //     method: 'POST',
-  //     url: _buildURL(PUPPIES),
-  //     dataType:
-  //   }).then(function(response) {
-  //     console.log(response.data);
-  //     PuppyService.puppies = response.data;
-  //   }).catch(function(reason) {
-  //     console.log(['ERROR: ', reason].join(''));
-  //   });
-  // };
+  PuppyService.create = function(puppyData) {
+    $http({
+      method: 'POST',
+      url: _buildURL(PUPPIES),
+      data: JSON.stringify(puppyData),
+      dataType: 'json',
+      contentType: 'application/json'
+    }).then(function(response) {
+      console.log(response.data);
+      PuppyService.puppies = response.data;
+    }).catch(function(reason) {
+      console.log(['ERROR: ', reason].join(''));
+    });
+  };
 
 
   return PuppyService;
