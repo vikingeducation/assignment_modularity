@@ -4,9 +4,12 @@ app.factory('_', ['$window', function($window) {
   return $window._;
 }]);
 
-app.controller('FrontEndCtrl', ['$scope', '$http', 'BreedService',
-function($scope, $http, BreedService) {
+app.controller('FrontEndCtrl',
+['$scope', '$http', 'BreedService', 'PuppyService',
+function($scope, $http, BreedService, PuppyService) {
 
   console.log(BreedService.all());
+
+  console.log(PuppyService.all());
 
 }]);
