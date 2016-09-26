@@ -15,7 +15,10 @@ app.factory('BreedService', ['$http', '_', function($http, _) {
       method: 'GET',
       url: _buildURL(BREEDS)
     }).then(function(response) {
-      BreedService.breeds = response.data;
+      BreedService.breeds.splice(0, BreedService.breeds.length);
+      for(var i in response.data){
+        BreedService.breeds.push(response.data[i]);
+      }
       return Promise.resolve(BreedService.breeds);
     }).catch(function(reason) {
       console.log(['ERROR: ', reason].join(''));

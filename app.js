@@ -16,5 +16,7 @@ function($scope, $http, BreedService, PuppyService) {
 
   $scope.puppies = PuppyService.puppies;
   $scope.breeds = BreedService.breeds;
-  console.log($scope.puppies);
+  $scope.adoptPuppy = PuppyService.destroy;
+  $scope.createPuppy = PuppyService.create;
+  $scope.refreshPuppies = PuppyService.all;
 }]);
