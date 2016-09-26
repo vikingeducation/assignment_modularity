@@ -2,6 +2,7 @@
 
 app.factory("breedsService", ["$http", function($http){
 	var _breedList = [];
+
 	var getBreeds = function() {
 	 return $http({
 			method: 'GET',
@@ -22,17 +23,24 @@ app.factory("breedsService", ["$http", function($http){
 }]);
 
 app.factory("puppiesService",["$http", function($http){
+	var _puppyList = [];
 
 	var getPuppies = function(){
 		$http({
 			method:"GET",
 			url: "https://ajax-puppies.herokuapp.com/puppies.json"
 		}).success(function(response){
-			return response.data;
+			for(var i = 0; i < response.length; i++){
+				_puppyList.push(response[i]);
+			}
 		});
 	};
 
-	var makePuppy = function(data){
+	var puppyList = function() {
+		return _puppyList
+	};
+
+	var createPuppy = function(data){
 		$http({
 			method: "POST",
 			url: "https://ajax-puppies.herokuapp.com/puppies.json",
@@ -45,10 +53,10 @@ app.factory("puppiesService",["$http", function($http){
 		});
 	};
 
-	var adoptPuppy = function(data){
+	var adoptPuppy = function(puppyID){
 		$http({
 			method: "DELETE",
-			url: "https://ajax-puppies.herokuapp.com/puppies/"+data.puppy_id+".json",
+			url: "https://ajax-puppies.herokuapp.com/puppies/"+ puppyID +".json",
 			headers: {
 				'Content-Type': 'application/json'
 			}
@@ -57,7 +65,8 @@ app.factory("puppiesService",["$http", function($http){
 		});
 	};
 
-	return { getPuppies: getPuppies,
-					makePuppy: makePuppy,
+	return { puppyList: puppyList,
+					getPuppies: getPuppies,
+					createPuppy: createPuppy,
 					adoptPuppy: adoptPuppy };
 }]);

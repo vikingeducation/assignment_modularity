@@ -14,12 +14,16 @@
 	<h1>The AJAX Puppy Shelter</h1>
     <h3>Register a new puppy</h3>
     <form id="puppy-form">
+
       <label for="name">Name</label>
-      <input type="text" id="name" name="name">
+      <input type="text" id="name" name="name" ng-model="puppy.name">
 
       <label for="breeds">Breeds</label>
-      <select id="breeds" name="breed_id" ng-options="breed.name for breed in breedList"></select>
-      <input type="submit" id="submit-form" value="Register Puppy">
+      <select id="breeds" name="breed_id" ng-model="puppy.breed_id">
+         <option ng-repeat="breed in breedList" value="{{ breed.id }}">{{ breed.name }}</option>
+      </select>
+
+      <input type="submit" id="submit-form" value="Register Puppy" ng-click="createPuppy(puppy)">
     </form>
 
     <h3>Our puppies:</h3>

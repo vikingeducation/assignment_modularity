@@ -1,7 +1,9 @@
   <ul  id="puppy-list">
     <li ng-repeat="pup in puppyList">
-      {{ pup.name }} {{ pup.breed }}
-      <button ng-click="adoptPuppy(pup)">Adopt</button>
+
+      {{ pup.name }} | {{ pup.breed.name }} |
+      {{ pup.id }}
+      <button ng-click="adoptPuppy(pup.id)">Adopt</button>
     </li>
 
   </ul>
