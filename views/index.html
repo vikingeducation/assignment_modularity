@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-   <!-- Lodash -->
+  <!-- Lodash -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.13.1/lodash.js"></script>
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -18,15 +18,14 @@
 
   <h3>Register a new puppy</h3>
 
-  <div>here {{puppies}}</div>
-  <div>here {{breeds}}</div>
-
-  <form class="" ng-submit="registerPuppy(newPuppy)">
+  <form ng-submit="addPuppy()">
     <label for="name">Name</label>
     <input type="text" name="name" ng-model="newPuppy.name">
     <label>Breed</label>
-    <select>
-      <option ng-repeat="breed in breeds" value="breed.id">{{breed.name}}</option>
+    <select ng-model="newPuppy.breed_id">
+      <option ng-repeat="breed in breeds" value="{{breed.id}}">
+        {{breed.name}}
+      </option>
     </select>
     <input type="submit" name="submit" value="Register Puppy">
   </form>
@@ -45,7 +44,7 @@
       </th>
       <th></th>
     </tr>
-    <tr ng-repeat="puppy in puppies" puppyrow puppy="puppy" adopt-puppy="adoptPuppy()">
+    <tr ng-repeat="puppy in puppies" puppyrow puppy="puppy" adopt-puppy="adoptPuppy(puppy_id)">
     </tr>
   </table>
 
