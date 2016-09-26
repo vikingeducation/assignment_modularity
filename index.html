@@ -27,12 +27,14 @@
     <input type="text" ng-model="formData.name"><br>
     <label for="breed">Breed:</label>
     <select ng-model="formData.breed">
-      <option breed-option ng-repeat="breed in breeds" breed="breed">
+      <option ng-repeat="breed in breeds" value="{{breed.id}}">{{breed.name}}</option>
       <option>
     </select><br>
     <input type="submit" value="REGISTER PUPPY">
   </form>
-  <p>{{breeds}}</p>
+  <p ng-repeat="puppy in puppies">
+    {{puppy.name}}
+  </p>
 
 
   </body>
