@@ -8,9 +8,20 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
 </head>
 <body ng-controller="PupCtrl" ng-init="init()">
-<p>{{ breedsList }}</p>
+  <p>Breeds: {{ breedsList.length }}</p>
+
+  <select>
+    <breed-menu-item ng-repeat="breed in breedsList" breed="breed"> </breed-menu-item> 
+  </select>
+
+  <label>Puppies:</label>
+  <br>
+  <p> {{ puppiesList[0] }}</p>
 </body>
   <script type="text/javascript" src="app.js"></script>
+  <script type="text/javascript" src="directives/puppy_directive.js"></script>
+  <script type="text/javascript" src="directives/breed_menu_item.js"></script>
   <script type="text/javascript" src="services/breeds_service.js"></script>
+  <script type="text/javascript" src="services/puppies_service.js"></script>
   <script type="text/javascript" src="controllers/controller.js"></script>
 </html>
