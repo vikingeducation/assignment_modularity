@@ -12,6 +12,19 @@ ajaxPuppies.factory("breedsService", ["$http", function($http) {
     })
   };
 
+  var createBreed= function(breed) {
+    return $http({
+      method: "POST",
+      url: "https://ajax-puppies.herokuapp.com/breeds.json",
+      dataType: "json",
+      data: JSON.stringify(breed)
+    }).then(function(response) {
+      console.log(response);
+      _breeds.push(response.data);
+      return response.data;
+    })
+  }
+
   var getBreeds = function() {
     if (_breeds.length) {
       return _breeds;
@@ -25,7 +38,7 @@ ajaxPuppies.factory("breedsService", ["$http", function($http) {
       if (_breeds[i].name.toLowerCase() === name.toLowerCase()) {
         return _breeds[i];
       }
-    }  
+    }
   }
 
   var getBreedById = function(id) {
@@ -39,6 +52,7 @@ ajaxPuppies.factory("breedsService", ["$http", function($http) {
   return {
     getBreeds: getBreeds,
     getBreedById: getBreedById,
-    getBreedByName: getBreedByName
+    getBreedByName: getBreedByName,
+    createBreed: createBreed
   }
 }])
