@@ -3,7 +3,8 @@ pup.directive('puppyRow', [function() {
     templateUrl: 'templates/puppy_row.html',
     restrict: 'A',
     scope: { 
-      puppy: "="
+      puppy: "=",
+      // adoptPuppy: "&"
     }
   };
 }]);

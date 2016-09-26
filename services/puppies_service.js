@@ -27,7 +27,6 @@ pup.factory('puppiesService', ['$http', 'breedsService', function($http, breedsS
       for (var i = 0; i < response.data.length; i++) {
         _puppies.push(response.data[i]);
       }
-
       console.log("puppies fully loaded");
     });
   };
@@ -42,6 +41,17 @@ pup.factory('puppiesService', ['$http', 'breedsService', function($http, breedsS
       console.log("puppy posted!");
     });
   };
+
+  // stub.deletePuppy = function(id) {
+  //   console.log("hi im deleting stuff");
+  //   return $http({
+  //     method: 'DELETE',
+  //     url: 'https://ajax-puppies.herokuapp.com/puppies/' + id + '.json'
+  //   }).then(function(response) {
+  //     console.log(response);
+  //     console.log("puppy adopted!");
+  //   });
+  // };
 
   return stub;
 }]);

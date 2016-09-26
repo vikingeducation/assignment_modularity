@@ -12,4 +12,9 @@ pup.controller('PupCtrl', ['$scope', 'breedsService', 'puppiesService', function
     $scope.newPuppy = {};
   };
 
+  // $scope.adoptPuppy = function(id) {
+  //   console.log(id);
+  //   puppiesService.deletePuppy(id);
+  // }
+
 }]);
