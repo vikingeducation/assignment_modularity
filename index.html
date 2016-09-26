@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app='puppies'>
+<head>
+	<title>Puppies Part II</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+	<script src="javascripts/app.js"></script>
+</head>
+<body>
+	<h1>The AJAX Puppy Shelter</h1>
+    <h3>Register a new puppy</h3>
+    <form id="puppy-form">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name">
+      <label for="breeds">Breeds</label>
+      <select id="breeds" name="breed_id">
+      </select>
+      <input type="submit" id="submit-form" value="Register Puppy">
+    </form>
+    <h3>Our puppies:</h3>
+    <a href="#" id="refresh">Refresh puppies list</a>
+    <ul id="puppy-list">
+    </ul>
+</body>
+</html>
