@@ -29,8 +29,10 @@
     </form>
 
     <h3>Our puppies</h3>
+    <button ng-click="orderType('name')">Name</button>
+    <button ng-click="orderType('breed.name')">Breed</button>
     <a ng-click='refreshPuppies()'>Refresh puppies list</a>
-    <ul ng-repeat='puppy in puppies'>
+    <ul ng-repeat='puppy in puppies | orderBy:orderType:orderFlag'>
       <puppy-directive adopt-puppy="adoptPuppy(pupToKill)" puppy="puppy"></puppy-directive>
     </ul>
   </body>
