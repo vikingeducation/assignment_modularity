@@ -1,6 +1,6 @@
 <html ng-app="puppyApp">
   <head>
-    <title>ToDo!</title>
+    <title>Puppies!</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 
     <!--Lo-Dash -->
@@ -12,6 +12,7 @@
     <!-- Controllers -->
     <script src="controllers/puppyController.js"></script>
     <!-- Directives -->
+    <script src="directives/breedOption.js"></script>
 
     <!-- Services -->
     <script src="services/breeds.js"></script>
@@ -23,12 +24,16 @@
   <h2>Register a new puppy</h2>
   <form name="puppyForm" ng-submit="newPuppy()">
     <label for="name">Name:</label>
-    <input type="text" ng-model="formData.name">
+    <input type="text" ng-model="formData.name"><br>
+    <label for="breed">Breed:</label>
     <select ng-model="formData.breed">
-    </select>
+      <option breed-option ng-repeat="breed in breeds" breed="breed">
+      <option>
+    </select><br>
     <input type="submit" value="REGISTER PUPPY">
   </form>
   <p>{{breeds}}</p>
+
 
   </body>
 </html>
