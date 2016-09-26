@@ -7,13 +7,25 @@
 
 </head>
 <body ng-controller="PuppiesCtrl">
-  
 
-  
-  <select>
-     <option ng-repeat="breed in breeds" ng-value="breed.id">{{breed.name}}</option> 
-  </select>
-  
+
+  <form>
+    <label>Name</label>
+    <input type="text" ng-model="puppyName">
+    <label>Breed</label>
+    <select ng-model="puppyBreed">
+       <option ng-repeat="breed in breeds" ng-value="breed.id">{{breed.name}}</option>
+    </select>
+    <input type="submit" value="Register Puppy" ng-click="createPuppy()">
+  </form>
+
+  <h1>Puppies!</h1>
+  <a href="#" ng-click="updatePuppies()">Refresh Puppies List</a>
+  <div>
+    <puppy ng-repeat="puppy in puppies" puppy="puppy"></puppy>
+  </div>
+
+
 
 
   <!-- main -->
@@ -21,5 +33,6 @@
   <script src="angular/controllers/PuppiesCtrl.js"></script>
   <script src="angular/services/breedsService.js"></script>
   <script src="angular/services/puppiesService.js"></script>
+  <script src="angular/directives/puppyDirective.js"></script>
 </body>
 </html>
