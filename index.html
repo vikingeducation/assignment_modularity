@@ -1,0 +1,40 @@
+<!DOCTYPE html >
+<html ng-app="pup">
+<head>
+  <title>Angular To-Do</title>
+  <!-- Angular -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
+</head>
+<body ng-controller="PupCtrl">
+
+  <form ng-submit="submitPuppy()">
+    <input type="text" ng-model="newPuppy.name">
+    <select ng-model="newPuppy.breed">
+      <option ng-repeat="breed in breedsList" breed="breed" value="{{breed.id}}">{{ breed.name }}</option> 
+    </select>
+    <input type="submit" value="Add Puppy" class="btn btn-primary">
+  </form>
+
+  <label>Puppies:</label>
+  <table class="table table-inverse">
+    <tr>
+      <th>Puppy Name</th>
+      <th>Puppy Breed</th>
+      <th>Adopt</th>
+    </tr>
+
+    <tr puppy-row ng-repeat="puppy in puppiesList" 
+      puppy="puppy">  
+    </tr>
+  </table>
+  <br>
+</body>
+  <script type="text/javascript" src="app.js"></script>
+  <script type="text/javascript" src="directives/puppy_directive.js"></script>
+  <script type="text/javascript" src="directives/puppy_row.js"></script>
+  <script type="text/javascript" src="services/breeds_service.js"></script>
+  <script type="text/javascript" src="services/puppies_service.js"></script>
+  <script type="text/javascript" src="controllers/controller.js"></script>
+</html>
