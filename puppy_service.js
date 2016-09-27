@@ -11,16 +11,17 @@ app.factory('PuppyService', ['$http', '_', function($http, _) {
   PuppyService.puppies = [];
 
   PuppyService.all = function() {
-    $http({
+    return $http({
       method: 'GET',
       url: _buildURL(PUPPIES)
     }).then(function(response) {
-      PuppyService.puppies.splice(0, PuppyService.puppies.length);
-      for(var i in response.data){
-        PuppyService.puppies.push(response.data[i]);
-      }
+      angular.copy(response.data,PuppyService.puppies);
+      // PuppyService.puppies.splice(0, PuppyService.puppies.length);
+      // for(var i in response.data){
+      //   PuppyService.puppies.push(response.data[i]);
+      // }
       // console.log(response.data);
-      return Promise.resolve(PuppyService.puppies);
+      return PuppyService.puppies;
     }).catch(function(reason) {
       console.log(['ERROR: ', reason].join(''));
     });
