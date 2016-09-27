@@ -4,7 +4,7 @@ pup.directive('puppyRow', [function() {
     restrict: 'A',
     scope: { 
       puppy: "=",
-      // adoptPuppy: "&"
+      adoptPuppy: "&"
     }
   };
 }]);

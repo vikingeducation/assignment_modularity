@@ -7,8 +7,7 @@
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
 </head>
-<body ng-controller="PupCtrl" ng-init="init()">
-  <p>Breeds: {{ breedsList.length }}</p>
+<body ng-controller="PupCtrl">
 
   <form ng-submit="submitPuppy()">
     <input type="text" ng-model="newPuppy.name">
@@ -27,7 +26,7 @@
     </tr>
 
     <tr puppy-row ng-repeat="puppy in puppiesList" 
-      puppy="puppy" >  
+      puppy="puppy" adoptPuppy="adoptPuppy(id)">  
     </tr>
   </table>
   <br>
