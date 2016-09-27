@@ -1,0 +1,13 @@
+  <table  id="puppy-list">
+  <tr>
+  	<th ng-click="changeOrder('name')">Name</th>
+  	<th ng-click="changeOrder('breed')">Breed</th>
+  	<th>Adopt Me!</th>
+  </tr>
+    <tr ng-repeat="pup in puppyList | orderBy : currentOrder[1]+currentOrder[0]">
+    	<td>{{ pup.name }}</td>
+    	<td>{{ pup.breed.name }}</td>
+    	<td><button ng-click="adoptPuppy(pup.id)">Adopt</button></td>
+    </tr>
+
+  </table>
