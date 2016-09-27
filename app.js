@@ -14,13 +14,14 @@ function($scope, $http, BreedService, PuppyService) {
   // Puppies
   PuppyService.all();
 
-  $scope.sortBy = "";
+  $scope.sortBy = "breed";
   $scope.orderFlag = false;
   $scope.flipFlag = function(){
     $scope.orderFlag = !$scope.orderFlag;
   };
 
   $scope.orderType = function(input){
+    // console.log(input);
     $scope.sortBy = input;
     $scope.flipFlag();
   };
