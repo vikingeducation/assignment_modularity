@@ -25,4 +25,12 @@ app.controller("PuppyCtrl", ["$scope", "Breeds", "Puppy", function($scope, Breed
     }
   }
 
+  $scope.searchStarted = function(){
+    if (angular.element("#breedSearch").$dirty) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 }])

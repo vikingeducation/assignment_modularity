@@ -26,11 +26,10 @@
     <label for="name">Name:</label>
     <input type="text" ng-model="formData.name"><br>
     <label for="breed">Breed:</label>
-    <input type="text" ng-model="breedSearch">
-    <select ng-model="formData.breed">
-      <option ng-repeat="breed in breeds | filter: {name: breedSearch}" value="{{breed.id}}">{{breed.name}}</option>
-      <option>
-    </select><br>
+    <input type="text" ng-model="breedSearch" id="breedSearch">
+    <div ng-show="searchStarted()" ng-repeat="breed in breeds | filter: {name: breedSearch}">
+    <input type="radio"  name="{{breed.id}}" value="{{breed.id}}" ng-model="formData.breed">{{breed.name}}<br>
+    </div>
     <input type="submit" value="REGISTER PUPPY">
   </form>
   <table>
