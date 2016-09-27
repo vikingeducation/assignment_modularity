@@ -56,14 +56,20 @@ pup.factory('puppiesService', ['$http', 'breedsService', function($http, breedsS
     });
   };
 
-  stub.deletePuppy = function(id) {
+  stub.deletePuppy = function(puppy) {
     console.log("hi im deleting stuff");
-    return $http({
-      method: 'DELETE',
-      url: 'https://ajax-puppies.herokuapp.com/puppies/' + id + '.json'
-    }).then(function(response) {
+    console.log(puppy.id);
+    var url  = 'https://ajax-puppies.herokuapp.com/puppies/' + puppy.id + '.json'
+    return $http.delete(url).then(function(response) {
+      console.log(response);
       console.log("puppy adopted!");
     });
+    // return $http({
+    //   method: 'DELETE',
+    //   url: 'https://ajax-puppies.herokuapp.com/puppies/' + id + '.json'
+    // }).then(function(response) {
+    //   console.log("puppy adopted!");
+    // });
   };
 
   return stub;
