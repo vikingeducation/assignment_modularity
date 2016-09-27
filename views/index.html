@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="puppiesApp" ng-controller="PuppiesCtrl">
+
+<head>
+  <meta charset="utf-8">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+  <!-- Lodash -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.13.1/lodash.js"></script>
+  <title>Puppies</title>
+</head>
+
+<body>
+
+  <h1>Puppy Shelter</h1>
+
+  <h3>Register a new puppy</h3>
+
+  <form ng-submit="addPuppy()">
+    <label for="name">Name</label>
+    <input type="text" name="name" ng-model="newPuppy.name">
+    <label>Breed</label>
+    <select ng-model="newPuppy.breed_id">
+      <option ng-repeat="breed in breeds" value="{{breed.id}}">
+        {{breed.name}}
+      </option>
+    </select>
+    <input type="submit" name="submit" value="Register Puppy">
+  </form>
+
+  <table>
+    <tr>
+      <th>
+        Name
+      </th>
+      <th>
+        Breed
+      </th>
+      <th>
+        Listing Date
+      </th>
+      <th></th>
+    </tr>
+    <tr ng-repeat="puppy in puppies" puppyrow puppy="puppy" adopt-puppy="adoptPuppy(puppy_id)">
+    </tr>
+  </table>
+
+
+  <script src="/app/app.js"></script>
+  <script src="/app/controllers/puppies.js"></script>
+  <script src="/app/directives/puppyrow.js"></script>
+  <script src="/app/services/puppyService.js"></script>
+  <script src="/app/services/puppies.js"></script>
+  <script src="/app/services/breeds.js"></script>
+  <script src="/app/services/lodash.js"></script>
+</body>
+
+</html>

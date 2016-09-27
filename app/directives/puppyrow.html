@@ -1,0 +1,12 @@
+<td>
+  {{puppy.name}}
+</td>
+<td>
+  {{puppy.breed.name}}
+</td>
+<td>
+  {{puppy.created_at | date: "MMM d, yyyy"}}
+</td>
+<td>
+  <a href="#" ng-click="adoptPuppy({puppy_id: puppy.id})">&nbsp Adopt me! </a>
+</td>
