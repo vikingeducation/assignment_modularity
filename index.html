@@ -1,0 +1,46 @@
+<html ng-app="puppyApp">
+  <head>
+    <title>Puppies!</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <!--Lo-Dash -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.1/lodash.js"></script>
+    <!-- Angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <!-- App -->
+    <script src="app.js"></script>
+    <!-- Controllers -->
+    <script src="controllers/puppyController.js"></script>
+    <!-- Directives -->
+    <script src="directives/puppyRowDirective.js"></script>
+    <!-- Services -->
+    <script src="services/breeds.js"></script>
+    <script src="services/puppy.js"></script>
+  </head>
+
+  <body ng-controller= "PuppyCtrl">
+
+  <h1>The AJAX Puppy Shelter</h1>
+  <h2>Register a new puppy</h2>
+  <form name="puppyForm" ng-submit="newPuppy()">
+    <label for="name">Name:</label>
+    <input type="text" ng-model="formData.name"><br>
+    <label for="breed">Breed:</label>
+    <input type="text" ng-model="breedSearch" id="breedSearch">
+    <div ng-show="searchStarted()" ng-repeat="breed in breeds | filter: {name: breedSearch}">
+    <input type="radio"  name="{{breed.id}}" value="{{breed.id}}" ng-model="formData.breed">{{breed.name}}<br>
+    </div>
+    <input type="submit" value="REGISTER PUPPY">
+  </form>
+  <table>
+    <tr>
+      <th ng-click="setFilter('name')">Name</th>
+      <th ng-click="setFilter('breed')">Breed</th>
+      <th>Abandon Date</th>
+      <th>Adopt?</th>
+    </tr>
+    <tr ng-repeat="puppy in puppies | orderBy: getFilter" puppy-row puppy="puppy" adoptPuppy="adoptPuppy(puppy)">
+    </tr>
+  </table>
+  </body>
+</html>
