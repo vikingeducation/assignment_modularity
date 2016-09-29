@@ -20,9 +20,16 @@
     <input type="text" name="name" ng-model="name"></br>
 
     Breed<br>
-    <select name="breed" ng-model="breedId">
+    <!-- <select name="breed" ng-model="breedId">
       <option ng-repeat="breed in breeds" value={{breed.id}}>{{breed.name}}</option>
-    </select>
+    </select> -->
+    <input type="text" ng-model="breedSearch">
+    <div>
+      <select ng-model="breedId">
+        <!-- <option value=""></option> -->
+        <option ng-repeat="breed in breeds | filter: {name: breedSearch}" value={{breed.id}}>{{breed.name}}</option>
+      </select>
+    </div>
 
     <button ng-click="createPuppy()">Register</button>
 

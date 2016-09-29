@@ -6,6 +6,8 @@ puppyApp.controller("PuppiesCtrl", ['$scope', 'breedService', 'puppyService', fu
 
   $scope.currentFilter = 'name';
 
+  $scope.breedSearch = "";
+
   $scope.createPuppy = function(){
     console.log($scope.breedId);
     puppyService.createPuppy($scope.name, $scope.breedId);
