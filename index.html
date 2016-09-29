@@ -30,9 +30,16 @@
 
 
   <h3>Our puppies:</h3>
-  <ul>
-  <li ng-repeat="puppy in puppies"><p>{{puppy.name}}({{puppy.breed.name}}) <a href="#" ng-click="deletePuppy(puppy.id)">adopt</a></p></li>
-  </ul>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Breed</th>
+    </tr>
+
+    <tr puppy ng-repeat="puppy in puppies">
+    </tr> 
+
+  </table>
 
 
 
@@ -42,6 +49,7 @@
 
     <script src="javascripts/services/puppy_service.js"></script>
     <script src="javascripts/services/breed_service.js"></script>
+    <script src="javascripts/directives/puppy.js"></script>
     <script src="javascripts/controllers/puppy_controller.js"></script>
 
   </body>

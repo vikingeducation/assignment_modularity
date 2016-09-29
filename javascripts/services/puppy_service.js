@@ -33,14 +33,8 @@ puppyApp.factory('puppyService',['$http', function($http){
       data: JSON.stringify({name: name, breed_id: breedId})
     }).then(function successCallback(response){
       console.log("success creating puppy");
-      
-      var puppyObject = response.data;
-      var puppy = {};
-      puppy.name = puppyObject.name;
-      puppy.breed = puppyObject.breed;
-      puppy.id = puppyObject.id;
-
-      _puppies.unshift(puppy);
+      //need to filter by created_at to display in order
+      service.getPuppies();
 
       
     }, function errorCallback(){
@@ -52,7 +46,7 @@ puppyApp.factory('puppyService',['$http', function($http){
     $http({
       method: "DELETE",
       url: "https://ajax-puppies.herokuapp.com/puppies/" + id + ".json"
-      //data: JSON.stringify({id: id})
+      
     }).then(function successCallback(response){
       console.log("success deleting puppy");
       foo = response.data;
