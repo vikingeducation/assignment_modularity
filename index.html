@@ -32,11 +32,11 @@
   <h3>Our puppies:</h3>
   <table>
     <tr>
-      <th>Name</th>
-      <th>Breed</th>
+      <th ng-click="setFilter('name')">Name</th>
+      <th ng-click="setFilter('breed')">Breed</th>
     </tr>
 
-    <tr puppy ng-repeat="puppy in puppies">
+    <tr puppy ng-repeat="puppy in puppies | orderBy: currentFilter">
     </tr> 
 
   </table>

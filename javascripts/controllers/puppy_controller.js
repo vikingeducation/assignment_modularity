@@ -4,6 +4,8 @@ puppyApp.controller("PuppiesCtrl", ['$scope', 'breedService', 'puppyService', fu
 
   $scope.breeds = breedService.getBreeds();
 
+  $scope.currentFilter = 'name';
+
   $scope.createPuppy = function(){
     console.log($scope.breedId);
     puppyService.createPuppy($scope.name, $scope.breedId);
@@ -15,5 +17,13 @@ puppyApp.controller("PuppiesCtrl", ['$scope', 'breedService', 'puppyService', fu
   $scope.deletePuppy = function(id){
     puppyService.deletePuppy(id);
     
+  }
+
+  $scope.setFilter = function(passedFilter){
+    if($scope.filter === passedFilter){
+      $scope.currentFilter = "-" + passedFilter;
+    } else {
+      $scope.currentFilter = passedFilter;
+    }
   }
 }]);

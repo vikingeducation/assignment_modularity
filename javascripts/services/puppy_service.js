@@ -12,11 +12,13 @@ puppyApp.factory('puppyService',['$http', function($http){
       console.log("success getting puppies");
       var puppies = response.data;
       _puppies.splice(0, _puppies.length);
+
       puppies.forEach(function(puppyObject){
         var puppy = {};
         puppy.name = puppyObject.name;
-        puppy.breed = puppyObject.breed;
+        puppy.breed = puppyObject.breed.name;
         puppy.id = puppyObject.id;
+        puppy.createdAt = puppyObject.created_at;
 
         _puppies.push(puppy);
 
