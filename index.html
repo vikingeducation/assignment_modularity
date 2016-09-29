@@ -1,0 +1,54 @@
+<!doctype html>
+<html ng-app="puppyApp">
+
+  <head>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+
+    <link href="styles.css" rel="stylesheet" type="text/css">
+
+  </head>
+
+
+  <body ng-controller="PuppiesCtrl">
+
+  <h1>The Angular Puppy Shelter</h1>
+
+  <h3>Register a new Puppy</h3>
+  <form>
+    Name<br>
+    <input type="text" name="name" ng-model="name"></br>
+
+    Breed<br>
+    <select name="breed" ng-model="breedId">
+      <option ng-repeat="breed in breeds" value={{breed.id}}>{{breed.name}}</option>
+    </select>
+
+    <button ng-click="createPuppy()">Register</button>
+
+  </form>
+
+
+  <h3>Our puppies:</h3>
+  <ul>
+  <li ng-repeat="puppy in puppies"><p>{{puppy.name}}({{puppy.breed.name}}) <a href="#" ng-click="deletePuppy(puppy.id)">adopt</a></p></li>
+  </ul>
+
+
+
+
+
+    <script src="javascripts/app.js"></script>
+
+    <script src="javascripts/services/puppy_service.js"></script>
+    <script src="javascripts/services/breed_service.js"></script>
+    <script src="javascripts/controllers/puppy_controller.js"></script>
+
+  </body>
+
+
+
+
+
+
+</html>
