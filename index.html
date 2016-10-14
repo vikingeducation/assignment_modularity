@@ -24,7 +24,7 @@
   </select>
 <br>
 <br>
-  <input id="submit-button" type="submit" value="REGISTER PUPPY">
+  <input ng-click='createPuppy()' id="submit-button" type="submit" value="REGISTER PUPPY">
   current name: {{formData.name}} current breed: {{formData.breed}}
 </form>
 <br>
@@ -32,8 +32,13 @@
 <h2>Our Puppies</h2>
 <a href="#" ng-click='getPuppies()' id="refresh">Refresh puppy list</a>
 <br>
-<ul id="puppy-list" ng-repeat='puppy in puppies'>
-  <li><strong>{{puppy.name}}</strong> ({{puppy.breed.name}}) created at: {{puppy.created_at | date}} -- <a href="#" ng-click='adoptPuppy(puppy.id)'>adopt</a></li>
+<table>
+  <th><td>Name</td><td>Breed</td><td>Date</td><td>Adopt</td></th>
+  <tr ng-repeat='puppy in puppies'>
+  <puppy puppy="puppy"></puppy>
+</tr>
+</table>
+
 
 
 </ul>
@@ -49,4 +54,5 @@
 
 <!-- directives -->
 <script src='directives/breedlist.js'></script>
+<script src='directives/puppy.js'></script>
 </html>

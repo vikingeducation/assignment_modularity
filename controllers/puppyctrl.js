@@ -1,6 +1,7 @@
 pupApp.controller("PuppyCtrl", ['$scope', '$window', 'breedService', 'puppyService', function($scope, $window, breedService, puppyService){
   $scope.breeds = [];
   $scope.puppies = [];
+  $scope.formData = {};
 
   $scope.getBreeds = function(){
     var breeds = [];
@@ -30,6 +31,25 @@ pupApp.controller("PuppyCtrl", ['$scope', '$window', 'breedService', 'puppyServi
         };
       };
     });
+  };
+
+  $scope.createPuppy = function(){
+    puppyService.createPuppy($scope.formData).then(function(data){
+      $window.console.log(data.data);
+      data.data.breed = {};
+      data.data.breed.name = $scope.findBreed(data.data.breed_id);
+      $scope.puppies.push(data.data);
+      delete $scope.formData.name;
+      delete $scope.formData.breed;
+    });
+  };
+
+  $scope.findBreed = function(id){
+    for (var i = 0; i < $scope.breeds.length; i++){
+      if ($scope.breeds[i].id === id){
+        return $scope.breeds[i].name;
+      };
+    };
   };
 
 }]);
