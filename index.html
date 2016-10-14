@@ -1,0 +1,58 @@
+<!doctype html>
+<html ng-app="PuppyApp">
+<head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<script src='app.js'></script>
+
+<title>angular puppies</title>
+</head>
+<body ng-controller='PuppyCtrl'>
+
+<h1>puppies by angular</h1>
+
+<h2>Register a New Puppy</h2>
+<form name="puppyForm" id="form">
+  <label for="name">Name:</label><br>
+   <input type="text" id="name" name="name" ng-model='formData.name'></input>
+<br><br>
+
+    <label for="breed">Breed:</label><br>
+  <select breed-list breeds='breeds' name="breed" id="breed" ng-model='formData.breed'>
+
+
+  </select>
+<br>
+<br>
+  <input ng-click='createPuppy()' id="submit-button" type="submit" value="REGISTER PUPPY">
+  current name: {{formData.name}} current breed: {{formData.breed}}
+</form>
+<br>
+
+<h2>Our Puppies</h2>
+<a href="#" ng-click='getPuppies()' id="refresh">Refresh puppy list</a>
+<br>
+<table>
+  <th><td>Name</td><td>Breed</td><td>Date</td><td>Adopt</td></th>
+  <tr ng-repeat='puppy in puppies'>
+  <puppy puppy="puppy"></puppy>
+</tr>
+</table>
+
+
+
+</ul>
+
+
+</body>
+<!-- controllers -->
+<script src='controllers/puppyctrl.js'></script>
+
+<!-- services -->
+<script src='services/breedservice.js'></script>
+<script src='services/puppyservice.js'></script>
+
+<!-- directives -->
+<script src='directives/breedlist.js'></script>
+<script src='directives/puppy.js'></script>
+</html>
