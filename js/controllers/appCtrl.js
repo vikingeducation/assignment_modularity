@@ -1,6 +1,21 @@
 app.controller('appCtrl', ['$scope', 'breedsService', 'puppiesService',
   function($scope, breedsService, puppiesService){
     
+    $scope.sortType = 'name';
+    $scope.sortReverse = false;
+    $scope.toggleSort = function(field) {
+      if (field == $scope.sortType) {
+        $scope.sortReverse ? $scope.sortReverse = false : $scope.sortReverse = true;
+        return;
+      }
+      $scope.sortType = field;
+    }
+    $scope.sortCaret = function(sortType, sortReverse) {
+      if(sortType == $scope.sortType && sortReverse == $scope.sortReverse) {
+        return true;
+      }
+    }
+    
     breedsService.getBreeds().then(function success(response) {
 		  $scope.breeds = response.data;
 	  });

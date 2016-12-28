@@ -34,14 +34,25 @@
           <table class="table table-striped">
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Breed</th>
+                <th>
+                  <a href="#" ng-click="toggleSort('name')">
+                  Name
+                  </a>
+                  <span ng-show="sortCaret('name', true)" class="fa fa-caret-down"></span>
+                  <span ng-show="sortCaret('name', false)" class="fa fa-caret-up"></span>
+                </th>
+                <th>
+                  <a href="#" ng-click="toggleSort('breed')">
+                  Breed
+                  <span ng-show="sortCaret('breed', true)" class="fa fa-caret-down"></span>
+                  <span ng-show="sortCaret('breed', false)" class="fa fa-caret-up"></span>
+                </th>
                 <th>Created</th>
                 <th>Adopt</th>
               </tr>
             </thead>
             <tbody>
-              <tr puppy-tr ng-repeat="puppy in puppies" pup="puppy" adopt="adopt(puppy)"></tr>
+              <tr puppy-tr ng-repeat="puppy in puppies | orderBy:sortType:sortReverse " pup="puppy" adopt="adopt(puppy)"></tr>
             </tbody>
           </table>
         </div>
