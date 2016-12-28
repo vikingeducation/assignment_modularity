@@ -1,0 +1,72 @@
+<html ng-app="app">
+<head>
+  <title>Angular Puppies</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Latest compiled and minified JavaScript -->
+  <link rel="stylesheet" href="app.css">
+</head>
+
+<body ng-controller="appCtrl">
+  <div class="container">
+    <h1>The Angular Puppy Shelter</h1>
+    <div class="well">
+      <div class=row>
+        <div class="col-md-6">
+          <h2>Register a New puppy</h2>
+          <form name="puppyForm">
+            <label>Name:</label>
+            <input type="text" ng-model="puppyParams.name"><br>
+            <label>Breed:</label>
+            <select ng-model="puppyParams.breed_id">
+              <option ng-repeat="breed in breeds" value="{{ breed.id }}">{{ breed.name }}</option>
+            </select><br>
+            <button class="btn btn-sm btn-primary" name="createPuppy" ng-click="createPuppy(puppyParams)">Create Puppy</button>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <h3>Our puppies</h3>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>
+                  <a href="#" ng-click="toggleSort('name')">
+                  Name
+                  </a>
+                  <span ng-show="sortCaret('name', true)" class="fa fa-caret-down"></span>
+                  <span ng-show="sortCaret('name', false)" class="fa fa-caret-up"></span>
+                </th>
+                <th>
+                  <a href="#" ng-click="toggleSort('breed')">
+                  Breed
+                  <span ng-show="sortCaret('breed', true)" class="fa fa-caret-down"></span>
+                  <span ng-show="sortCaret('breed', false)" class="fa fa-caret-up"></span>
+                </th>
+                <th>Created</th>
+                <th>Adopt</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr puppy-tr ng-repeat="puppy in puppies | orderBy:sortType:sortReverse " pup="puppy" adopt="adopt(puppy)"></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+<body>
+  <!-- angular app -->
+  <script src = "js/app.js"></script>
+  <!-- services -->
+  <script src = "js/services/breedsService.js"></script>
+  <script src = "js/services/puppiesService.js"></script>
+  <!-- controllers -->
+  <script src = "js/controllers/appCtrl.js"></script>
+  <!-- directives -->
+  <script src = "js/directives/puppyTr.js"></script>
+</html>
