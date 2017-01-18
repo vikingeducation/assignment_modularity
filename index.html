@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="App">
+  <head>
+    <meta charset="utf-8">
+    <title>Puppy</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  </head>
+  <body ng-controller="AppCtrl">
+
+
+    <form>
+      <input type="text" name="search" ng-model="name" placeholder="Type in puppy name" >
+    </form><br />
+
+
+
+    Add new Puppy
+  <br>
+  <form name="formData">
+    <input type="text"  ng-model="formData.name">
+
+    <select ng-model="formData.breed_id" >
+      <option ng-repeat="breed in breeds" value="{{ breed.id }}" >{{ breed.name }}</option>
+    </select>
+
+   <input type="button" name="button" value="Add" ng-click="create(breed)">
+</form>
+
+  <p></p>
+
+    <table>
+      <tr>
+        <th>name</th>
+        <th>breed</th>
+        <th>adopt</th>
+      </tr>
+      <tr ng-repeat="puppy in puppies | filter: name" >
+        <td>{{ puppy.name }}</td>
+        <td>{{ puppy.breed.name }}</td>
+        <td><button type="button" name="button" ng-click="delete(puppy)">Adopt</button></td>
+      </tr>
+    </table>
+
+    <script type="text/javascript" src="app.js"></script>
+    <!-- <script type="text/javascript" src="directives/createPuppy.js"></script> -->
+    <script type="text/javascript" src="services/breeds.js"></script>
+    <script type="text/javascript" src="services/puppies.js"></script>
+  </body>
+</html>
