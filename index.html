@@ -36,7 +36,7 @@
 
     <h3>Our Puppies</h3>
     <ul>
-      <li ng-repeat="puppy in puppies" data-id="{{ puppy.id }}">{{ puppy.name }} ({{ puppy.breed.name }}), {{ puppy.created_at | timeago }} -- <a href="#" ng-click="adoptPuppy(puppy.id)">Adopt</a></li>
+      <puppy ng-repeat="puppy in puppies" puppy="puppy" adopt-puppy="adoptPuppy(id)"></puppy>
     </ul>
 
     <script src="/javascripts/app.js" charset="utf-8"></script>
@@ -44,5 +44,6 @@
     <script src="/javascripts/services/breedService.js" charset="utf-8"></script>
     <script src="/javascripts/services/puppyService.js" charset="utf-8"></script>
     <script src="/javascripts/filters/timeFilter.js" charset="utf-8"></script>
+    <script src="/javascripts/directives/puppy.js"></script>
   </body>
 </html>
