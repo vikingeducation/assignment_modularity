@@ -1,20 +1,31 @@
 
-<form name="newPuppyForm" ng-submit="createPuppy(newPuppyForm.$valid, newPuppy)">
-  <label>
-    Name
-    <input type="text" ng-model="newPuppy.name" required ng-min-length="2">
-  </label>
+<div class="row">
+  <form name="newPuppyForm" ng-submit="createPuppy(newPuppyForm.$valid, newPuppy)" class="relative">
 
-  <label>
-    Breed
-    <select ng-model="newPuppy.breedId" required>
-      <option ng-repeat="breed in breeds" value="{{ breed.id }}">{{ breed.name }}</option>
-    </select>
-    <input type="text" ng-model="breedFilter" ng-keyup="possibleBreeds(breedFilter)">
-    <div ng-if="matches.length">
-      <div ng-repeat="match in matches">{{ match }}</div>
+    <div class="col-xs-3">
+      <label>
+        Name
+        <input type="text" ng-model="newPuppy.name" required ng-min-length="2">
+      </label>
     </div>
-  </label>
+
+    <div class="col-xs-6">
+      <label>
+        Breed
+
+        <input type="text" ng-model="breedFilter" ng-keyup="possibleBreeds(breedFilter)">
+
+        <div class="absolute autocomplete-options" ng-if="matches.length && breedFilter.length">
+          <div ng-repeat="match in matches | limitTo:10" ng-click="autocomplete(match, scope)">{{ match.name }}</div>
+        </div>
+
+      </label>
+    </div>
+
+    <div class="col-xs-3">
+      <inpuyt type="hidden" ng-model="newPuppy.breedId">
+    </div>
 
   <input type="submit" value="Add Puppy">
 </form>
+</div>
