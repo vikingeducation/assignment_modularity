@@ -35,15 +35,27 @@
     </form>
 
     <h3>Our Puppies</h3>
-    <ul>
-      <puppy ng-repeat="puppy in puppies" puppy="puppy" adopt-puppy="adoptPuppy(id)"></puppy>
-    </ul>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th><a href="#" ng-click="property = property == 'name' ? '-name' : 'name'">Name</a></th>
+          <th><a href="#" ng-click="property = property == 'breed.name' ? '-breed.name' : 'breed.name'">Breed</a></th>
+          <th><a href="#" ng-click="property = property == 'created_at' ? '-created_at' : 'created_at'">Created</a></th>
+          <th>Adopt</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="puppy in puppies | orderBy:property"
+            puppy-row puppy="puppy" adopt-puppy="adoptPuppy(id)">
+        </tr>
+      </tbody>
+    </table>
 
     <script src="/javascripts/app.js" charset="utf-8"></script>
     <script src="/javascripts/controllers/shelterCtrl.js" charset="utf-8"></script>
     <script src="/javascripts/services/breedService.js" charset="utf-8"></script>
     <script src="/javascripts/services/puppyService.js" charset="utf-8"></script>
     <script src="/javascripts/filters/timeFilter.js" charset="utf-8"></script>
-    <script src="/javascripts/directives/puppy.js"></script>
+    <script src="/javascripts/directives/puppyRow.js"></script>
   </body>
 </html>
