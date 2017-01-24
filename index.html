@@ -1,41 +1,53 @@
 
 <!DOCTYPE html>
 <html lang="en" ng-app="puppies">
-<head>
-  <meta charset="UTF-8">
-  <title>Puppies</title>
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <head>
+    <meta charset="UTF-8">
+    <title>Puppies</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js" charset="utf-8"></script>
-</head>
-<body>
-  <div id="puppies" ng-controller="PuppiesCtl">
-    <h1>Our Puppies</h1>
-    <puppies puppies="puppies" adopt="adopt(puppy)"></puppies>
-  </div>
-  <div id="breeds" ng-controller="BreedsCtl">
-    <div ng-repeat="breed in breeds">
-      {{ breed }}
+    <link rel="stylesheet" href="main.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js" charset="utf-8"></script>
+  </head>
+  <body ng-controller="PuppiesCtl">
+    <main class="container">
+
+    <div class="row">
+      <div class="col-xs-12">
+        <puppy-form></puppy-form>
+      </div>
     </div>
-  </div>
 
-  <script src="js/app.js" charset="utf-8"></script>
+    <div class="row">
+      <div class="col-xs-12">
+        <div id="puppies">
+          <h1>Our Puppies</h1>
+          <puppies puppies="puppies" adopt="adopt(puppy)"></puppies>
+        </div>
+      </div>
+    </div>
 
-  <!-- directives -->
-  <script src="js/directives/time-ago.min.js" charset="utf-8"></script>
-  <script src="js/directives/puppy.js" charset="utf-8"></script>
-  <script src="js/directives/puppies.js" charset="utf-8"></script>
+    </main>
 
-  <!-- services -->
-  <script src="js/services/puppies.js" charset="utf-8"></script>
-  <script src="js/services/breeds.js" charset="utf-8"></script>
+    <script src="js/app.js" charset="utf-8"></script>
 
-  <!-- controller -->
-  <script src="js/controllers/puppies.js" charset="utf-8"></script>
-  <script src="js/controllers/breeds.js" charset="utf-8"></script>
-</body>
+    <!-- directives -->
+    <script src="js/directives/time-ago.min.js" charset="utf-8"></script>
+    <script src="js/directives/puppy.js" charset="utf-8"></script>
+    <script src="js/directives/puppyForm.js" charset="utf-8"></script>
+    <script src="js/directives/puppies.js" charset="utf-8"></script>
+
+    <!-- services -->
+    <script src="js/services/puppies.js" charset="utf-8"></script>
+    <script src="js/services/breeds.js" charset="utf-8"></script>
+
+    <!-- controller -->
+    <script src="js/controllers/puppies.js" charset="utf-8"></script>
+    <script src="js/controllers/breeds.js" charset="utf-8"></script>
+  </body>
 </html>

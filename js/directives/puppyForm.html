@@ -1,0 +1,16 @@
+
+<form ng-submit="">
+  <label>
+    Name
+    <input type="text">
+  </label>
+
+  <label>
+    Breed
+    <select>
+      <option ng-repeat="breed in breeds" value="breed.id">{{ breed.name }}</option>
+    </select>
+  </label>
+
+  <input type="submit" value="Post Puppy">
+</form>
