@@ -2,25 +2,8 @@
 puppies.directive("puppyForm",
   ["breedService",
     "puppyService",
-    '$q',
-    function(breedService, puppyService, $q){
+    function(breedService, puppyService){
 
-      var getBreedByName = function(filter, breeds){
-        var breed;
-        for(var i = 0; i < breeds.length; i++) {
-          if(breeds[i].name.toLowerCase() === filter.toLowerCase()){
-            breed = breeds[i];
-            break;
-          }
-        }
-        if(!breed){
-          return breedService.newBreed(filter);
-        } else {
-          return $q(function(resolve, reject){
-            resolve(breed.id);
-          })
-        }
-      }
       var post = function post(scope, puppyData){
         puppyService.post(puppyData).then(function(){
           puppyData.name=null;
@@ -28,18 +11,27 @@ puppies.directive("puppyForm",
           scope.breedFilter=null;
           scope.showMatches = false;
         })
-      }
+      };
 
       var createPuppy = function createPuppy(scope, valid, puppyData){
         if(isNaN(puppyData.breedId)){
-          getBreedByName(scope.breedFilter, scope.breeds)
-          .then(function(breedId){
+          breedService.findByName(scope.breedFilter)
+            .then(function(breedId){
               puppyData.breedId = breedId
               post(scope, puppyData);
             });
-        }else if(valid){
+        } else if(valid){
           post(scope, puppyData)
         }
+      };
+
+      var possibleBreeds = function possibleBreeds(scope, breedFilter){
+        scope.matches = [];
+        var breeds = scope.breeds;
+        for(var i = 0; i < breeds.length; i++){
+          if(breeds[i].name.match(breedFilter)) scope.matches.push(breeds[i]);
+        }
+        scope.showMatches = true;
       };
 
       var autocomplete = function autocomplete(scope, breed){
@@ -64,15 +56,9 @@ puppies.directive("puppyForm",
           autocomplete(scope, breed);
         };
 
-        scope.possibleBreeds = function possibleBreeds(breedFilter){
-          scope.matches = [];
-          var breeds = scope.breeds;
-          for(var i = 0; i < breeds.length; i++){
-            if(breeds[i].name.match(breedFilter)) scope.matches.push(breeds[i]);
-          }
-          scope.showMatches = true;
+        scope.possibleBreeds = function(breedFilter){
+          possibleBreeds(scope, breedFilter);
         };
-
       };
 
       return {
