@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="pupShelter">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Puppy Adoption</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js" charset="utf-8"></script>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  </head>
+  <body class="container" ng-controller="shelterCtrl">
+    <h1>Adopt a puppy!</h1>
+
+    <h3>Register a new puppy</h3>
+    <form class="form">
+      <label>
+        Name
+        <input class="form-control" type="text" name="name">
+      </label>
+      <label>
+        Breed
+        <select class="form-control" name="breed">
+          <option value="1">poodle</option>
+          <option value="2">rotweiler</option>
+          <option value="3">sheepdog</option>
+        </select>
+      </label>
+      <input class="btn btn-primary" type="submit" name="submit" value="Register Puppy">
+    </form>
+
+    <h3>Our Puppies</h3>
+    <ul>
+      <li>Fluffy (Poodle), created 10 minutes ago -- <a href="#">Adopt</a></li>
+      <li>Scruffy (Rotweiler), created 10 minutes ago -- <a href="#">Adopt</a></li>
+      <li>Muffy (Sheepdog), created 10 minutes ago -- <a href="#">Adopt</a></li>
+    </ul>
+
+    <script src="/javascripts/app.js" charset="utf-8"></script>
+    <script src="/javascripts/controllers/shelterCtrl.js" charset="utf-8"></script>
+    <script src="/javascripts/services/breedService.js" charset="utf-8"></script>
+  </body>
+</html>
