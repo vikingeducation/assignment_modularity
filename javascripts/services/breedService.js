@@ -21,9 +21,18 @@ pupShelter.factory('breedService', ['$http', function($http) {
     });
   };
 
+  var getBreedFor = function getBreedFor(id) {
+    var breed = breeds.filter(function(breed) {
+      return breed.id === id;
+    })[0];
+
+    return breed;
+  }
+
   return {
     fetchBreeds: fetchBreeds,
     getBreeds: getBreeds,
+    getBreedFor: getBreedFor
   };
 
 }]);

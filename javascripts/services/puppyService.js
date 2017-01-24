@@ -1,4 +1,4 @@
-pupShelter.factory('puppyService', ['$http', function($http) {
+pupShelter.factory('puppyService', ['$http', 'breedService', function($http, breedService) {
   var puppies = [];
 
   var getPuppies = function() {
@@ -21,8 +21,35 @@ pupShelter.factory('puppyService', ['$http', function($http) {
     });
   };
 
+  var createPuppy = function createPuppy(puppy) {
+    var newPuppy = {
+      name: puppy.name,
+      breed_id: puppy.breed_id
+    }
+
+    $http({
+      method: 'POST',
+      url: 'https://ajax-puppies.herokuapp.com/puppies.json',
+      data: newPuppy
+    }).then(function successCallback(response) {
+      var formattedPuppy = _cleanedUpPuppy(response.data);
+
+      puppies.push(formattedPuppy);
+    }, function errorCallback(response) {
+      console.log(response);
+    });
+  };
+
+  var _cleanedUpPuppy = function _cleanedUpPuppy(dirtyPuppy) {
+    dirtyPuppy.breed = breedService.getBreedFor(dirtyPuppy.breed_id);
+    delete dirtyPuppy.breed_id;
+
+    return dirtyPuppy;
+  }
+
   return {
     fetchPuppies: fetchPuppies,
     getPuppies: getPuppies,
+    createPuppy: createPuppy
   };
 }]);

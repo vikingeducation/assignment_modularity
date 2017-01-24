@@ -9,7 +9,11 @@ pupShelter.controller('shelterCtrl', [ '$scope', 'breedService', 'puppyService',
 
   puppyService.fetchPuppies(function() {
     $scope.puppies = puppyService.getPuppies();
-    console.log($scope.puppies);
   });
+
+  $scope.createPuppy = function createPuppy() {
+    puppyService.createPuppy($scope.newPuppy);
+    $scope.newPuppy = {};
+  }
 
 }]);
