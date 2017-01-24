@@ -9,7 +9,23 @@ puppies.factory('puppyService', ['$http', function($http){
                 })
   };
 
+  var _deletePuppy = function _deletePuppy(puppy){
+    var index = puppies.indexOf(puppy)
+    puppies.splice(index, 1);
+  }
+
+  var adoptPuppy = function adoptPuppy(puppy){
+    return $http({
+                  method:'DELETE',
+                  url: puppy.url
+                })
+                .then(function(){
+                  _deletePuppy(puppy);
+                });
+  }
+
   return {
-    puppies: getPuppies
+    puppies: getPuppies,
+    adopt: adoptPuppy
   }
 }])

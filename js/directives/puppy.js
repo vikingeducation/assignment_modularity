@@ -6,7 +6,8 @@ puppies.directive('puppy', function(){
     templateUrl: '/js/directives/puppy.html',
     restrict: 'A',
     scope:{
-      puppy: "="
+      puppy: "=",
+      adopt: '&'
     },
     link: setup
   }

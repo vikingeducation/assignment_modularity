@@ -3,7 +3,8 @@ puppies.directive('puppies', function(){
     templateUrl: '/js/directives/puppies.html',
     restrict: 'E',
     scope:{
-      puppies: "="
+      puppies: "=",
+      adopt: '&'
     }
   }
 })

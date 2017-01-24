@@ -4,5 +4,9 @@ puppies.controller('PuppiesCtl', [
     puppyService.puppies().then(function(puppies){
       $scope.puppies = puppies
     })
+
+    $scope.adopt = function adopt(puppy){
+      puppyService.adopt(puppy)
+    }
   }
 ])

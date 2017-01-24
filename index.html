@@ -15,7 +15,7 @@
 <body>
   <div id="puppies" ng-controller="PuppiesCtl">
     <h1>Our Puppies</h1>
-    <puppies puppies="puppies"></puppies>
+    <puppies puppies="puppies" adopt="adopt(puppy)"></puppies>
   </div>
   <div id="breeds" ng-controller="BreedsCtl">
     <div ng-repeat="breed in breeds">
