@@ -32,6 +32,7 @@ function($http, breedService){
       });
   };
 
+
   var postPuppy = function postPuppy(puppyData){
     var puppy = {
       name: puppyData.name,
@@ -43,12 +44,7 @@ function($http, breedService){
       data: puppy
     }).then(function(resp){
       var puppy = resp.data, breed;
-      for(var i = 0; i < breeds.length; i++){
-        if(breeds[i].id === puppy.breed_id){
-          breed = breeds[i];
-          break;
-        }
-      }
+
       puppy.breed = breed;
       puppy.url = "https://ajax-puppies.herokuapp.com/puppies/" + puppy.id +".json"
       puppies.unshift(puppy);
