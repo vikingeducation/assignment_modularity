@@ -14,6 +14,10 @@ pupShelter.controller('shelterCtrl', [ '$scope', 'breedService', 'puppyService',
   $scope.createPuppy = function createPuppy() {
     puppyService.createPuppy($scope.newPuppy);
     $scope.newPuppy = {};
-  }
+  };
+
+  $scope.adoptPuppy = function adoptPuppy(id) {
+    puppyService.adoptPuppy(id);
+  };
 
 }]);

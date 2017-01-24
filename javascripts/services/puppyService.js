@@ -25,7 +25,7 @@ pupShelter.factory('puppyService', ['$http', 'breedService', function($http, bre
     var newPuppy = {
       name: puppy.name,
       breed_id: puppy.breed_id
-    }
+    };
 
     $http({
       method: 'POST',
@@ -45,11 +45,32 @@ pupShelter.factory('puppyService', ['$http', 'breedService', function($http, bre
     delete dirtyPuppy.breed_id;
 
     return dirtyPuppy;
-  }
+  };
+
+  var adoptPuppy = function adoptPuppy(id) {
+    $http({
+      method: 'DELETE',
+      url: 'https://ajax-puppies.herokuapp.com/puppies/'+id+'.json',
+    }).then(function successCallback(response) {
+      _deletePuppy(response.data.id);
+    }, function errorCallback(response) {
+      console.log(response);
+    });
+  };
+
+  var _deletePuppy = function _deletePuppy(id) {
+    for (var i = 0; i < puppies.length; i++) {
+      if (puppies[i].id === id) {
+        return puppies.splice(i, 1);
+      }
+    }
+    return false;
+  };
 
   return {
     fetchPuppies: fetchPuppies,
     getPuppies: getPuppies,
-    createPuppy: createPuppy
+    createPuppy: createPuppy,
+    adoptPuppy: adoptPuppy,
   };
 }]);
