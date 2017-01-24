@@ -22,7 +22,6 @@ pupShelter.factory('breedService', ['$http', function($http) {
   };
 
   return {
-    getAll: getAll,
     fetchBreeds: fetchBreeds,
     getBreeds: getBreeds,
   };

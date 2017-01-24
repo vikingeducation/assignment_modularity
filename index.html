@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Puppy Adoption</title>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="/js/jquery.timeago.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js" charset="utf-8"></script>
 
     <link rel="stylesheet" href="style.css">
@@ -34,13 +36,13 @@
 
     <h3>Our Puppies</h3>
     <ul>
-      <li>Fluffy (Poodle), created 10 minutes ago -- <a href="#">Adopt</a></li>
-      <li>Scruffy (Rotweiler), created 10 minutes ago -- <a href="#">Adopt</a></li>
-      <li>Muffy (Sheepdog), created 10 minutes ago -- <a href="#">Adopt</a></li>
+      <li ng-repeat="puppy in puppies">{{ puppy.name }} ({{ puppy.breed.name }}), {{ puppy.created_at | timeago }} -- <a href="#">Adopt</a></li>
     </ul>
 
     <script src="/javascripts/app.js" charset="utf-8"></script>
     <script src="/javascripts/controllers/shelterCtrl.js" charset="utf-8"></script>
     <script src="/javascripts/services/breedService.js" charset="utf-8"></script>
+    <script src="/javascripts/services/puppyService.js" charset="utf-8"></script>
+    <script src="/javascripts/filters/timeFilter.js" charset="utf-8"></script>
   </body>
 </html>
