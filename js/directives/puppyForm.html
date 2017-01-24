@@ -1,16 +1,20 @@
 
-<form ng-submit="">
+<form name="newPuppyForm" ng-submit="createPuppy(newPuppyForm.$valid, newPuppy)">
   <label>
     Name
-    <input type="text">
+    <input type="text" ng-model="newPuppy.name" required ng-min-length="2">
   </label>
 
   <label>
     Breed
-    <select>
-      <option ng-repeat="breed in breeds" value="breed.id">{{ breed.name }}</option>
+    <select ng-model="newPuppy.breedId" required>
+      <option ng-repeat="breed in breeds" value="{{ breed.id }}">{{ breed.name }}</option>
     </select>
+    <input type="text" ng-model="breedFilter" ng-keyup="possibleBreeds(breedFilter)">
+    <div ng-if="matches.length">
+      <div ng-repeat="match in matches">{{ match }}</div>
+    </div>
   </label>
 
-  <input type="submit" value="Post Puppy">
+  <input type="submit" value="Add Puppy">
 </form>

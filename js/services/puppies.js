@@ -1,6 +1,13 @@
 
-puppies.factory("puppyService", ["$http", function($http){
+puppies.factory("puppyService",
+["$http", "breedService",
+function($http, breedService){
   var puppies = [];
+  var breeds = []
+
+  breedService.breeds().then(function(breedData){
+    breeds = breedData;
+  })
 
   var getPuppies = function getPuppies(){
     return $http.get("https://ajax-puppies.herokuapp.com/puppies.json")
@@ -26,10 +33,25 @@ puppies.factory("puppyService", ["$http", function($http){
   };
 
   var postPuppy = function postPuppy(puppyData){
+    var puppy = {
+      name: puppyData.name,
+      breed_id: puppyData.breedId
+    }
     return $http({
       method: "POST",
-      url: // TODO
-        // https://ajax-puppies.herokuapp.com/puppies.json', {name: "Fido", breed_id: 12}.to_json
+      url: "https://ajax-puppies.herokuapp.com/puppies.json",
+      data: puppy
+    }).then(function(resp){
+      var puppy = resp.data, breed;
+      for(var i = 0; i < breeds.length; i++){
+        if(breeds[i].id === puppy.breed_id){
+          breed = breeds[i];
+          break;
+        }
+      }
+      puppy.breed = breed;
+      puppy.url = "https://ajax-puppies.herokuapp.com/puppies/" + puppy.id +".json"
+      puppies.unshift(puppy);
     })
   };
 
