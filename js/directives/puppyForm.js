@@ -8,6 +8,7 @@ puppies.directive("puppyForm",
         breedService.breeds().then(function(breeds){
           scope.breeds = breeds;
         })
+        scope.
       };
 
       return {
