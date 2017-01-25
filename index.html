@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="pupShelter">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Puppy Adoption</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="/js/jquery.timeago.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js" charset="utf-8"></script>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  </head>
+  <body class="container" ng-controller="shelterCtrl">
+    <h1>Adopt a puppy!</h1>
+
+    <h3>Register a new puppy</h3>
+    <form class="form" ng-submit="createPuppy()">
+      <label>
+        Name
+        <input class="form-control" type="text" ng-model="newPuppy.name">
+      </label>
+      <label>
+        Breed
+        <select class="form-control" ng-model="newPuppy.breed_id">
+          <option ng-repeat="breed in breeds" value="{{ breed.id }}">{{ breed.name }}</option>
+        </select>
+      </label>
+      <input class="btn btn-primary" type="submit" name="submit" value="Register Puppy">
+    </form>
+
+    <h3>Our Puppies</h3>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th><a href="#" ng-click="property = property == 'name' ? '-name' : 'name'">Name</a></th>
+          <th><a href="#" ng-click="property = property == 'breed.name' ? '-breed.name' : 'breed.name'">Breed</a></th>
+          <th><a href="#" ng-click="property = property == 'created_at' ? '-created_at' : 'created_at'">Created</a></th>
+          <th>Adopt</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="puppy in puppies | orderBy:property"
+            puppy-row puppy="puppy" adopt-puppy="adoptPuppy(id)">
+        </tr>
+      </tbody>
+    </table>
+
+    <script src="/javascripts/app.js" charset="utf-8"></script>
+    <script src="/javascripts/controllers/shelterCtrl.js" charset="utf-8"></script>
+    <script src="/javascripts/services/breedService.js" charset="utf-8"></script>
+    <script src="/javascripts/services/puppyService.js" charset="utf-8"></script>
+    <script src="/javascripts/filters/timeFilter.js" charset="utf-8"></script>
+    <script src="/javascripts/directives/puppyRow.js"></script>
+  </body>
+</html>
