@@ -1,0 +1,6 @@
+<td><strong>{{ puppy.name }}</strong></td>
+<td>{{ breed.name }}</td>
+<td>
+  {{ puppy.created_at | timeAgo }}
+</td>
+<td><a href="#" ng-click="adopt({puppy: puppy})">adopt</a></td>

@@ -1,0 +1,15 @@
+
+<table class="table table-striped table-bordered" ng-if="puppies.length">
+  <thead>
+    <th ng-click="setSortCriteria('name')">Name</th>
+    <th ng-click="setSortCriteria('breed')">Breed</th>
+    <th ng-click="setSortCriteria('createdAt')">Posted</th>
+    <th>Adopt</th>
+  </thead>
+  <tbody>
+    <tr ng-repeat="puppy in puppies | orderBy:orderType:direction" puppy="puppy" adopt="adopt({puppy: puppy})"></tr>
+  </tbody>
+</table>
+<div ng-if="!puppies.length">
+  <h2>No Puppies to Adopt</h2>
+</div>

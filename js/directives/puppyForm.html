@@ -1,0 +1,31 @@
+
+<div class="row">
+  <form name="newPuppyForm" ng-submit="createPuppy(newPuppyForm.$valid, newPuppy)" class="relative">
+
+    <div class="col-xs-3">
+      <label for="newPuppyName" my-click="alert(newPuppy.name)">
+        Name
+      </label>
+      <input id="newPuppyName" class="form-control" type="text" ng-model="newPuppy.name" required ng-min-length="2" my-click="alert(newPuppy.name)">
+    </div>
+
+    <div class="col-xs-6">
+      <label for="newPuppyBreed">
+        Breed
+      </label>
+
+      <input id="newPuppyBreed" class="form-control" type="text" ng-model="breedFilter" ng-keyup="possibleBreeds(breedFilter)">
+
+      <div class="autocomplete-options" ng-if="matches.length && breedFilter.length && showMatches">
+        <div ng-repeat="match in matches | limitTo:10" ng-click="autocomplete(match)">{{ match.name }}</div>
+      </div>
+
+      <input type="hidden" ng-model="newPuppy.breedId">
+    </div>
+
+    <div class="col-xs-3"><br>
+      <input type="submit" value="Add Puppy" class="btn btn-block">
+    </div>
+
+  </form>
+</div>
