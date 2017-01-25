@@ -41,8 +41,12 @@ puppies.directive("puppyForm",
       };
 
       var setup = function setup(scope){
-        scope.newPuppy = {};
+        scope.newPuppy = {name: "test", id: null};
         scope.showMatches = true;
+
+        scope.alert = function alert(val){
+          console.log(val);
+        }
 
         breedService.breeds().then(function(breeds){
           scope.breeds = breeds;

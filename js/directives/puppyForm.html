@@ -3,10 +3,10 @@
   <form name="newPuppyForm" ng-submit="createPuppy(newPuppyForm.$valid, newPuppy)" class="relative">
 
     <div class="col-xs-3">
-      <label for="newPuppyName">
+      <label for="newPuppyName" my-click="alert(newPuppy.name)">
         Name
       </label>
-      <input id="newPuppyName" class="form-control" type="text" ng-model="newPuppy.name" required ng-min-length="2">
+      <input id="newPuppyName" class="form-control" type="text" ng-model="newPuppy.name" required ng-min-length="2" my-click="alert(newPuppy.name)">
     </div>
 
     <div class="col-xs-6">
