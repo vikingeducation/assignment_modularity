@@ -77,4 +77,18 @@ puppies.factory("puppyService", ['$http', function($http) {
 }]);
 
 // to render a puppy description in list with adopt link
-puppies.directive()
+puppies.directive('puppyInfo', ['puppyService', function(puppyService) {
+  function linkCallback(scope) {
+    scope.deletePuppy = function() {
+      puppyService.delete(scope.puppy.id)
+    }
+  }
+  return {
+    templateUrl: "puppyInfo.html",
+    restrict: 'A',
+    scope: {
+      puppy: "="
+    },
+    link: linkCallback
+  }
+}])

@@ -41,11 +41,7 @@
       <th>Post Date</th>
       <th>Adopt</th>
     </tr>
-    <tr ng-repeat="puppy in puppies">
-      <td>{{puppy.name}}</td>
-      <td>{{puppy.breed.name}}</td>
-      <td>{{puppy.created_at}}</td>
-      <td ng-click="deletePuppy(puppy.id)"><a href="">adopt</a></td>
+    <tr puppy-info ng-repeat="puppy in puppies" puppy="puppy">
     </tr>
   </table>
 
