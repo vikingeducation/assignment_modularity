@@ -23,18 +23,16 @@
     <h1 class="text-center">The AJAX Puppy Shelter</h1>
 
     <h3>Register a New Puppy</h3>
-    <form>
+    <form name="form">
       <label>Name</label>
-      <input type="text" name="name">
+      <input type="text" name="name" ng-model="puppyName">
       <label>Breed</label>
-      <select>
-        <option ng-repeat="breed in breeds">{{ breed.name }}</option>
-      </select>
-      <input type="submit" name="submit" value="Register Puppy">
+      <select ng-model="puppyBreed" ng-options="breed.id as breed.name for breed in breeds"></select>
+      <input type="submit" name="submit" value="Register Puppy" ng-click="submitNewPuppy(puppyName, puppyBreed)">
     </form>
 
     <h3>Our Puppies</h3>
-    <p><a href="">Refresh puppies list</a></p>
+    <p ng-click="refreshPuppies()"><a href="">Refresh puppies list</a></p>
 
   <table>
     <tr>
@@ -47,7 +45,7 @@
       <td>{{puppy.name}}</td>
       <td>{{puppy.breed.name}}</td>
       <td>{{puppy.created_at}}</td>
-      <td><a href="">adopt</a></td>
+      <td ng-click="deletePuppy(puppy.id)"><a href="">adopt</a></td>
     </tr>
   </table>
 
