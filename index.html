@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app="puppies">
+<head>
+  <title>Puppies</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="app.js"></script>
+</head>
+<body ng-controller="PuppiesCtrl">
+
+<button ng-click="showPuppies()">show puppies</button>
+
+<div class="container">
+  <div class="row">
+    <h1 class="text-center">The AJAX Puppy Shelter</h1>
+
+    <h3>Register a New Puppy</h3>
+    <form name="form">
+      <label>Name</label>
+      <input type="text" name="name" ng-model="puppyName">
+      <label>Breed</label>
+      <select ng-model="puppyBreed" ng-options="breed.id as breed.name for breed in breeds"></select>
+      <input type="submit" name="submit" value="Register Puppy" ng-click="submitNewPuppy(puppyName, puppyBreed)">
+    </form>
+
+    <h3>Our Puppies</h3>
+    <p ng-click="refreshPuppies()"><a href="">Refresh puppies list</a></p>
+
+  <table>
+    <tr>
+      <th ng-click="setSort('name')">Puppy</th>
+      <th ng-click="setSort('breed')">Breed</th>
+      <th ng-click="setSort('created_at')">Post Date</th>
+      <th>Adopt</th>
+    </tr>
+    <tr puppy-info ng-repeat="puppy in puppies | orderBy: sortVar : sortValue " puppy="puppy" deletepuppy="deletepuppy(puppy.id)">
+    </tr>
+  </table>
+
+
+
+
+
+  </div>
+</div>
+
+
+
+  <script type="text/javascript" src="app.js"></script>
+</body>
+</html>
