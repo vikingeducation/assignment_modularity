@@ -36,12 +36,12 @@
 
   <table>
     <tr>
-      <th ng-click="setSort()">Puppy</th>
-      <th ng-click="setSort()">Breed</th>
-      <th ng-click="setSort()">Post Date</th>
+      <th ng-click="setSort('name')">Puppy</th>
+      <th ng-click="setSort('breed')">Breed</th>
+      <th ng-click="setSort('created_at')">Post Date</th>
       <th>Adopt</th>
     </tr>
-    <tr puppy-info ng-repeat="puppy in puppies | orderBy: 'created_at' : true " puppy="puppy" deletepuppy="deletepuppy(puppy.id)">
+    <tr puppy-info ng-repeat="puppy in puppies | orderBy: sortVar : sortValue " puppy="puppy" deletepuppy="deletepuppy(puppy.id)">
     </tr>
   </table>
 

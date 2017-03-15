@@ -35,6 +35,18 @@ puppies.controller('PuppiesCtrl', [
       })
     }
 
+    $scope.sortVar;
+    $scope.sortValue = false;
+    $scope.setSort = function(string) {
+      if ($scope.sortVar === string) {
+        $scope.sortValue = !$scope.sortValue;
+      } else {
+        $scope.sortVar = string;
+        $scope.sortValue = true;
+      }
+      
+    }
+
   }])
 
 
