@@ -9,31 +9,32 @@ puppies.controller('PuppiesCtrl', [
     });
 
 
+    console.log('refreshing')
+    puppyService.getAll().then(function(object) {
+      $scope.puppies = object.data;
+    })
+    // delete later
     $scope.showPuppies = function() {
       console.log(this.puppies);
     }
     $scope.submitNewPuppy = function(name, breed) {
       var puppy = { name: name, breed_id: breed };
-      console.log(puppy)
-      puppyService.registerNew(puppy);
-      $scope.refreshPuppies(); // new puppy doesn't show up on table
+      puppyService.registerNew(puppy).then(function(response) {
+        var puppy = response.data;
+        $scope.puppies.push(puppy);
+      })
       $scope.puppyName = "";
       $scope.puppyBreed = "?";
     }
-    $scope.refreshPuppies = function() {
-      console.log('refreshing')
-      puppyService.getAll().then(function(object) {
-        $scope.puppies = object.data;
+
+    $scope.deletepuppy = function(id) {
+      puppyService.delete(id).then( function(response) {
+        var puppy = response.data;
+        var i = $scope.puppies.indexOf(puppy);
+        $scope.puppies.splice(i, 1);
       })
     }
-    $scope.deletePuppy = function(id) {
-      console.log('deleting' + id)
-      puppyService.delete(id);
-      $scope.refreshPuppies();
-    }
 
-    //intializing
-    $scope.refreshPuppies();
   }])
 
 
@@ -55,7 +56,7 @@ puppies.factory("puppyService", ['$http', function($http) {
   var _puppies = [];
 
   puppies.registerNew = function(puppy) {
-    $http({
+    return $http({
           method: "POST",
           url: "https://ajax-puppies.herokuapp.com/puppies.json",
           data: puppy
@@ -67,7 +68,8 @@ puppies.factory("puppyService", ['$http', function($http) {
   }
 
   puppies.delete = function(id) {
-    $http({
+    console.log("now deleting")
+    return $http({
       method: "DELETE",
       url: "https://ajax-puppies.herokuapp.com/puppies/" + id + ".json"
     })
@@ -77,18 +79,13 @@ puppies.factory("puppyService", ['$http', function($http) {
 }]);
 
 // to render a puppy description in list with adopt link
-puppies.directive('puppyInfo', ['puppyService', function(puppyService) {
-  function linkCallback(scope) {
-    scope.deletePuppy = function() {
-      puppyService.delete(scope.puppy.id)
-    }
-  }
+puppies.directive('puppyInfo', function() {
   return {
     templateUrl: "puppyInfo.html",
     restrict: 'A',
     scope: {
-      puppy: "="
-    },
-    link: linkCallback
+      puppy: "=",
+      deletepuppy: "&"
+    }
   }
-}])
+})
