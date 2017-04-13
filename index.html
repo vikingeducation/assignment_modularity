@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="puppies">
+<html ng-app="pupHub">
 
 <head>
   <meta charset="utf-8">
@@ -12,7 +12,24 @@
 </head>
 
 <body ng-controller="adoptCtrl">
-  
+  <h1>Good Homes for Good Dogs</h1>
+
+  <h3>Add a Puppy</h3>
+  <!-- Breeds: {{ breeds }} -->
+    <form ng-submit="addPuppy()">
+      <label>
+        Name
+        <input type="text" ng-model="newPuppy.name">
+      </label>
+      <label>
+        Breed
+        <select ng-model="newPuppy.breed_id">
+          <option ng-repeat="breed in breeds" value="{{ breed.id }}">{{ breed.name }}</option>
+        </select>
+      </label>
+      <input type="submit" name="submit" value="Add Puppy">
+    </form>
+
 
 </body>
 
@@ -20,10 +37,11 @@
 <script src="javascripts/app.js"></script>
 
 <!-- services -->
-<!-- <script src = "javascripts/services/todoService.js"></script> -->
+<script src = "javascripts/services/breedService.js"></script>
+<script src = "javascripts/services/puppyService.js"></script>
 
 <!-- controllers -->
-<!-- <script src="javascripts/controllers/todoCtrl.js"></script> -->
+<script src="javascripts/controllers/adoptCtrl.js"></script>
 
 <!-- directives -->
 <!-- <script src="javascripts/directives/todo_item.js"></script> -->
