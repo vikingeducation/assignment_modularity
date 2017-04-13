@@ -3,7 +3,6 @@ pupHub.factory('breedService', ['$http', function($http) {
   var breeds = [];
 
   var getBreeds = function() {
-    // populateBreeds();
     return breeds;
   };
 
@@ -17,16 +16,25 @@ pupHub.factory('breedService', ['$http', function($http) {
   var populateBreeds = function() {
     fetchBreeds().then(function successCallback(response) {
       angular.copy(response.data, breeds);
-      // console.log("breed data is: ", response.data);
     }, function errorCallback(response) {
       console.log("BREED ERROR: " + response);
     });
   };
 
+  var searchBreed = function(id) {
+    var breed = breeds.filter(function(breed) {
+      return breed.id === id;
+    })[0];
+
+    return breed;
+  };
+
+
   return {
     getBreeds: getBreeds,
     fetchBreeds: fetchBreeds,
     populateBreeds: populateBreeds,
+    searchBreed: searchBreed,
   };
 
 }]);

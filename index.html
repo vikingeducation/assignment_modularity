@@ -15,21 +15,32 @@
   <h1>Good Homes for Good Dogs</h1>
 
   <h3>Add a Puppy</h3>
-  <!-- Breeds: {{ breeds }} -->
-    <form ng-submit="addPuppy()">
-      <label>
-        Name
-        <input type="text" ng-model="newPuppy.name">
-      </label>
-      <label>
-        Breed
-        <select ng-model="newPuppy.breed_id">
-          <option ng-repeat="breed in breeds" value="{{ breed.id }}">{{ breed.name }}</option>
-        </select>
-      </label>
-      <input type="submit" name="submit" value="Add Puppy">
-    </form>
+  <form ng-submit="addPuppy(newPuppy)">
+    <label>
+      Name
+      <input type="text" ng-model="newPuppy.name">
+    </label>
+    <label>
+      Breed
+      <select ng-model="newPuppy.breed_id">
+        <option ng-repeat="breed in breeds" value="{{ breed.id }}">{{ breed.name }}</option>
+      </select>
+    </label>
+    <input type="submit" name="submit" value="Add Puppy">
+  </form>
 
+  <h3>Available Puppies</h3>
+  <table>
+    <thead>
+      <td>Name</td>
+      <td>Breed</td>
+      <td>Added</td>
+    </thead>
+    <tr ng-repeat="puppy in puppies">
+      <td>{{ puppy.name }}</td>
+      <td>{{ puppy.breed.name }}<td>
+    </tr>
+  </table>
 
 </body>
 
