@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html ng-app="pupHub">
+
+<head>
+  <meta charset="utf-8">
+  <title>Adopt a Puppy</title>
+  <!-- jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <!-- timeago plugin -->
+  <script src="lib/jquery.timeago.js" type="text/javascript"></script>
+  <!-- Angular -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+  <!-- <link rel="stylesheet" href="style.css"> -->
+</head>
+
+<body ng-controller="adoptCtrl">
+  <h1>Good Homes for Good Dogs</h1>
+
+  <h3>Add a Puppy</h3>
+  <form ng-submit="addPuppy(newPuppy)">
+    <label>
+      Name
+      <input type="text" ng-model="newPuppy.name">
+    </label>
+    <label>
+      Breed
+      <select ng-model="newPuppy.breed_id">
+        <option ng-repeat="breed in breeds" value="{{ breed.id }}">{{ breed.name }}</option>
+      </select>
+    </label>
+    <input type="submit" name="submit" value="Add Puppy">
+  </form>
+
+  <h3>Available Puppies</h3>
+  <table>
+    <thead>
+      <tr>
+        <th ng-click="sort('name')">
+          <a>Name</a>
+          <span ng-if="order === 'name'">{{ (direction ? '&#8593;' : '&#8595;') }}</span>
+        </th>
+        <th ng-click="sort('breed.name')">
+          <a>Breed</a>
+          <span ng-if="order === 'breed.name'">{{ (direction ? '&#8593;' : '&#8595;') }}</span>
+        </th>
+        <th ng-click="sort('created_at')">
+          <a>Added</a>
+          <span ng-if="order === 'created_at'">{{ (direction ? '&#8593;' : '&#8595;') }}</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr pup
+          ng-repeat="puppy in puppies | orderBy:i=order:direction"
+          puppy="puppy"
+          adopt-puppy="adoptPuppy(dog)">
+      </tr>
+    <!-- <tr ng-repeat="puppy in puppies">
+      <td>{{ puppy.name }}</td>
+      <td>{{ puppy.breed.name }}<td>
+      <td>{{ puppy.created_at | timeago }}</td>
+    </tr> -->
+    </tbody>
+  </table>
+
+</body>
+
+<!-- angular app -->
+<script src="javascripts/app.js"></script>
+
+<!-- services -->
+<script src = "javascripts/services/breedService.js"></script>
+<script src = "javascripts/services/puppyService.js"></script>
+
+<!-- controllers -->
+<script src="javascripts/controllers/adoptCtrl.js"></script>
+
+<!-- directives -->
+<script src="javascripts/directives/puppy.js"></script>
+
+<!-- timeago script -->
+<script src="lib/time.js"></script>
+
+</html>
