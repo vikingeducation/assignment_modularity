@@ -34,13 +34,24 @@
   <h3>Available Puppies</h3>
   <table>
     <thead>
-      <td>Name</td>
-      <td>Breed</td>
-      <td>Added</td>
+      <tr>
+        <th ng-click="sort('name')">
+          <a>Name</a>
+          <span ng-if="order === 'name'">{{ (direction ? '&#8593;' : '&#8595;') }}</span>
+        </th>
+        <th ng-click="sort('breed.name')">
+          <a>Breed</a>
+          <span ng-if="order === 'breed.name'">{{ (direction ? '&#8593;' : '&#8595;') }}</span>
+        </th>
+        <th ng-click="sort('created_at')">
+          <a>Added</a>
+          <span ng-if="order === 'created_at'">{{ (direction ? '&#8593;' : '&#8595;') }}</span>
+        </th>
+      </tr>
     </thead>
     <tbody>
       <tr pup
-          ng-repeat="puppy in puppies"
+          ng-repeat="puppy in puppies | orderBy:i=order:direction"
           puppy="puppy"
           adopt-puppy="adoptPuppy(dog)">
       </tr>

@@ -13,4 +13,15 @@ pupHub.controller('adoptCtrl', [ '$scope', 'breedService', 'puppyService', funct
     puppyService.adoptPuppy(dog);
   };
 
+  $scope.order = 'type';
+  
+  $scope.sort = function(column) {
+    if ($scope.order === column) {
+      $scope.direction = !$scope.direction;
+    } else {
+      $scope.direction = false;
+      $scope.order = column;
+    }
+  };
+
 }]);
