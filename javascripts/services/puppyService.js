@@ -48,10 +48,32 @@ pupHub.factory('puppyService', ['$http', 'breedService', function($http, breedSe
     return pupData;
   };
 
+  var adoptPuppy = function adoptPuppy(dog) {
+    $http({
+      method: 'DELETE',
+      url: 'https://ajax-puppies.herokuapp.com/puppies/'+dog+'.json',
+    }).then(function successCallback(response) {
+      removePuppy(response.data.id);
+    }, function errorCallback(response) {
+      console.log(response);
+    });
+  };
+
+  var removePuppy = function(dog) {
+    for (var i = 0; i < puppies.length; i++) {
+      if (puppies[i].id === dog) {
+        return puppies.splice(i, 1);
+      }
+    }
+    return false;
+  };
+
+
   return {
     getPuppies: getPuppies,
     fetchPuppies: fetchPuppies,
     populatePuppies: populatePuppies,
     addPuppy: addPuppy,
+    adoptPuppy: adoptPuppy,
   };
 }]);

@@ -9,5 +9,8 @@ pupHub.controller('adoptCtrl', [ '$scope', 'breedService', 'puppyService', funct
     puppyService.addPuppy(puppy);
   };
 
+  $scope.adoptPuppy = function(dog) {
+    puppyService.adoptPuppy(dog);
+  };
 
 }]);

@@ -38,11 +38,18 @@
       <td>Breed</td>
       <td>Added</td>
     </thead>
-    <tr ng-repeat="puppy in puppies">
+    <tbody>
+      <tr pup
+          ng-repeat="puppy in puppies"
+          puppy="puppy"
+          adopt-puppy="adoptPuppy(dog)">
+      </tr>
+    <!-- <tr ng-repeat="puppy in puppies">
       <td>{{ puppy.name }}</td>
       <td>{{ puppy.breed.name }}<td>
       <td>{{ puppy.created_at | timeago }}</td>
-    </tr>
+    </tr> -->
+    </tbody>
   </table>
 
 </body>
@@ -58,7 +65,7 @@
 <script src="javascripts/controllers/adoptCtrl.js"></script>
 
 <!-- directives -->
-<!-- <script src="javascripts/directives/todo_item.js"></script> -->
+<script src="javascripts/directives/puppy.js"></script>
 
 <!-- timeago script -->
 <script src="lib/time.js"></script>
