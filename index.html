@@ -19,17 +19,38 @@
 
     <div class="row">
       <div class="col-xs-12">
+        <h2>Register a new Puppy</h2>
+
+    <h4>Name</h4>
+    <input type="text">
+
+    <h4>Breed</h4>
+    <select>
+      <option ng-repeat="breed in breeds" value="{{ breed.id }}">
+        {{ breed.name }}
+      </option>
+    </select>
+    <br><br>
+    <button type="submit" class="btn btn-primary">
+      Register Puppy
+    </button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
         <h2>Our Puppies:</h2>
+        <button type="button" class="btn btn-sm btn-link" ng-click="getAllPuppies()">
+          Refresh puppies list
+        </button>
         <ul>
-          <!-- {{ allPuppies }} -->
-          <a href="#" ng-click="getAllPuppies()">Refresh puppies list</a>
           <li ng-repeat="puppy in allPuppies" >
             <strong>{{ puppy.name }}</strong>,
             {{ puppy.breed.name }},
             {{ puppy.created_at | date }}
-            <!-- {{ puppy.id }}, -->
-            -- <a href="#" ng-click="adoptPuppy(puppy.id)">adopt</a>
-            <!-- {{ puppy }} -->
+            <button type="button" class="btn btn-xs btn-link" ng-click="adoptPuppy(puppy.id)">
+              adopt
+            </button>
           </li>
         </ul>
       </div>

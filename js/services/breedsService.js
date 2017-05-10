@@ -1,3 +1,11 @@
 app.factory('breedsService', ['$http', function($http){
-  return {};
+  var getBreeds = function(){
+    return $http({
+      method: 'GET',
+      url: 'https://ajax-puppies.herokuapp.com/breeds.json',
+    })
+  };
+  return {
+    getBreeds: getBreeds
+  };
 }]);

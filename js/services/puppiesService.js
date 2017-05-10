@@ -1,5 +1,5 @@
 app.factory('puppiesService', ['$http', function($http){
-  //GET request
+  // GET request
   var getPuppies = function(){
     return $http({
       method: 'GET',
@@ -7,7 +7,7 @@ app.factory('puppiesService', ['$http', function($http){
     })
   };
 
-  //POST request
+  // POST request
   // var createPuppy = function(){
   //   return $http({
   //     method: 'POST',
@@ -15,7 +15,7 @@ app.factory('puppiesService', ['$http', function($http){
   //   })
   // };
 
-  //DELETE request
+  // DELETE request
   var adoptPuppy = function(puppyId){
     return $http({
       method: 'DELETE',
