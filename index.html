@@ -27,6 +27,8 @@
             <strong>{{ puppy.name }}</strong>,
             {{ puppy.breed.name }},
             {{ puppy.created_at | date }}
+            <!-- {{ puppy.id }}, -->
+            -- <a href="#" ng-click="adoptPuppy(puppy.id)">adopt</a>
             <!-- {{ puppy }} -->
           </li>
         </ul>
