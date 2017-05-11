@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   </head>
   <body class="container" ng-controller="PuppyCtrl">
-    {{ yolo }}
+    
     <div class="row">
       <div class="col-xs-12 text-center">
         <h1>The Angular Puppy Shelter</h1>
@@ -20,20 +20,23 @@
     <div class="row">
       <div class="col-xs-12">
         <h2>Register a new Puppy</h2>
-
-    <h4>Name</h4>
-    <input type="text">
-
-    <h4>Breed</h4>
-    <select>
-      <option ng-repeat="breed in breeds" value="{{ breed.id }}">
-        {{ breed.name }}
-      </option>
-    </select>
-    <br><br>
-    <button type="submit" class="btn btn-primary">
-      Register Puppy
-    </button>
+        <form name="puppyForm" ng-submit="createPuppy(formData, puppyForm)">
+      
+      
+          <h4>Name</h4>
+          <input type="text" ng-model="formData.name">
+      
+          <h4>Breed</h4>
+          <select>
+            <option ng-repeat="breed in breeds" value="{{ breed.id }}" ng-model="formData.breedId">
+              {{ breed.name }}
+            </option>
+          </select>
+          <br><br>
+          <button type="submit" class="btn btn-primary">
+            Register Puppy
+          </button>
+        </form>
       </div>
     </div>
 

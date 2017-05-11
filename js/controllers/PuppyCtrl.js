@@ -9,8 +9,18 @@ function($scope, puppiesService, breedsService){
         $scope.allPuppies = ['Unable to retreive list.'];
       });
   };
-
-  // DELETE puppy
+  
+  //POST puppyf
+  $scope.createPuppy = function(puppyId){
+    puppiesService.adoptPuppy(puppyId).then(function(response) {
+      console.log('puppy deleted', puppyId)
+      //
+      }, function errorCallback(response) {
+        //
+      });
+  };
+  
+  // DELETE puppies
   $scope.adoptPuppy = function(puppyId){
     puppiesService.adoptPuppy(puppyId).then(function(response) {
       console.log('puppy deleted', puppyId)
