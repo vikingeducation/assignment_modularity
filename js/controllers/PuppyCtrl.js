@@ -10,10 +10,12 @@ function($scope, puppiesService, breedsService){
       });
   };
   
-  //POST puppyf
-  $scope.createPuppy = function(puppyId){
+  //POST puppy
+  $scope.createPuppy = function(formData, puppyForm){
+    console.log(formData, 'formData')
+    console.log(puppyForm, 'puppyForm')
     puppiesService.adoptPuppy(puppyId).then(function(response) {
-      console.log('puppy deleted', puppyId)
+
       //
       }, function errorCallback(response) {
         //
