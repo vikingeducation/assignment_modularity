@@ -1,4 +1,5 @@
 app.factory('puppiesService', ['$http', function($http){
+
   // GET request
   var getPuppies = function(){
     return $http({

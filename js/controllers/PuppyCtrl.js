@@ -1,6 +1,10 @@
 app.controller('PuppyCtrl', ['$scope', 'puppiesService', 'breedsService',
 function($scope, puppiesService, breedsService){
+  // $scope.puppyFilter = 'undefined'
 
+  $scope.setFilter = function(filter){
+    $scope.puppyFilter = filter;
+  };
   // GET puppies
   $scope.getAllPuppies = function(){
     puppiesService.getPuppies().then(function successCallback(response) {
@@ -41,8 +45,6 @@ function($scope, puppiesService, breedsService){
   $scope.getBreeds = function(){
     breedsService.getBreeds().then(function successCallback(response) {
       $scope.breeds = response.data;
-      console.log( $scope.breeds )
-      window.yy = response.data;
       }, function errorCallback(response) {
         //
       });

@@ -40,6 +40,25 @@
     <div class="row">
       <div class="col-xs-12">
         <h2>Our Puppies:</h2>
+        <span>Sort By:
+        <button type="button" class="btn btn-sm btn-link"
+          ng-click="setFilter('name')">
+          Name
+        </button>
+
+        <button type="button" class="btn btn-sm btn-link"
+          ng-click="setFilter('breed.name')">
+          Breed
+        </button>
+
+        <button type="button" class="btn btn-sm btn-link"
+          ng-click="setFilter('created_at')">
+          Date
+        </button>
+
+        </span>
+
+        <hr>
         <button type="button" class="btn btn-sm btn-link" ng-click="getAllPuppies()">
           Refresh puppies list
         </button>

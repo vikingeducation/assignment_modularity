@@ -1,5 +1,5 @@
 <ul>
-  <li ng-repeat="puppy in allPuppies" >
+  <li ng-repeat="puppy in allPuppies | orderBy: puppyFilter " >
     <strong>{{ puppy.name }}</strong>,
     {{ puppy.breed.name }},
     {{ puppy.created_at | date }}
