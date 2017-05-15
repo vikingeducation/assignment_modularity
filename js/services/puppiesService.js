@@ -4,28 +4,30 @@ app.factory('puppiesService', ['$http', function($http){
     return $http({
       method: 'GET',
       url: 'https://ajax-puppies.herokuapp.com/puppies.json'
-    })
+    });
   };
 
   // POST request
-  // var createPuppy = function(){
-  //   return $http({
-  //     method: 'POST',
-  //     url: 'https://ajax-puppies.herokuapp.com/puppies.json'
-  //   })
-  // };
+  var createPuppy = function(newPuppyObj){
+    return $http({
+      method: 'POST',
+      url: 'https://ajax-puppies.herokuapp.com/puppies.json',
+      data: JSON.stringify(newPuppyObj)
+    });
+  };
 
   // DELETE request
   var adoptPuppy = function(puppyId){
     return $http({
       method: 'DELETE',
       url: 'https://ajax-puppies.herokuapp.com/puppies/' + puppyId + '.json',
-    })
+    });
   };
 
 
   return {
     getPuppies: getPuppies,
-    adoptPuppy: adoptPuppy
+    adoptPuppy: adoptPuppy,
+    createPuppy: createPuppy
   };
 }]);

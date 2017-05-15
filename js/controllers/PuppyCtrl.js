@@ -9,19 +9,27 @@ function($scope, puppiesService, breedsService){
         $scope.allPuppies = ['Unable to retreive list.'];
       });
   };
-  
+
   //POST puppy
   $scope.createPuppy = function(formData, puppyForm){
-    console.log(formData, 'formData')
-    console.log(puppyForm, 'puppyForm')
-    puppiesService.adoptPuppy(puppyId).then(function(response) {
+    var newPuppy = {
+      name: formData.name,
+      breed_id: formData.breedObj.id
+      // breedName: formData.breedObj.name
+    };
 
+
+    puppiesService.createPuppy(newPuppy).then(function(response) {
+      console.log("puppy created!")
+        console.log(response)
       //
       }, function errorCallback(response) {
+        console.log("puppy not created!")
+        console.log(response)
         //
       });
   };
-  
+
   // DELETE puppies
   $scope.adoptPuppy = function(puppyId){
     puppiesService.adoptPuppy(puppyId).then(function(response) {
@@ -36,13 +44,14 @@ function($scope, puppiesService, breedsService){
   $scope.getBreeds = function(){
     breedsService.getBreeds().then(function successCallback(response) {
       $scope.breeds = response.data;
-      console.log('got breeds')
+      console.log( $scope.breeds )
       window.yy = response.data;
       }, function errorCallback(response) {
         //
       });
   };
+
   //init
-  $scope.getAllPuppies()
-  $scope.getBreeds()
+  $scope.getAllPuppies();
+  $scope.getBreeds();
 }]);
