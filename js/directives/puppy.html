@@ -1,0 +1,10 @@
+<ul>
+  <li ng-repeat="puppy in allPuppies" >
+    <strong>{{ puppy.name }}</strong>,
+    {{ puppy.breed.name }},
+    {{ puppy.created_at | date }}
+    <button type="button" class="btn btn-xs btn-link" ng-click="adoptPuppy(puppy.id)">
+      adopt
+    </button>
+  </li>
+</ul>

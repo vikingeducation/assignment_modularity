@@ -15,18 +15,15 @@ function($scope, puppiesService, breedsService){
     var newPuppy = {
       name: formData.name,
       breed_id: formData.breedObj.id
-      // breedName: formData.breedObj.name
     };
 
 
     puppiesService.createPuppy(newPuppy).then(function(response) {
       console.log("puppy created!")
-        console.log(response)
-      //
+      console.log(response)
       }, function errorCallback(response) {
         console.log("puppy not created!")
         console.log(response)
-        //
       });
   };
 

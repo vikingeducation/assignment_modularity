@@ -29,10 +29,6 @@
           <h4>Breed</h4>
           <select ng-model="formData.breedObj" ng-options="breed.name for breed in breeds">
           </select>
-
-            <!-- breed in breeds" value="{{ breed.id }}" ng-model="formData.breedId">
-              {{ breed.name }}
-            </option> -->
           <br><br>
           <button type="submit" class="btn btn-primary">
             Register Puppy
@@ -47,16 +43,11 @@
         <button type="button" class="btn btn-sm btn-link" ng-click="getAllPuppies()">
           Refresh puppies list
         </button>
-        <ul>
-          <li ng-repeat="puppy in allPuppies" >
-            <strong>{{ puppy.name }}</strong>,
-            {{ puppy.breed.name }},
-            {{ puppy.created_at | date }}
-            <button type="button" class="btn btn-xs btn-link" ng-click="adoptPuppy(puppy.id)">
-              adopt
-            </button>
-          </li>
-        </ul>
+
+<!-- puppy directive -->
+<puppy></puppy>
+
+
       </div>
     </div>
 
@@ -71,6 +62,7 @@
   <script src = "js/controllers/PuppyCtrl.js"></script>
 
   <!-- directives -->
+  <script src = "js/directives/puppy.js"></script>
 
   <!-- filters -->
 
